@@ -21,7 +21,7 @@
             "@components/*": ["src/components/*"],
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
-            "@assets/*": ["src/assets/*"]
+            "@assets/*": ["public/assets/*"]
         }
     },
     "include": ["src"],

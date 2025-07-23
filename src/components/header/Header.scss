@@ -1,3 +1,67 @@
-.header img {
-    width: 100%;
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.header {
+    gap: 0px;
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        background-color: t.$color-light-skin;
+
+        padding: 30px 40px;
+
+        &-links {
+            display: flex;
+            gap: 5vw;
+
+            span {
+                position: relative;
+                color: t.$color-black;
+                cursor: pointer;
+              
+                &::after {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  bottom: -2px;
+                  width: 100%;
+                  height: 2px;
+                  background-color: t.$color-black;
+                  transform: scaleX(0);
+                  transform-origin: left;
+                  transition: transform 0.4s ease;
+                }
+              
+                &:hover::after {
+                  transform: scaleX(1);
+                }
+              }
+        }
+
+        &-personal {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            &__order-button {
+                background-color: t.$color-background;
+                color: t.$color-light-skin;
+                
+                border-radius: 50px;
+                padding: 9px 17px;
+
+                box-sizing: border-box;
+                border: none;
+
+                span {
+                    font-size: v.$font-size-header;
+                    font-family: v.$font-family-main;
+                }
+            }
+        }
+    }
 }
+

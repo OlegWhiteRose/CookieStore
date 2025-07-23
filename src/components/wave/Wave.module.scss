@@ -1,0 +1,12 @@
+@use '@/theme.scss' as t;
+
+.bottom {
+    transform: rotate(180deg);
+}
+
+.top, .bottom {
+    --wave-color: #{t.$color-light-skin};
+
+    display: block;
+}
+
