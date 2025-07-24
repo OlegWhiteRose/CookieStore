@@ -1,0 +1,36 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.favorite-cookie-types {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding: 10px 40px;
+
+        background-color: t.$color-light-skin;
+
+        &__title {
+            font-size: v.$font-size-section-title-main;
+            font-family: v.$font-family-main;
+            color: t.$color-black;
+            font-weight: v.$font-weight-medium;
+        }
+
+        &__types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 50px;
+
+            @media (max-width: 1400px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 900px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+}
+

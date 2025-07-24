@@ -3,8 +3,18 @@
     src: url('@assets/fonts/Unbounded.ttf');
 }
 
+@font-face {
+    font-family: 'Ruda';
+    src: url('@assets/fonts/Ruda.ttf');
+}
+
 // Typography Variables
 $font-family-main: 'Unbounded';
+$font-family-secondary: 'Ruda';
+
+$font-weight-medium: 500;
 
 $font-size-header: 18px;
+$font-size-attention: 30px;
+$font-size-section-title-main: 30px;
 

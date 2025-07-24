@@ -1,0 +1,42 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.type-form {
+    &__background {
+        display: flex;
+        overflow: hidden;
+        aspect-ratio: 3 / 1;
+        position: relative;
+        cursor: pointer;
+
+        padding: 30px 40px;
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 20px;
+        filter: drop-shadow(0 4px 4px rgba(0,0,0,0.25));
+
+        @media (max-width: 1400px) {
+            padding: 20px 30px;
+        }
+
+        &:hover {
+            transform: scale(1.01);
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    &__title {
+        user-select: none;
+
+        font-size: v.$font-size-section-title-main;
+        color: t.$color-white;
+        text-align: center;
+        text-shadow:
+            -1px -1px 0 t.$color-black,
+            1px -1px 0 t.$color-black,
+            -1px  1px 0 t.$color-black,
+            1px  1px 0 t.$color-black;
+    }
+}
+

@@ -1,6 +1,6 @@
 import classes from './Wave.module.scss';
 
-type WaveBottomProps = {
+interface WaveBottomProps {
     height?: number;
 }
 
