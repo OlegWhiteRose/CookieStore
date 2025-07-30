@@ -2,6 +2,7 @@ import './pages.scss';
 
 import LogoBig from '@components/logo/LogoBig';
 import FavoriteCookieTypes from '@/components/sections/favorite-cookie-types/FavoriteCookieTypes';
+import Partners from '@/components/sections/partners/Partners';
 
 function HomePage() {
     return (
@@ -13,6 +14,7 @@ function HomePage() {
                 </span>
             </div>
             <FavoriteCookieTypes />
+            <Partners />
         </div>
     )
 }

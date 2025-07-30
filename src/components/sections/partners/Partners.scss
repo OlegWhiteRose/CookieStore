@@ -1,0 +1,46 @@
+@use '@/variables.scss' as v;
+@use '@/theme.scss' as t;
+
+.partners { 
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    padding: 20px 0;
+
+    &__header {
+        gap: 50px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        padding: 0 40px;
+
+        &__title {
+            font-size: v.$font-size-attention-big;
+            font-weight: v.$font-weight-medium;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+            text-align: center;
+        }
+
+        &__description {
+            font-size: v.$font-size-attention;
+            font-weight: v.$font-weight-medium;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+            text-align: center;
+        }
+    }
+
+    &__content {    
+        &__items {
+            background-color: t.$color-light-skin;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(10px, 10%, 10%);
+
+            padding: 20px 40px;
+        }
+    }
+}
