@@ -1,17 +1,18 @@
 @use '@/theme.scss' as t;
 @use '@/variables.scss' as v;
 
-.header {
-    gap: 0px;
+.footer {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
 
-    &__main {
+    &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
         background-color: t.$color-light-skin;
 
-        padding: 30px 40px;
+        padding: 60px 40px;
 
         &-links {
             display: flex;
@@ -41,26 +42,10 @@
             }
         }
 
-        &-personal {
+        &-watermark {
             display: flex;
-            align-items: center;
-            gap: 20px;
-
-            &__order-button {
-                background-color: t.$color-background;
-                color: t.$color-light-skin;
-                
-                border-radius: 50px;
-                padding: 9px 17px;
-
-                box-sizing: border-box;
-                border: none;
-
-                span {
-                    font-size: v.$font-size-header;
-                    font-family: v.$font-family-main;
-                }
-            }
+            flex-direction: column;
+            gap: 10px;
         }
     }
 }

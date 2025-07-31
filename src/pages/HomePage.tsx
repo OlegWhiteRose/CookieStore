@@ -3,6 +3,8 @@ import './pages.scss';
 import LogoBig from '@components/logo/LogoBig';
 import FavoriteCookieTypes from '@/components/sections/favorite-cookie-types/FavoriteCookieTypes';
 import Partners from '@/components/sections/partners/Partners';
+import OurAdvantages from '@/components/sections/our-advantages/OurAdvantages';
+import StatsShowcase from '@/components/sections/stats-showcase/StatsShowcase';
 
 function HomePage() {
     return (
@@ -15,6 +17,8 @@ function HomePage() {
             </div>
             <FavoriteCookieTypes />
             <Partners />
+            <OurAdvantages />
+            <StatsShowcase />
         </div>
     )
 }

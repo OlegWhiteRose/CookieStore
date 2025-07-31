@@ -13,6 +13,7 @@ body {
 
 #root {
   font-family: v.$font-family-main;
+  font-size: v.$font-size-header;
   color: t.$color-black;
 }
 
@@ -30,7 +31,8 @@ button {
   cursor: pointer;
 }
 
-span {
+span, h1 {
   user-select: none;
+  margin: 0;
 }
 
