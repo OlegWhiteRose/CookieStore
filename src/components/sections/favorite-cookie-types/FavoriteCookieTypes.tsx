@@ -11,34 +11,34 @@ import Oatmeal from '@assets/img/oatmeal.jpg';
 import Rich from '@assets/img/rich.jpg';
 import Graham from '@assets/img/graham.jpg';
 
-function FavoriteCookieTypes() {
-    const types = [
-        {
-            title: 'Сахарное',
-            backgroundImgSrc: SugarCookie,
-        },
-        {
-            title: 'Галеты',
-            backgroundImgSrc: Crackers,
-        },
-        {
-            title: 'Затяжное',
-            backgroundImgSrc: PuffPastry,
-        },
-        {
-            title: 'Овсяное',
-            backgroundImgSrc: Oatmeal,
-        },
-        {
-            title: 'Сдобное',
-            backgroundImgSrc: Rich,
-        },
-        {
-            title: 'Крекеры',
-            backgroundImgSrc: Graham,
-        }
-    ];
+const COOKIE_TYPES = [
+    {
+        title: 'Сахарное',
+        backgroundImgSrc: SugarCookie,
+    },
+    {
+        title: 'Галеты',
+        backgroundImgSrc: Crackers,
+    },
+    {
+        title: 'Затяжное',
+        backgroundImgSrc: PuffPastry,
+    },
+    {
+        title: 'Овсяное',
+        backgroundImgSrc: Oatmeal,
+    },
+    {
+        title: 'Сдобное',
+        backgroundImgSrc: Rich,
+    },
+    {
+        title: 'Крекеры',
+        backgroundImgSrc: Graham,
+    }
+]
 
+function FavoriteCookieTypes() {
     return (
         <>
             <div className="favorite-cookie-types">
@@ -46,7 +46,7 @@ function FavoriteCookieTypes() {
                 <div className="favorite-cookie-types__content">
                     <h1 className="favorite-cookie-types__content__title">Любимые виды печенья на выбор</h1>
                     <div className="favorite-cookie-types__content__types">
-                        {types.map((type) => (
+                        {COOKIE_TYPES.map((type) => (
                             <TypeForm key={type.title} title={type.title} backgroundImgSrc={type.backgroundImgSrc} />
                         ))}
                     </div>

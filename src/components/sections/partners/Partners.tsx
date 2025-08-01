@@ -9,26 +9,26 @@ import ReturnZero from '@assets/img/partners/return-zero.svg?react';
 import SellerMeller from '@assets/img/partners/seller-meller.svg?react';
 import SellerReller from '@assets/img/partners/seller-reller.svg?react';
 
-function Partners() {
-    const partnerForms = [
-        {
-            partnerName: 'Seller Beller',
-            partnerIcon: SellerBeller,
-        },
-        {
-            partnerName: 'Return Zero',
-            partnerIcon: ReturnZero,
-        },
-        {
-            partnerName: 'Seller Meller',
-            partnerIcon: SellerMeller,
-        },
-        {
-            partnerName: 'Seller Reller',
-            partnerIcon: SellerReller,
-        },
-    ];
+const PARTNERS = [
+    {
+        partnerName: 'Seller Beller',
+        partnerIcon: SellerBeller,
+    },    
+    {
+        partnerName: 'Return Zero',
+        partnerIcon: ReturnZero,
+    },
+    {
+        partnerName: 'Seller Meller',
+        partnerIcon: SellerMeller,
+    },
+    {
+        partnerName: 'Seller Reller',
+        partnerIcon: SellerReller,
+    },
+]
 
+function Partners() {
     return (
         <div className="partners">
             <div className="partners__header">
@@ -41,10 +41,10 @@ function Partners() {
             <div className="partners__content">
                 <TopWave />
                 <div className="partners__content__items">
-                    { partnerForms.map((partnerForm) => (
-                        <PartnerForm key={partnerForm.partnerName} 
-                            partnerName={partnerForm.partnerName} 
-                            partnerIcon={<partnerForm.partnerIcon />} 
+                    { PARTNERS.map((partner) => (
+                        <PartnerForm key={partner.partnerName} 
+                            partnerName={partner.partnerName} 
+                            partnerIcon={<partner.partnerIcon />} 
                         />
                     )) }
                 </div>

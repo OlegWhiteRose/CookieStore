@@ -7,31 +7,31 @@ import CookiesBox from '@assets/img/advantages/cookies-box.png';
 import Grass from '@assets/img/advantages/grass.png';
 import Money from '@assets/img/advantages/money.png';
 
-function OurAdvantages() {
-    const advantages = [
-        {
-            backgroundImgSrc: Truck,
-            description: 'Доставка по всей стране',
-        },
-        {
-            backgroundImgSrc: CookiesBox,
-            description: 'Широкий выбор печенья',
-        },
-        {
-            backgroundImgSrc: Grass,
-            description: 'Натуральное производство',
-        },
-        {
-            backgroundImgSrc: Money,
-            description: 'Честная цена',
-        },
-    ];
+const ADVANTAGES = [
+    {
+        backgroundImgSrc: Truck,
+        description: 'Доставка по всей стране',
+    },
+    {
+        backgroundImgSrc: CookiesBox,
+        description: 'Широкий выбор печенья',
+    },
+    {
+        backgroundImgSrc: Grass,
+        description: 'Натуральное производство',
+    },
+    {
+        backgroundImgSrc: Money,
+        description: 'Честная цена',
+    },
+]
 
+function OurAdvantages() {
     return (
         <div className="our-advantages">
             <h1 className="our-advantages__title">Наши преимущества</h1>
             <div className="our-advantages__content">
-                { advantages.map((advantage) => (
+                { ADVANTAGES.map((advantage) => (
                     <AdvantageForm key={advantage.description} 
                         backgroundImgSrc={advantage.backgroundImgSrc} 
                         description={advantage.description} 
