@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 import LogoSmall from '@components/logo/LogoSmall';
-import WaveTop from '@components/wave/WaveTop';
 
 function Footer() {
     return (
         <footer className="footer">
-            <WaveTop />
             <div className="footer__content">
                 <LogoSmall />
 

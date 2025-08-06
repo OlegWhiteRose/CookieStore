@@ -1,0 +1,32 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.feedback-input {
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+
+    &__title {
+        color: t.$color-white;
+        font-size: v.$font-size-attention;
+        font-family: v.$font-family-secondary;
+    }
+
+    &__input {
+        font-size: v.$font-size-header;
+        font-family: v.$font-family-main;
+
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 2px t.$color-background-first; 
+        border: none; 
+
+        &:focus {
+            outline: none; 
+            box-shadow: inset 0 0 0 2px t.$color-white; 
+        }
+
+        padding: 10px;
+    }
+}
+
