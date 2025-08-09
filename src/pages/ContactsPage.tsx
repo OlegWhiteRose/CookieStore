@@ -2,6 +2,8 @@ import './pages.scss';
 
 import ContactForm from '@/components/forms/contact-form/ContactForm';
 import FeedbackInput from '@/components/elements/inputs/feedback-input/FeedbackInput';
+import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
+import SectionContent from '@/components/templates/section-content/SectionContent';
 
 import Phone from '@assets/icon/phone.svg?react';
 import Mail from '@assets/icon/mail.svg?react';
@@ -12,21 +14,25 @@ const CONTACTS = [
     {
         title: 'Телефон',
         content: '8 (xxx) xxx-xx-xx',
+        clipboard: '8xxxxxxxxxx',
         icon: Phone
     },
     {
         title: 'Почта',
         content: 'Hkikomori@yandex.ru',
+        clipboard: 'Hkikomori@yandex.ru',
         icon: Mail
     },
     {
         title: 'Юридический адрес',
         content: 'г. Беллер, улица Селлер, д. 15',
+        clipboard: 'г. Беллер, улица Селлер, д. 15',
         icon: Browser
     },
     {
         title: 'ИНН',
         content: 'xxxxxxxxxx',
+        clipboard: 'xxxxxxxxxx',
         icon: MoneyDatabase
     },
 ]   
@@ -61,34 +67,43 @@ const INPUTS: InputConfig[] = [
 ];
 
 function ContactsPage() {
+    const sideTitleText = "Мы открыты и будем рады помочь с вопросами, пожеланиями или предложениями. Обращайтесь к нам по интересующим вас темам по указанным выше контактам либо по форме ниже.";
+
     return (
-        <div className="page contacts-page">
-            <div className="contacts-page__title">
-                <h1>Контакты</h1>
-            </div>
-            <div className="contacts-page__contacts">
-                {CONTACTS.map((contact) => (
-                    <ContactForm key={contact.title} title={contact.title} content={contact.content} icon={< contact.icon />} />
-                ))}
-            </div>
-            <div className="contacts-page__title">
-                <h1>Обратная связь</h1>
-            </div>
-            <span className="contacts-page__side-title">
-                Мы открыты и будем рады помочь с вопросами, пожеланиями или предложениями. Обращайтесь к нам по интересующим вас темам по указанным выше контактам либо по форме ниже.
-            </span>
-            <div className="contacts-page__feedback">
-                <div className="contacts-page__feedback-data">
-                    {INPUTS.map((input) => (
-                        <FeedbackInput key={input.title} title={input.title} inputHeight={input.inputHeight} inputType={input.inputType} />
+        <VerticalSection className="page contacts-page">
+            <SectionContent className="contacts-page__main">
+                <div className="contacts-page__main__title">
+                    <h1>Контакты</h1>
+                </div>
+                <div className="contacts-page__main__contacts">
+                    {CONTACTS.map((contact) => (
+                        <ContactForm key={contact.title} 
+                            title={contact.title} 
+                            content={contact.content} 
+                            clipboard={contact.clipboard} 
+                            icon={< contact.icon />} />
                     ))}
-                    <button className="contacts-page__feedback-btn">Отправить ваше сообщение</button>
                 </div>
-                <div className="contacts-page__feedback-imageContainer">
-                    <img src={MapFeedback} />
+                <div className="contacts-page__main__title">
+                    <h1 id="about">Обратная связь</h1>
                 </div>
-            </div>
-        </div>
+                <span className="contacts-page__main__side-title">
+                    { sideTitleText }                
+                </span>
+                <div className="contacts-page__main__feedback">
+                    <div className="contacts-page__main__feedback-data">
+                        {INPUTS.map((input) => (
+                            <FeedbackInput key={input.title} 
+                                title={input.title} inputHeight={input.inputHeight} inputType={input.inputType} />
+                        ))}
+                        <button className="contacts-page__main__feedback-btn">Отправить ваше сообщение</button>
+                    </div>
+                    <div className="contacts-page__main__feedback-imageContainer">
+                        <img src={MapFeedback} />
+                    </div>
+                </div>
+            </SectionContent>
+        </VerticalSection>
     )
 }
 

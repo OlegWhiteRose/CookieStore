@@ -3,8 +3,6 @@
 
 .favorite-cookie-types {
     &__content {
-        display: flex;
-        flex-direction: column;
         gap: 50px;
         padding: 20px 40px;
 
@@ -26,10 +24,6 @@
 
             @media (max-width: 1400px) {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            @media (max-width: 900px) {
-                grid-template-columns: repeat(1, 1fr);
             }
         }
     }

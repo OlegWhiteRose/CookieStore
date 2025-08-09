@@ -3,13 +3,12 @@
 
 .header {
     gap: 0px;
+    background-color: t.$color-light-skin;
 
     &__main {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
-        background-color: t.$color-light-skin;
 
         padding: 30px 40px;
 

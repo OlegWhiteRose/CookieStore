@@ -2,10 +2,6 @@
 @use '@/variables.scss' as v;
 
 .stats-showcase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     padding: 20px 40px;
     gap: 80px;
 
@@ -14,6 +10,7 @@
         font-weight: v.$font-weight-medium;
         font-family: v.$font-family-secondary;
         font-size: v.$font-size-attention-big;
+        text-align: center;
     }
 
     &__content {

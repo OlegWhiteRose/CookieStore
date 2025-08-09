@@ -11,7 +11,9 @@ function TypeForm(props: TypeFormProps) {
     return (
         <div className="type-form">
             <div className="type-form__background" style={{ backgroundImage: `url(${backgroundImgSrc})` }}>
-                <span className="type-form__title">{title}</span>
+                <div className="type-form__title-container">
+                    <span>{title}</span>
+                </div>
             </div>
         </div>
     )

@@ -4,15 +4,15 @@
 .footer {
     position: relative;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 40px;
+    background-color: t.$color-light-skin;
 
     &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: t.$color-light-skin;
 
-        padding: 40px 40px;
+        padding: 40px;
 
         &-links {   
             display: flex;

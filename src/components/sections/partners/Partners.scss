@@ -36,13 +36,18 @@
     }
 
     &__content {    
-        &__items {
-            background-color: t.$color-light-skin;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: clamp(10px, 13%, 13%);
 
-            padding: 20px 40px;
+        &__section {
+            background-color: t.$color-light-skin;
+
+            &-items {
+                background-color: t.$color-light-skin;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: clamp(10px, 13%, 13%);
+
+                padding: 20px 40px;
+            }
         }
     }
 }

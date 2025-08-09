@@ -1,6 +1,8 @@
 import './OurAdvantages.scss';
 
 import AdvantageForm from '@/components/forms/advantage-form/AdvantageForm';
+import SectionContent from '@/components/templates/section-content/SectionContent';
+import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
 
 import Truck from '@assets/img/advantages/truck.png';
 import CookiesBox from '@assets/img/advantages/cookies-box.png';
@@ -28,17 +30,19 @@ const ADVANTAGES = [
 
 function OurAdvantages() {
     return (
-        <div className="our-advantages">
-            <h1 className="our-advantages__title">Наши преимущества</h1>
-            <div className="our-advantages__content">
+        <VerticalSection className="our-advantages">
+            <SectionContent>
+                <h1 className="our-advantages__title">Наши преимущества</h1>
+            </SectionContent>
+            <SectionContent className="our-advantages__content">
                 { ADVANTAGES.map((advantage) => (
                     <AdvantageForm key={advantage.description} 
                         backgroundImgSrc={advantage.backgroundImgSrc} 
                         description={advantage.description} 
                     />
                 )) }
-            </div>
-        </div>
+            </SectionContent>
+        </VerticalSection>
     );
 }
 
