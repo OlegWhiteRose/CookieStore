@@ -38,7 +38,7 @@ const CONTACTS = [
 ]   
 
 
-import MapFeedback from '@assets/img/map-feedback.png';
+import MapFeedback from '@assets/img/cookie-male-box.jpg';
 
 type InputType = 'input' | 'textarea';
 

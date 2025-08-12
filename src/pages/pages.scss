@@ -107,9 +107,12 @@
                     width: 50%;
                     min-width: 500px;
                     aspect-ratio: 1 / 1;
+
+                    border-radius: 20px;
+                    border: solid 2px t.$color-background-first;
                 }
 
-                @media (max-width: 1140px) {
+                @media (max-width: 1240px) {
                     display: none;
                 }
             }
