@@ -57,7 +57,7 @@ const INPUTS: InputConfig[] = [
   {
     title: 'Ваши контакты для обратной связи',
     inputHeight: '50px',
-    inputType: 'input'
+    inputType: 'textarea'
   },
   {
     title: 'Ваше сообщение',

@@ -1,8 +1,10 @@
+import './LogoBig.scss';
+
 import LogoImg from '@assets/img/logo-big.png';
 
 function LogoBig() {
     return (
-        <img src={LogoImg} alt="Logo" />
+        <img className="logo-big" src={LogoImg} alt="Logo" />
     )
 }
 

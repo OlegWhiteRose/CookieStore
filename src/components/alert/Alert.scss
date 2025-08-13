@@ -1,0 +1,56 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.alert {
+    position: fixed;
+    z-index: 100;
+    right: 25px;
+    bottom: 40px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 20px;
+    background-color: t.$color-black;
+    border-radius: 10px;
+    
+    width: fit-content;
+
+    padding: 20px;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        gap: 10px;
+
+        width: fit-content;
+
+        &-icon {
+            user-select: none;
+
+            width: 24px;
+            height: 24px;
+        }
+
+        &-text {
+            text-align: center;
+            color: t.$color-white;
+            font-size: v.$font-size-header;
+            white-space: nowrap;
+        }
+    }
+
+    &__close {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            scale: 1.1;
+        }
+    }
+}
+

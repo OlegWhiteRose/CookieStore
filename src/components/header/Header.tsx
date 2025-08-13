@@ -11,7 +11,7 @@ import CartIcon from '@assets/icon/cart.svg?react';
 
 function Header() {
     return (
-        <>
+        <div>
             <header className="header">
                 <HorizontalSection>
                     <SectionContent className="header__main">
@@ -39,7 +39,7 @@ function Header() {
                 </HorizontalSection>
             </header>
             <WaveBottom />
-        </>
+        </div>
     )
 }
 
