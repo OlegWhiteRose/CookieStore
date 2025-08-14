@@ -8,8 +8,6 @@ import { RootState } from "@/store";
 function AlertContainer() {
   const alerts = useSelector((state: RootState) => state.alerts.items);
 
-  console.log('AlertContainer render - alerts:', alerts);
-
   if (!alerts || !Array.isArray(alerts) || alerts.length === 0) {
     return createPortal(
       <div className="alert-container"></div>,

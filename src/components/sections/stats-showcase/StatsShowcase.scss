@@ -2,7 +2,7 @@
 @use '@/variables.scss' as v;
 
 .stats-showcase {
-    padding: 20px 40px;
+    padding: v.$section-padding-vertical v.$main-padding-horizontal;
     gap: 80px;
 
     &__title {

@@ -4,7 +4,7 @@
 .favorite-cookie-types {
     &__content {
         gap: 50px;
-        padding: 20px 40px;
+        padding: v.$section-padding-vertical v.$main-padding-horizontal;
 
         background-color: t.$color-light-skin;
 

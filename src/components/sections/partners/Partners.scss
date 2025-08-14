@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 80px;
 
-    padding: 20px 0;
+    padding: v.$section-padding-vertical 0;
 
     &__header {
         gap: 20px;
@@ -15,7 +15,7 @@
         align-items: center;
         flex-direction: column;
 
-        padding: 0 40px;
+        padding: 0 v.$main-padding-horizontal;
 
         &__title {
             font-size: v.$font-size-attention-big;
@@ -46,7 +46,7 @@
                 grid-template-columns: repeat(4, 1fr);
                 gap: clamp(10px, 13%, 13%);
 
-                padding: 20px 40px;
+                padding: v.$section-padding-vertical v.$main-padding-horizontal;
             }
         }
     }

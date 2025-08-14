@@ -2,6 +2,8 @@
 @use '@/variables.scss' as v;
 
 .type-form {
+    will-change: transform;
+
     &__background {
         display: flex;
         overflow: hidden;

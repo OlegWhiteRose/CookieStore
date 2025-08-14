@@ -18,7 +18,7 @@ $font-size-header: 16px;
 $font-size-content-top: 20px;
 $font-size-side-content: 25px;
 $font-size-attention: 30px;
-$font-size-section-title-main: 30px;
+$font-size-section-title-main: 25px;
 $font-size-h1-title: 40px;
 $font-size-attention-big: 50px;
 $font-size-stats-number: 90px;
@@ -26,3 +26,9 @@ $font-size-stats-number: 90px;
 // Max and Min width no-resizing
 $critical-max-width: 1700px;
 $critical-min-width: 1000px;
+
+// Spacing
+
+// padding
+$main-padding-horizontal: 40px;
+$section-padding-vertical: 20px;
