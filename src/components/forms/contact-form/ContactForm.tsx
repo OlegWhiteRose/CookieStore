@@ -6,14 +6,19 @@ interface ContactFormProps {
     title: string;
     content: string;
     clipboard: string;
+    message: string;
     icon: React.ReactNode;
 }
 
 function ContactForm(props: ContactFormProps) {
-    const { title, content, clipboard, icon } = props;
+    const { title, content, clipboard, message, icon } = props;
+
+    function handleCopyClick() {
+        copyToClipboard(clipboard, message);
+    }
 
     return (
-        <div onClick={() => copyToClipboard(clipboard)}  className="contact-form">
+        <div onClick={handleCopyClick}  className="contact-form">
             <div className="contact-form__title">
                 { title }
             </div>

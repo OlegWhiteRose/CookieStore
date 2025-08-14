@@ -1,10 +1,13 @@
-async function copyToClipboard(text: string) {
+import { showAlert } from '@/common/showAlert';
+
+async function copyToClipboard(text: string, message?: string, duration?: number) {
   try {
     await navigator.clipboard.writeText(text);
-    console.log('Скопировано в буфер обмена:', text);
+    showAlert(message || 'Скопировано!', 'success', duration);
   } catch (err) {
-    console.error('Ошибка при копировании:', err);
+    showAlert('Ошибка при копировании!', 'error', duration);
   }
 }
 
 export default copyToClipboard;
+

@@ -13,24 +13,28 @@ import MoneyDatabase from '@assets/icon/money-database.svg?react';
 const CONTACTS = [
     {
         title: 'Телефон',
+        message: 'Телефон скопирован',
         content: '8 (xxx) xxx-xx-xx',
         clipboard: '8xxxxxxxxxx',
         icon: Phone
     },
     {
         title: 'Почта',
+        message: 'Почта скопирована',
         content: 'Hkikomori@yandex.ru',
         clipboard: 'Hkikomori@yandex.ru',
         icon: Mail
     },
     {
         title: 'Юридический адрес',
+        message: 'Юридический адрес скопирован',
         content: 'г. Беллер, улица Селлер, д. 15',
         clipboard: 'г. Беллер, улица Селлер, д. 15',
         icon: Browser
     },
     {
         title: 'ИНН',
+        message: 'ИНН скопирован',
         content: 'xxxxxxxxxx',
         clipboard: 'xxxxxxxxxx',
         icon: MoneyDatabase
@@ -81,6 +85,7 @@ function ContactsPage() {
                             title={contact.title} 
                             content={contact.content} 
                             clipboard={contact.clipboard} 
+                            message={contact.message}
                             icon={< contact.icon />} />
                     ))}
                 </div>
@@ -94,9 +99,13 @@ function ContactsPage() {
                     <div className="contacts-page__main__feedback-data">
                         {INPUTS.map((input) => (
                             <FeedbackInput key={input.title} 
-                                title={input.title} inputHeight={input.inputHeight} inputType={input.inputType} />
+                                title={input.title} 
+                                inputHeight={input.inputHeight} 
+                                inputType={input.inputType} />
                         ))}
-                        <button className="contacts-page__main__feedback-btn">Отправить ваше сообщение</button>
+                        <button className="contacts-page__main__feedback-btn">
+                            Отправить ваше сообщение
+                        </button>
                     </div>
                     <div className="contacts-page__main__feedback-imageContainer">
                         <img src={MapFeedback} />

@@ -22,7 +22,8 @@
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
             "@assets/*": ["public/assets/*"],
-            "@common/*": ["src/common/*"]
+            "@common/*": ["src/common/*"],
+            "@store/*": ["src/store/*"]
         }
     },
     "include": ["src"],

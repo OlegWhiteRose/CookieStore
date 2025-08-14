@@ -1,8 +1,15 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.scss'
 import App from './App.js'
+import { Provider } from 'react-redux';
+import { store } from '@/store';
+import AlertContainer from '@/components/alert/AlertContainer';
+
+import './index.scss'
 
 createRoot(document.getElementById('root')).render(
-  <App />
+  <Provider store={store}>
+    <App />
+    <AlertContainer />
+  </Provider>
 )
+
