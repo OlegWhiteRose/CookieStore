@@ -4,6 +4,7 @@ import './Header.scss';
 
 import SectionContent from '../templates/section-content/SectionContent';
 import HorizontalSection from '../templates/horizontal-section/HorizontalSection';
+import { OrderButton } from '@components/elements/buttons/buttons';
 
 import WaveBottom from '@components/wave/WaveBottom';
 import LogoSmall from '@components/logo/LogoSmall';
@@ -30,9 +31,11 @@ function Header() {
                         </div>
 
                         <div className="header__main-personal">
-                            <button className="header__main-personal__order-button">
-                                <span>заказать</span>
-                            </button>
+                            <OrderButton 
+                                text="заказать"
+                                onClick={() => console.log('Order clicked')}
+                                className="header__main-personal__order-button"
+                            />
                             <CartIcon className="header__main-personal__cart-icon" />
                         </div>
                     </SectionContent>

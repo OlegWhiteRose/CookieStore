@@ -9,7 +9,7 @@
     padding: v.$section-padding-vertical 0;
 
     &__header {
-        gap: 20px;
+        gap: v.$section-gap;
 
         display: flex;
         align-items: center;
@@ -26,6 +26,8 @@
         }
 
         &__description {
+            margin: 0;
+
             user-select: none;  
             font-size: v.$font-size-attention;
             font-weight: v.$font-weight-medium;

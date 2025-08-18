@@ -3,8 +3,7 @@
 
 .our-advantages {
     justify-content: center;
-
-    gap: 140px;
+    gap: 80px;
     padding: v.$section-padding-vertical v.$main-padding-horizontal;
 
     &__title {
@@ -17,14 +16,27 @@
 
     &__content {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        
-        gap: 100px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "main main"
+            "left right";
 
-        @media (max-width: 1260px) {
-            gap: 50px;   
+        gap: v.$section-gap;
+        align-items: stretch;
+    }
+
+    &__card {
+        &--main {
+            grid-area: main;
+        }
+
+        &--left {
+            grid-area: left;
+        }
+
+        &--right {
+            grid-area: right;
         }
     }
 }
-

@@ -80,14 +80,14 @@
             &-text {
                 color: t.$color-white;
                 font-family: v.$font-family-main;
-                font-size: v.$font-size-header;
+                font-size: v.$font-size-main;
                 line-height: 1.4;
                 
                 word-wrap: break-word;
                 overflow-wrap: break-word;
                 
                 @media (max-width: 768px) {
-                    font-size: calc(#{v.$font-size-header} * 0.9);
+                    font-size: calc(#{v.$font-size-main} * 0.9);
                 }
             }
         }

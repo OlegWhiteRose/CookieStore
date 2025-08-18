@@ -3,7 +3,7 @@
 
 .favorite-cookie-types {
     &__content {
-        gap: 50px;
+        gap: v.$section-gap;
         padding: v.$section-padding-vertical v.$main-padding-horizontal;
 
         background-color: t.$color-light-skin;

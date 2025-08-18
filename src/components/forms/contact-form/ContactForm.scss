@@ -16,7 +16,7 @@
     padding: 20px 20px;
 
     &__title {
-        font-size: v.$font-size-header;
+        font-size: v.$font-size-main;
     }
 
     &__content {
@@ -29,7 +29,7 @@
         justify-content: space-between;
 
         span {
-            font-size: v.$font-size-header;
+            font-size: v.$font-size-main;
             color: t.$color-background-first;
         }
 
@@ -47,4 +47,5 @@
         transition: transform 0.5s ease-in-out;
     }
 }
+
 

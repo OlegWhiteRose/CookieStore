@@ -64,22 +64,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-
-            &__order-button {
-                background-color: t.$color-background;
-                color: t.$color-light-skin;
-                
-                border-radius: 50px;
-                padding: 9px 17px;
-
-                box-sizing: border-box;
-                border: none;
-
-                span {
-                    font-size: v.$font-size-header;
-                    font-family: v.$font-family-main;
-                }
-            }
         }
     }
 }

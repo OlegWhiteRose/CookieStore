@@ -4,29 +4,20 @@ import AdvantageForm from '@/components/forms/advantage-form/AdvantageForm';
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
 
-import Truck from '@assets/img/advantages/truck.png';
-import CookiesBox from '@assets/img/advantages/cookies-box.png';
-import Grass from '@assets/img/advantages/grass.png';
-import Money from '@assets/img/advantages/money.png';
-
 const ADVANTAGES = [
     {
-        backgroundImgSrc: Truck,
-        description: 'Доставка по всей стране',
+        title: 'Натуральное производство',
+        description: 'Мы используем только отборные ингредиенты без добавок и искусственных ароматизаторов'
     },
     {
-        backgroundImgSrc: CookiesBox,
-        description: 'Широкий выбор печенья',
+        title: 'Широкий выбор печенья',
+        description: 'Найдите печенье на любой вкус только у нас'
     },
     {
-        backgroundImgSrc: Grass,
-        description: 'Натуральное производство',
-    },
-    {
-        backgroundImgSrc: Money,
-        description: 'Честная цена',
-    },
-]
+        title: 'Доставка по всей стране',
+        description: 'Быстро доставим ваше любимое печенье, где бы вы не находились'
+    }
+];
 
 function OurAdvantages() {
     return (
@@ -35,12 +26,21 @@ function OurAdvantages() {
                 <h1 className="our-advantages__title">Наши преимущества</h1>
             </SectionContent>
             <SectionContent className="our-advantages__content">
-                { ADVANTAGES.map((advantage) => (
-                    <AdvantageForm key={advantage.description} 
-                        backgroundImgSrc={advantage.backgroundImgSrc} 
-                        description={advantage.description} 
-                    />
-                )) }
+                <AdvantageForm
+                    title={ADVANTAGES[0].title}
+                    description={ADVANTAGES[0].description}
+                    className="our-advantages__card--main"
+                />
+                <AdvantageForm
+                    title={ADVANTAGES[1].title}
+                    description={ADVANTAGES[1].description}
+                    className="our-advantages__card--left"
+                />
+                <AdvantageForm
+                    title={ADVANTAGES[2].title}
+                    description={ADVANTAGES[2].description}
+                    className="our-advantages__card--right"
+                />
             </SectionContent>
         </VerticalSection>
     );

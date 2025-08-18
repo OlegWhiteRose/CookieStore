@@ -84,18 +84,6 @@
                 padding: v.$section-padding-vertical 0;
             }
 
-            &-btn {
-                background-color: t.$color-black;
-                color: t.$color-white;
-                font-size: v.$font-size-header;
-        
-                border-radius: 10px;
-                box-shadow: inset 0 0 0 2px t.$color-background-first; 
-                border: none; 
-
-                padding: v.$section-padding-vertical 0;
-            }
-
             &-imageContainer {
                 display: flex;
                 justify-content: center;

@@ -1,20 +1,29 @@
 import './AdvantageForm.scss';
 
+import NextIcon from '@assets/icon/next.svg?react';
+
 interface AdvantageFormProps {
-    backgroundImgSrc: string;
+    title: string;
     description: string;
+    className?: string;
 }
 
 function AdvantageForm(props: AdvantageFormProps) {
-    const { backgroundImgSrc, description } = props;
+    const { title, description, className = '' } = props;
 
     return (
-        <div className="advantage-form">
-            <div className="advantage-form__icon" style={{ backgroundImage: `url(${backgroundImgSrc})` }}>
+        <div className={`advantage-form ${className}`}>
+            <div className="advantage-form__content">
+                <div className="advantage-form__text">
+                    <h3  className="advantage-form__title">{title}</h3>
+                    <p className="advantage-form__description">{description}</p>
+                </div>
+                <span className="advantage-form__link">
+                    Узнать больше
+                    <NextIcon className="advantage-form__link-icon" />
+                </span>
             </div>
-            <span className="advantage-form__description">
-                { description }
-            </span>
+            <div className="advantage-form__image"></div>
         </div>
     );
 }

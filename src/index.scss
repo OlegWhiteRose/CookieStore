@@ -14,7 +14,7 @@ body {
 
 #root {
   font-family: v.$font-family-main;
-  font-size: v.$font-size-header;
+  font-size: v.$font-size-main;
   color: t.$color-black;
 }
 
@@ -26,10 +26,6 @@ a {
 svg {
   width: 100%;
   height: 100%;
-}
-
-button {
-  cursor: pointer;
 }
 
 span, h1 {

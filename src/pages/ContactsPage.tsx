@@ -4,6 +4,7 @@ import ContactForm from '@/components/forms/contact-form/ContactForm';
 import FeedbackInput from '@/components/elements/inputs/feedback-input/FeedbackInput';
 import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
+import { SendButton } from '@/components/elements/buttons/buttons';
 
 import Phone from '@assets/icon/phone.svg?react';
 import Mail from '@assets/icon/mail.svg?react';
@@ -103,9 +104,10 @@ function ContactsPage() {
                                 inputHeight={input.inputHeight} 
                                 inputType={input.inputType} />
                         ))}
-                        <button className="contacts-page__main__feedback-btn">
-                            Отправить ваше сообщение
-                        </button>
+                        <SendButton 
+                            text="Отправить сообщение"
+                            onClick={() => console.log('Form submitted')}
+                        />
                     </div>
                     <div className="contacts-page__main__feedback-imageContainer">
                         <img src={MapFeedback} />
