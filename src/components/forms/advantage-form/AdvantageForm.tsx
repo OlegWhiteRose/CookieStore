@@ -6,7 +6,7 @@ export interface AdvantageFormProps {
     title: string;
     description: string;
     className?: string;
-    imgSrc?: string;
+    imgSrc: string;
     size?: [number, number];
     bottom?: number;
     right?: number;
