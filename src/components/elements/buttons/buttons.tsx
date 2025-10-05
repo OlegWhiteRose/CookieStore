@@ -6,6 +6,8 @@ interface BaseButtonProps {
     type?: 'button' | 'submit' | 'reset';
     disabled?: boolean;
     className?: string;
+    icon?: React.ReactNode;
+    fontWeight?: 'normal' | 'bold';
 }
 
 interface ButtonProps extends BaseButtonProps {
@@ -27,7 +29,9 @@ function Button(props: ButtonProps) {
         size,
         radius = '10',
         width = 'auto',
-        padding = '10-15'
+        padding = '10-15',
+        icon,
+        fontWeight
     } = props;
 
     const classes = [
@@ -36,6 +40,7 @@ function Button(props: ButtonProps) {
         `btn--radius-${radius}`,
         `btn--width-${width}`,
         `btn--padding-${padding}`,
+        fontWeight && `btn--font-${fontWeight}`,
         size && `btn--${size}`,
         className
     ].filter(Boolean).join(' ');
@@ -47,6 +52,7 @@ function Button(props: ButtonProps) {
             type={type}
             disabled={disabled}
         >
+            {icon && <span className="btn__icon">{icon}</span>}
             {text}
         </button>
     );
@@ -76,7 +82,7 @@ function OrderButton(props: BaseButtonProps) {
             {...otherProps}
             text={text}
             variant="primary"
-            radius="50"
+            radius="10"
             padding="10-15"
         />
     );
@@ -91,6 +97,7 @@ function MenuFilterButton(props: BaseButtonProps) {
             variant="default" 
             radius="10" 
             padding="4-24" 
+            fontWeight='bold'
         />
     );
 }

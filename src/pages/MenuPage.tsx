@@ -5,13 +5,15 @@ import MenuSearchInput from '@components/elements/inputs/menu-search-input/MenuS
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import { MenuFilterButton } from '@components/elements/buttons/buttons';
 
+import FilterIcon from '@assets/icon/filter.svg?react';
+
 function MenuPage() {
     return (
         <VerticalSection className="page menu-page">
             <SectionContent className="menu-page__main">
                 <div className="menu-page__main-search">
                     <MenuSearchInput />
-                    <MenuFilterButton text="Фильтры" />
+                    <MenuFilterButton text="Фильтры" icon={<FilterIcon />} />
                 </div>
             </SectionContent>
         </VerticalSection>
