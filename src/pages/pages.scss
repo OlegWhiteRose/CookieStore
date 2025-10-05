@@ -108,3 +108,15 @@
     }
 }
 
+.menu-page {
+    padding: 60px v.$main-padding-horizontal;
+
+    &__main {
+        &-search {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+

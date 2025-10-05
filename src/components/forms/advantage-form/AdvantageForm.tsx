@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import './AdvantageForm.scss';
 
 import NextIcon from '@assets/icon/next.svg?react';
@@ -15,6 +17,8 @@ export interface AdvantageFormProps {
 function AdvantageForm(props: AdvantageFormProps) {
     const { title, description, className = '', imgSrc, size, bottom = 20, right = 20} = props;
 
+    const navigate = useNavigate();
+
     const [width, height] = size || [175, 175];
 
     const imageStyle = {
@@ -23,11 +27,13 @@ function AdvantageForm(props: AdvantageFormProps) {
         bottom: `${bottom}px`,
         right: `${right}px`
     };
-
-    console.log(size);
     
+    function handleGlobalClick() {
+        navigate('/about');    
+    }
+
     return (
-        <div className={`advantage-form ${className}`}>
+        <div onClick={handleGlobalClick} className={`advantage-form ${className}`}>
             <div className="advantage-form__content">
                 <div className="advantage-form__text">
                     <h3  className="advantage-form__title">{title}</h3>

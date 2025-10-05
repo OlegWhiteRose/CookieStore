@@ -9,11 +9,11 @@ interface BaseButtonProps {
 }
 
 interface ButtonProps extends BaseButtonProps {
-    variant?: 'primary' | 'secondary' | 'success';
+    variant?: 'primary' | 'secondary' | 'success' | 'default';
     size?: 'small' | 'large';
     radius?: '5' | '10' | '50';
     width?: 'full' | 'auto';
-    padding?: 'small' | '10-15' | '15' | '20';
+    padding?: 'small' | '10-15' | '4-24' | '15' | '20';
 }
 
 function Button(props: ButtonProps) {
@@ -53,7 +53,7 @@ function Button(props: ButtonProps) {
 }
 
 function SendButton(props: BaseButtonProps) {
-    const { text = 'Отправить', ...otherProps } = props;
+    const { text, ...otherProps } = props;
     
     return (
         <Button
@@ -69,7 +69,7 @@ function SendButton(props: BaseButtonProps) {
 }
 
 function OrderButton(props: BaseButtonProps) {
-    const { text = 'Заказать', ...otherProps } = props;
+    const { text, ...otherProps } = props;
     
     return (
         <Button
@@ -82,6 +82,19 @@ function OrderButton(props: BaseButtonProps) {
     );
 }
 
-export { Button, SendButton, OrderButton };
+function MenuFilterButton(props: BaseButtonProps) {
+    const { text, ...otherProps } = props;
+    
+    return (
+        <Button {...otherProps} 
+            text={text} 
+            variant="default" 
+            radius="10" 
+            padding="4-24" 
+        />
+    );
+}
+
+export { Button, SendButton, OrderButton, MenuFilterButton };
 
 

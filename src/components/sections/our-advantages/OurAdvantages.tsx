@@ -23,12 +23,14 @@ const ADVANTAGES = [
         description: 'Найдите печенье на любой вкус только у нас',
         classname: 'our-advantages__card--left',
         imgSrc: WideChoice,
+        size: [180, 170] as [number, number]
     },
     {
         title: 'Доставка по всей стране',
         description: 'Быстро доставим ваше любимое печенье, где бы вы не находились',
         classname: 'our-advantages__card--right',
-        imgSrc: CountryDelivery
+        imgSrc: CountryDelivery,
+        size: [180, 190] as [number, number]
     }
 ];
 
