@@ -4,7 +4,7 @@ import ContactForm from '@/components/forms/contact-form/ContactForm';
 import FeedbackInput from '@/components/elements/inputs/feedback-input/FeedbackInput';
 import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
-import { SendButton } from '@/components/elements/buttons/buttons';
+import SendButton from '@/components/elements/buttons/send-button/SendButton';
 
 import Phone from '@assets/icon/phone.svg?react';
 import Mail from '@assets/icon/mail.svg?react';
@@ -56,12 +56,12 @@ interface InputConfig {
 const INPUTS: InputConfig[] = [
   {
     title: 'Ваши имя и фамилия',
-    inputHeight: '50px',
+    inputHeight: '30px',
     inputType: 'input'
   },
   {
     title: 'Ваши контакты для обратной связи',
-    inputHeight: '50px',
+    inputHeight: '40px',
     inputType: 'textarea'
   },
   {

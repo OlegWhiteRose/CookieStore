@@ -1,0 +1,46 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.menu-card {
+    display: grid;
+    grid-template-rows: 1fr auto auto auto auto auto;
+    gap: 10px;
+
+    width: 290px;
+    height: 421px;
+
+    border-radius: 10px;
+    padding: 20px;
+
+    &__type {
+        font-size: 14px; 
+        width: fit-content;
+        color: t.$color-white;
+
+        padding: 5px;
+        background-color: t.$color-background;
+        border-radius: 10px;
+    }
+
+    &__title {
+        font-size: 16px;
+    }   
+
+    &__quantity {
+        font-size: 14px;
+    }
+
+    &__price {
+        font-family: v.$font-family-secondary;
+        font-size: 22px;
+    }
+
+    &--format-common {
+        background-color: t.$color-light-skin;
+    }
+
+    &--format-special {
+        background-color: t.$color-black;
+    }
+}
+

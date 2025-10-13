@@ -1,7 +1,6 @@
 @use '@/theme.scss' as t;
 @use '@/variables.scss' as v;
 
-
 .btn {
     padding: 10px 20px;
     border: none;
@@ -14,53 +13,17 @@
     
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
+
+    border-radius: 10px;
 
     &:active {
         transform: translateY(-3px);
     }
 }
 
-.btn--radius-50 {
-    border-radius: 50px;
-}
-
-.btn--radius-10 {
-    border-radius: 10px;
-}
-
-.btn--radius-5 {
-    border-radius: 5px;
-}
-
-.btn--width-full {
-    width: 100%;
-}
-
-.btn--width-auto {
-    width: auto;
-}
-
-
-.btn--padding-20 {
-    padding: 20px;
-}
-
-.btn--padding-15 {
-    padding: 15px 25px;
-}
-
-.btn--padding-10-15 {
-    padding: 10px 15px;
-}
-
-.btn--padding-4-24 {
-    padding: 4px 24px; 
-}
-
-.btn--padding-small {
-    padding: 8px 16px;
+.btn--align-center { 
+    justify-content: center;
 }
 
 .btn--primary {
@@ -69,12 +32,6 @@
 }
 
 .btn--secondary {
-    background-color: t.$color-light-skin;
-    color: t.$color-background;
-    border: 2px solid t.$color-background;
-}
-
-.btn--success {
     background-color: t.$color-black;
     color: t.$color-white;
 }
@@ -82,33 +39,5 @@
 .btn--default {
     background-color: t.$color-white;
     color: t.$color-black;
-}
-
-.btn--large {
-    font-size: v.$font-size-content-top;
-    padding: 15px 30px;
-}
-
-.btn--small {
-    font-size: 14px;
-    padding: 6px 12px;
-}
-
-.btn__icon {
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 1em;
-    height: 1em;
-}
-
-.btn--font-normal {
-    font-weight: normal;
-}
-
-.btn--font-bold {
-    font-weight: v.$font-weight-medium;  
 }
 

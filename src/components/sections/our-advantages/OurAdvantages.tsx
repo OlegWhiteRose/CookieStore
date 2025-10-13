@@ -50,6 +50,7 @@ function OurAdvantages() {
                         size={advantage.size || undefined}
                         bottom={advantage.bottom || undefined}
                         right={advantage.right || undefined}
+                        key={advantage.title}
                     />
                 )}
             </SectionContent>
