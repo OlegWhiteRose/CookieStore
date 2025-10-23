@@ -22,13 +22,18 @@ function MenuPage() {
                 <CardsTypeSelect />
             </SectionContent>
             <SectionContent className="menu-page__cards">
-                <MenuCard
-                    format="common"
-                    type="Сдобное"
-                    title="Шоколадный взрыв"
-                    quantity="35 шт. в упаковке"
-                    price="2500 ₽"
-                />
+                {Array.from({ length: 100 }).map((_, index) => (
+                    <MenuCard
+                        id={index}
+                        imgUrl="/img/cookie.jpg"
+                        key={index}
+                        format={Math.random() < 0.9 ? "common" : "special"}
+                        type="Сдобное"
+                        title="Шоколадный взрыв"
+                        quantity="35 шт. в упаковке"
+                        price="2500 ₽"
+                    />
+                ))}
             </SectionContent>
         </VerticalSection>
     )

@@ -2,12 +2,9 @@
 @use '@/variables.scss' as v;
 
 .menu-card {
-    display: grid;
-    grid-template-rows: 1fr auto auto auto auto auto;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-
-    width: 290px;
-    height: 421px;
 
     border-radius: 10px;
     padding: 20px;
@@ -24,6 +21,10 @@
 
     &__title {
         font-size: 16px;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }   
 
     &__quantity {
@@ -41,6 +42,12 @@
 
     &--format-special {
         background-color: t.$color-black;
+        color: t.$color-white;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
     }
 }
 

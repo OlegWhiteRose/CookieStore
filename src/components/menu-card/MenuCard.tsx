@@ -1,26 +1,30 @@
+import { Link } from 'react-router-dom';
+
 import './MenuCard.scss';
 
 import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton';
 
 interface MenuCardProps {
+    id: number;
     format: string;
     type: string;
     title: string;
     quantity: string;
     price: string;
+    imgUrl: string;
 }
 
 function MenuCard(props: MenuCardProps) {
-    const { format, type, title, quantity, price } = props;
+    const { id, format, type, title, quantity, price, imgUrl } = props;
 
     return (
         <div className={`menu-card menu-card--format-${format}`}>
-            <img src="" alt="Карточка" />   
+            <img src={imgUrl} alt="Карточка" />   
             <span className="menu-card__type">{type}</span> 
-            <span className="menu-card__title">{title}</span>         
+            <Link to={`/menu/${id}`} className="menu-card__title">{title}</Link>         
             <span className="menu-card__quantity">{quantity}</span>
             <span className="menu-card__price">{price}</span>
-            <MenuCardButton text="В корзину" />
+            <MenuCardButton format={format} text="В корзину" />
         </div>
     )
 }
