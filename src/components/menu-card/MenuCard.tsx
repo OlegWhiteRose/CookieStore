@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import './MenuCard.scss';
 
 import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton';
@@ -19,9 +17,13 @@ function MenuCard(props: MenuCardProps) {
 
     return (
         <div className={`menu-card menu-card--format-${format}`}>
-            <img src={imgUrl} alt="Карточка" />   
+            <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer">
+                <img src={imgUrl} alt="Карточка" />
+            </a>
             <span className="menu-card__type">{type}</span> 
-            <Link to={`/good/${id}`} className="menu-card__title">{title}</Link>         
+            <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer" className="menu-card__title">
+                {title}
+            </a>
             <span className="menu-card__quantity">{quantity}</span>
             <span className="menu-card__price">{price}</span>
             <MenuCardButton format={format} text="В корзину" />
