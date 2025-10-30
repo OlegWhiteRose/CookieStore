@@ -1,0 +1,39 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.menu-page {
+    padding: 60px v.$main-padding-horizontal;
+
+    &__main {
+        &-search {
+            display: flex;
+            gap: 40px;
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+
+        gap: 40px;
+
+        @media (min-width: v.$critical-max-width) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (min-width: calc(v.$critical-max-width - v.$card-breakpoint-additive)) 
+                and (max-width: v.$critical-max-width) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: calc(v.$critical-max-width - v.$card-breakpoint-additive * 2)) 
+                and (max-width: calc(v.$critical-max-width - v.$card-breakpoint-additive)) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: calc(v.$critical-max-width - v.$card-breakpoint-additive * 2)) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+

@@ -1,0 +1,22 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.home-page {
+    &__logo-container {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: min-content;
+
+        &__attention {
+            font-size: v.$font-size-attention;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+        }
+    }
+}
+

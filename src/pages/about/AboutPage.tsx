@@ -1,3 +1,6 @@
+import '../pages.scss';
+import './AboutPage.scss';
+
 function AboutPage() {
     return (
         <div>

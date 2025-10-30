@@ -1,0 +1,153 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.good-page {
+    padding: 60px v.$main-padding-horizontal;
+
+    &__main {
+        background-color: t.$color-light-skin;
+        color: t.$color-black;
+
+        border-radius: 10px;
+
+        &--format-special {
+            .good-page__main__container__bottom__attention-date {
+                display: flex;
+            }
+        }
+
+        &--format-common {
+            .good-page__main__container__bottom__attention-date {
+                display: none;
+            }
+        }
+
+        &__container {
+            display: grid;
+            padding: 80px;
+
+            grid-template-areas: 
+                'image right'
+                'bottom bottom';
+
+            grid-template-columns: min-content 1fr;
+
+            column-gap: 60px;
+            row-gap: 30px;
+
+            &__bottom {
+                grid-area: bottom;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                &__section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+
+                    &-label {
+                        font-size: v.$font-size-content-top;
+                    }
+                }
+
+                &__attention-date {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    width: calc(555px - 10px * 2);
+                    padding: 10px 10px;
+                    border-radius: 10px;
+                    
+                    background-color: t.$color-white;
+                    border: solid 2px t.$color-background-first;
+
+                    &__icon {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+
+            &__right {
+                grid-area: right;
+
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                &__title {
+                    font-weight: v.$font-weight-bold;
+                    font-size: v.$font-size-h1-title;
+                    font-family: v.$font-family-secondary;
+                }
+
+                &__price {
+                    font-weight: v.$font-weight-bold;
+                    font-size: v.$font-size-attention;
+                    font-family: v.$font-family-secondary;
+                }
+
+                &__add-to-cart {
+                    display: flex;
+                    width: 220px;
+                }
+
+                &__section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+
+                    &-label {
+                        font-size: v.$font-size-content-top;
+                    }
+
+                    &-text {
+                        width: fit-content;
+
+                        padding: 10px 24px;
+                        border-radius: 10px;
+                        background-color: t.$color-white;
+                        border: solid 2px t.$color-background-first;
+                    }
+                }
+            }
+
+            &__image-container {
+                grid-area: image;
+                width: 1fr;
+
+                width: 555px;
+                height: 555px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 20px;
+
+                img {
+                    width: 100%;
+                    border-radius: 10px;
+                    border: solid 2px t.$color-background-first;
+                }
+
+                &__special-button {
+                    display: none;
+                    width: 100%;
+                    padding: 12px;
+                    border: solid 2px t.$color-background-first;
+                    border-radius: 10px;
+                    background-color: t.$color-white;
+                    color: t.$color-black;
+                    font-size: v.$font-size-main;
+                    font-family: v.$font-family-main;
+                    cursor: pointer;
+                }
+            }
+        }
+    }   
+}
+

@@ -1,4 +1,5 @@
-import './pages.scss';
+import '../pages.scss';
+import './ContactsPage.scss';
 
 import ContactForm from '@/components/forms/contact-form/ContactForm';
 import FeedbackInput from '@/components/elements/inputs/feedback-input/FeedbackInput';

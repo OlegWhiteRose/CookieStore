@@ -2,18 +2,14 @@ import { useState } from 'react';
 import { useRef } from 'react';
 
 import '../buttons.scss';
-import './MenuCardButton.scss';
+import './GoodCardButton.scss';
 
-interface MenuCardButtonProps {
-    format: string;
+interface GoodCardButtonProps {
     text: string;
 }
 
-function MenuCardButton(props: MenuCardButtonProps) {
-    const { text, format} = props;
-
-    const btnType = format === 'special' 
-        ? 'default' : 'secondary';
+function GoodCardButton(props: GoodCardButtonProps) {
+    const { text} = props;
 
     let savedText = useRef(text);
     
@@ -25,7 +21,7 @@ function MenuCardButton(props: MenuCardButtonProps) {
 
     return (
         <button 
-            className={`btn btn--${btnType} btn--align-center menu-card-button`} 
+            className={`btn btn--secondary btn--align-center good-card-button`} 
             onClick={() => setCnt(cnt + 1)}
         >
             <span>{savedText.current}</span>   
@@ -33,5 +29,5 @@ function MenuCardButton(props: MenuCardButtonProps) {
     );
 }
 
-export default MenuCardButton;
+export default GoodCardButton;
 

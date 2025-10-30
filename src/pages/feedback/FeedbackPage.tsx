@@ -1,3 +1,6 @@
+import '../pages.scss';
+import './FeedbackPage.scss';
+
 function FeedbackPage() {
     return (
         <div>

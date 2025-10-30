@@ -21,7 +21,7 @@ function MenuCard(props: MenuCardProps) {
         <div className={`menu-card menu-card--format-${format}`}>
             <img src={imgUrl} alt="Карточка" />   
             <span className="menu-card__type">{type}</span> 
-            <Link to={`/menu/${id}`} className="menu-card__title">{title}</Link>         
+            <Link to={`/good/${id}`} className="menu-card__title">{title}</Link>         
             <span className="menu-card__quantity">{quantity}</span>
             <span className="menu-card__price">{price}</span>
             <MenuCardButton format={format} text="В корзину" />

@@ -1,0 +1,9 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.good-card-button {
+    width: 100%;
+    padding: 12px;
+    // border: solid 2px t.$color-background-first;
+}
+

@@ -1,4 +1,5 @@
-import './pages.scss';
+import '../pages.scss';
+import './HomePage.scss';
 
 import LogoBig from '@components/logo/LogoBig';
 import FavoriteCookieTypes from '@/components/sections/favorite-cookie-types/FavoriteCookieTypes';

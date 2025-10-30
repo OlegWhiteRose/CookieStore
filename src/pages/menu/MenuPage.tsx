@@ -1,4 +1,5 @@
-import './pages.scss';
+import '../pages.scss';
+import './MenuPage.scss';
 
 import VerticalSection from '@components/templates/vertical-section/VerticalSection';
 import MenuSearchInput from '@components/elements/inputs/menu-search-input/MenuSearchInput';
