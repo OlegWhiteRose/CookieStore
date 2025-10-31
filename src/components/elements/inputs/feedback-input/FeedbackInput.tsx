@@ -15,8 +15,8 @@ function FeedbackInput(props: FeedbackInputProps) {
                 { title }
             </span>
             {inputType === 'textarea' ? (
-                <textarea className="feedback-input__input" style={{ height: inputHeight, resize: 'none' }} >
-                </textarea>
+            <textarea className="feedback-input__input" style={{ height: inputHeight, resize: 'none' }} >
+            </textarea>
             ) : (
                 <input className="feedback-input__input" style={{ height: inputHeight}} type="text" />
             )}

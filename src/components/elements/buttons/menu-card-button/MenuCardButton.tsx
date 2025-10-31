@@ -41,19 +41,19 @@ function MenuCardButton(props: MenuCardButtonProps) {
         >
             {cnt > 0 ? (
                 <div className="menu-card-button__controls">
-                    <button 
+                    <div 
                         className="menu-card-button__controls-btn"
                         onClick={handleDecrease}
                     >
                         −
-                    </button>
+                    </div>
                     <span className="menu-card-button__controls-count">{cnt}</span>
-                    <button 
+                    <div 
                         className="menu-card-button__controls-btn"
                         onClick={handleIncrease}
                     >
                         +
-                    </button>
+                    </div>
                 </div>
             ) : (
                 <span>{text}</span>

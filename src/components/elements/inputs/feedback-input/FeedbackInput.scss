@@ -19,12 +19,6 @@
 
         border-radius: 10px;
         box-shadow: inset 0 0 0 2px t.$color-background-first; 
-        border: none; 
-
-        &:focus {
-            outline: none; 
-            box-shadow: inset 0 0 0 2px t.$color-white; 
-        }
 
         padding: 10px;
     }

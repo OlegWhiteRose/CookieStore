@@ -29,12 +29,13 @@ svg {
   height: 100%;
 }
 
-span, h1 {
+span, h1, label {
   user-select: none;
   margin: 0;
 }
 
 input, textarea, select {
   font-family: inherit;
+  border: none;
+  outline: none;
 }
-

@@ -2,10 +2,12 @@
 @use '@/variables.scss' as v;
 
 .menu-search-input {
-    display: grid;
-    grid-template-columns: auto 1fr;
-
+    display: flex;
+    align-items: center;
     width: 100%;
+    height: 100%;
+
+    contain: layout;
 
     border-radius: 10px;
     border: none; 
@@ -19,10 +21,10 @@
     }
 
     &__input {
+        width: 100%;
+        height: 100%;
         font-size: v.$font-size-main;
-
-        outline: none;
-        border: none;
+        
         background-color: transparent;
 
         padding-left: 15px;

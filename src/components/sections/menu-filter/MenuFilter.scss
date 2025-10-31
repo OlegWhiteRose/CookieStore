@@ -1,0 +1,49 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.menu-filter {
+    background-color: t.$color-white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &__section {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__section-title {
+        display: block;
+        font-size: v.$font-size-main;
+        margin: 0 0 12px 0;
+    }
+
+    &__checkboxes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        user-select: none;
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: t.$color-background;
+        }
+
+        span {
+            font-size: calc(v.$font-size-main - 2px);
+        }
+    }
+}
