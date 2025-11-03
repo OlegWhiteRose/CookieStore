@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: cookiestore_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cookiestore_db}
+      POSTGRES_USER: ${POSTGRES_USER:-cookiestore_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cookiestore_password}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cookiestore_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cookiestore_user -d cookiestore_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: cookiestore_adminer
+    ports:
+      - "127.0.0.1:8082:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+    networks:
+      - cookiestore_network
+
+  minio:
+    image: minio/minio:latest
+    container_name: cookiestore_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-cookiestore_admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-cookiestore_password123}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - cookiestore_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+volumes:
+  postgres_data:
+  minio_data:
+
+networks:
+  cookiestore_network:
+    driver: bridge

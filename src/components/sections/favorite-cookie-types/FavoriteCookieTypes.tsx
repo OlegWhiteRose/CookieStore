@@ -17,26 +17,32 @@ const COOKIE_TYPES = [
     {
         title: 'Сахарное',
         backgroundImgSrc: SugarCookie,
+        url: '/menu?type=Сахарное'
     },
     {
         title: 'Галеты',
         backgroundImgSrc: Crackers,
+        url: '/menu?type=Галеты'
     },
     {
         title: 'Затяжное',
         backgroundImgSrc: PuffPastry,
+        url: '/menu?type=Затяжное'
     },
     {
         title: 'Овсяное',
         backgroundImgSrc: Oatmeal,
+        url: '/menu?type=Овсяное'
     },
     {
         title: 'Сдобное',
         backgroundImgSrc: Rich,
+        url: '/menu?type=Сдобное'
     },
     {
         title: 'Крекеры',
         backgroundImgSrc: Graham,
+        url: '/menu?type=Крекеры'
     }
 ]
 
@@ -50,7 +56,7 @@ function FavoriteCookieTypes() {
                 </SectionContent>
                 <SectionContent className="favorite-cookie-types__content__types">
                     {COOKIE_TYPES.map((type) => (
-                        <TypeForm key={type.title} title={type.title} backgroundImgSrc={type.backgroundImgSrc} />
+                        <TypeForm key={type.title} title={type.title} backgroundImgSrc={type.backgroundImgSrc} url={type.url} />
                     ))}
                 </SectionContent>
             </VerticalSection>

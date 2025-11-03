@@ -4,11 +4,11 @@ import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton'
 
 interface MenuCardProps {
     id: number;
-    format: string;
+    format: 'common' | 'special';
     type: string;
     title: string;
-    quantity: string;
-    price: string;
+    quantity: number;
+    price: number;
     imgUrl: string;
 }
 
@@ -24,8 +24,8 @@ function MenuCard(props: MenuCardProps) {
             <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer" className="menu-card__title">
                 {title}
             </a>
-            <span className="menu-card__quantity">{quantity}</span>
-            <span className="menu-card__price">{price}</span>
+            <span className="menu-card__quantity">{quantity} шт. в упаковке</span>
+            <span className="menu-card__price">{price} ₽</span>
             <MenuCardButton format={format} text="В корзину" />
         </div>
     )

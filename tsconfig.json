@@ -23,10 +23,11 @@
             "@pages/*": ["src/pages/*"],
             "@assets/*": ["public/assets/*"],
             "@common/*": ["src/common/*"],
-            "@store/*": ["src/store/*"]
+            "@store/*": ["src/store/*"],
+            "@api/*": ["src/api/*"],
         }
     },
-    "include": ["src"],
+    "include": ["src", "vite-env.d.ts"],
     "exclude": ["node_modules"],
 }
 

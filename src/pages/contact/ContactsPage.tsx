@@ -1,3 +1,5 @@
+import { useContacts } from '@/hooks/useContacts';
+
 import '../pages.scss';
 import './ContactsPage.scss';
 
@@ -11,39 +13,6 @@ import Phone from '@assets/icon/phone.svg?react';
 import Mail from '@assets/icon/mail.svg?react';
 import Browser from '@assets/icon/browser.svg?react';
 import MoneyDatabase from '@assets/icon/money-database.svg?react';
-
-const CONTACTS = [
-    {
-        title: 'Телефон',
-        message: 'Телефон скопирован',
-        content: '8 (xxx) xxx-xx-xx',
-        clipboard: '8xxxxxxxxxx',
-        icon: Phone
-    },
-    {
-        title: 'Почта',
-        message: 'Почта скопирована',
-        content: 'Hkikomori@yandex.ru',
-        clipboard: 'Hkikomori@yandex.ru',
-        icon: Mail
-    },
-    {
-        title: 'Юридический адрес',
-        message: 'Юридический адрес скопирован',
-        content: 'г. Беллер, улица Селлер, д. 15',
-        clipboard: 'г. Беллер, улица Селлер, д. 15',
-        icon: Browser
-    },
-    {
-        title: 'ИНН',
-        message: 'ИНН скопирован',
-        content: 'xxxxxxxxxx',
-        clipboard: 'xxxxxxxxxx',
-        icon: MoneyDatabase
-    },
-]   
-
-
 import MapFeedback from '@assets/img/cookie-male-box.jpg';
 
 type InputType = 'input' | 'textarea';
@@ -73,6 +42,39 @@ const INPUTS: InputConfig[] = [
 ];
 
 function ContactsPage() {
+    const { contacts, loading } = useContacts();
+
+    const CONTACTS = [
+        {
+            title: 'Телефон',
+            message: 'Телефон скопирован',
+            content: contacts.phone,
+            clipboard: contacts.phone,
+            icon: Phone
+        },
+        {
+            title: 'Почта',
+            message: 'Почта скопирована',
+            content: contacts.email,
+            clipboard: contacts.email,
+            icon: Mail
+        },
+        {
+            title: 'Юридический адрес',
+            message: 'Юридический адрес скопирован',
+            content: contacts.address,
+            clipboard: contacts.address,
+            icon: Browser
+        },
+        {
+            title: 'ИНН',
+            message: 'ИНН скопирован',
+            content: contacts.inn,
+            clipboard: contacts.inn,
+            icon: MoneyDatabase
+        },
+    ]
+
     const sideTitleText = "Мы открыты и будем рады помочь с вопросами, пожеланиями или предложениями. Обращайтесь к нам по интересующим вас темам по указанным выше контактам либо по форме ниже.";
 
     return (
