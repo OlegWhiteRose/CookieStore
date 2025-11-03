@@ -11,19 +11,48 @@ import CloseIcon from '@assets/icon/close-bold.svg?react';
 interface MenuFilterButtonProps {
     text: string;
     icon: React.ReactNode;
-    onClick?: () => void;
+    initialTypes?: string[];
+    initialCostFrom?: number;
+    initialCostTo?: number;
+    initialQuantityFrom?: number;
+    initialQuantityTo?: number;
+    onApply: (filters: {
+        types: string[];
+        costFrom?: number;
+        costTo?: number;
+        quantityFrom?: number;
+        quantityTo?: number;
+    }) => void;
 }
 
 function MenuFilterButton(props: MenuFilterButtonProps) {
-    const { text, icon, onClick } = props;
+    const { 
+        text, 
+        icon, 
+        initialTypes,
+        initialCostFrom,
+        initialCostTo,
+        initialQuantityFrom,
+        initialQuantityTo,
+        onApply 
+    } = props;
     
     const [active, setActive] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     const handleButtonClick = () => {
         setActive(!active);
+    };
 
-        onClick?.();
+    const handleApply = (filters: {
+        types: string[];
+        costFrom?: number;
+        costTo?: number;
+        quantityFrom?: number;
+        quantityTo?: number;
+    }) => {
+        onApply(filters);
+        setActive(false);
     };
 
     return (
@@ -37,8 +66,15 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                 {text}  
             </button>
 
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} align="right" top={100}>
-                <MenuFilter />
+            <Poppup active={active} setActive={setActive} tagFor={buttonRef} align="right" top={80}>
+                <MenuFilter 
+                    initialTypes={initialTypes}
+                    initialCostFrom={initialCostFrom}
+                    initialCostTo={initialCostTo}
+                    initialQuantityFrom={initialQuantityFrom}
+                    initialQuantityTo={initialQuantityTo}
+                    onApply={handleApply}
+                />
             </Poppup>
         </>
     );

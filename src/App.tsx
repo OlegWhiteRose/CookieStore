@@ -7,7 +7,7 @@ import AboutPage from '@/pages/about/AboutPage';
 import ContactsPage from '@/pages/contact/ContactsPage';
 import FeedbackPage from '@/pages/feedback/FeedbackPage';
 import GoodPage from '@/pages/good/GoodPage';
-import ScrollToTop from '@components/ScrollToTop';
+import ScrollToTop from '@/components/scroll-to-top/ScrollToTop';
 
 function App() {
   return (

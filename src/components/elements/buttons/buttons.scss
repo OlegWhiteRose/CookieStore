@@ -37,3 +37,13 @@
     color: t.$color-black;
 }
 
+.btn--hover-effect-opacity {
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+

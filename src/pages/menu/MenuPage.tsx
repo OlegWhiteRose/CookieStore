@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { useDebounce } from '@/hooks/useDebounce';
 import { useCookies } from '@/hooks/useCookies';
+import { reloadWithParams } from '@/utils/navigation';
 
 import '../pages.scss';
 import './MenuPage.scss';
@@ -16,56 +16,83 @@ import MenuCard from '@components/menu-card/MenuCard';
 
 import FilterIcon from '@assets/icon/filter.svg?react';
 
+interface FilterState {
+    types: string[];
+    costFrom?: number;
+    costTo?: number;
+    quantityFrom?: number;
+    quantityTo?: number;
+}
+
 function MenuPage() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [searchQuery, setSearchQuery] = useState(searchParams.get('title') || '');
-    const [debouncedQuery, setDebouncedQuery] = useState(searchParams.get('title') || '');
-    const [formatFilter, setFormatFilter] = useState(searchParams.get('format') || '');
-
-    const updateURLParams = (params: Record<string, string>) => {
-        const newParams: Record<string, string> = {};
-        
-        Object.entries(params).forEach(([key, value]) => {
-            if (value) {
-                newParams[key] = value;
-            }
-        });
-
-        setSearchParams(newParams);
+    
+    const titleParam = searchParams.get('title') || '';
+    const formatParam = searchParams.get('format') || '';
+    const filters: FilterState = {
+        types: searchParams.get('type') ? searchParams.get('type')!.split(',') : [],
+        costFrom: searchParams.get('cost_from') ? Number(searchParams.get('cost_from')) : undefined,
+        costTo: searchParams.get('cost_to') ? Number(searchParams.get('cost_to')) : undefined,
+        quantityFrom: searchParams.get('quantity_from') ? Number(searchParams.get('quantity_from')) : undefined,
+        quantityTo: searchParams.get('quantity_to') ? Number(searchParams.get('quantity_to')) : undefined,
     };
 
-    const handleSearch = useDebounce((value: string) => {
-        setDebouncedQuery(value);
-        updateURLParams({ title: value, format: formatFilter });
-    }, 500);
-
     const handleFormatChange = (format: string) => {
-        setFormatFilter(format);
-        updateURLParams({ title: debouncedQuery, format });
+        reloadWithParams('/menu', {
+            title: titleParam,
+            format,
+            type: filters.types,
+            cost_from: filters.costFrom,
+            cost_to: filters.costTo,
+            quantity_from: filters.quantityFrom,
+            quantity_to: filters.quantityTo,
+        });
+    };
+
+    const handleFilterApply = (newFilters: {
+        types: string[];
+        costFrom?: number;
+        costTo?: number;
+        quantityFrom?: number;
+        quantityTo?: number;
+    }) => {
+        reloadWithParams('/menu', {
+            title: titleParam,
+            format: formatParam,
+            type: newFilters.types,
+            cost_from: newFilters.costFrom,
+            cost_to: newFilters.costTo,
+            quantity_from: newFilters.quantityFrom,
+            quantity_to: newFilters.quantityTo,
+        });
+    };
+
+    const handleSearchSubmit = () => {
+        reloadWithParams('/menu', {
+            title: searchQuery,
+            format: formatParam,
+            type: filters.types,
+            cost_from: filters.costFrom,
+            cost_to: filters.costTo,
+            quantity_from: filters.quantityFrom,
+            quantity_to: filters.quantityTo,
+        });
     };
 
     const { cookies, loading } = useCookies({ 
-        title: debouncedQuery || undefined,
-        format: formatFilter || undefined
+        title: titleParam || undefined,
+        format: formatParam || undefined,
+        cost_from: filters.costFrom ?? 0,
+        cost_to: filters.costTo ?? 10000,
+        quantity_from: filters.quantityFrom ?? 0,
+        quantity_to: filters.quantityTo ?? 50,
+        type: filters.types.length > 0 ? filters.types.join(',') : undefined,
     });
 
     const handleSearchChange = (value: string) => {
         setSearchQuery(value);
-        handleSearch(value);
     };
-
-    useEffect(() => {
-        const titleParam = searchParams.get('title');
-        const formatParam = searchParams.get('format');
-        
-        if (titleParam && titleParam !== debouncedQuery) {
-            setSearchQuery(titleParam);
-            setDebouncedQuery(titleParam);
-        }
-        if (formatParam && formatParam !== formatFilter) {
-            setFormatFilter(formatParam);
-        }
-    }, []);
 
     return (
         <VerticalSection className="page menu-page">
@@ -74,13 +101,23 @@ function MenuPage() {
                     <MenuSearchInput 
                         value={searchQuery}
                         onChange={handleSearchChange}
+                        onSubmit={handleSearchSubmit}
                     />
-                    <MenuFilterButton text="Фильтры" icon={<FilterIcon />} />
+                    <MenuFilterButton 
+                        text="Фильтры" 
+                        icon={<FilterIcon />}
+                        initialTypes={filters.types}
+                        initialCostFrom={filters.costFrom}
+                        initialCostTo={filters.costTo}
+                        initialQuantityFrom={filters.quantityFrom}
+                        initialQuantityTo={filters.quantityTo}
+                        onApply={handleFilterApply}
+                    />
                 </div>
             </SectionContent>
             <SectionContent className="menu-page__cards-type-select">
                 <CardsTypeSelect 
-                    value={formatFilter}
+                    value={formatParam}
                     onChange={handleFormatChange}
                 />
             </SectionContent>

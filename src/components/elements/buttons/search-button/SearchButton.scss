@@ -1,0 +1,13 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.search-button {
+    cursor: pointer;
+    height: 50px;
+    
+    border: none;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 25px;
+    margin-right: -16px;
+    transition: opacity 0.2s;
+}
