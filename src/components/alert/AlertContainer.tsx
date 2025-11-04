@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { createPortal } from "react-dom";
 
-import { Alert as AlertType } from "@/store/alert/alertSlice";
+import { Alert as AlertType } from "@/store/alert/alertReducer";
 import Alert from "@/components/alert/Alert";
 import { RootState } from "@/store";
 
 function AlertContainer() {
-  const alerts = useSelector((state: RootState) => state.alerts.items);
+  const alerts = useSelector((state: RootState) => state.alert.items);
 
   if (!alerts || !Array.isArray(alerts) || alerts.length === 0) {
     return createPortal(

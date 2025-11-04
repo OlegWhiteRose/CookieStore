@@ -21,12 +21,12 @@ interface MenuFilterProps {
 }
 
 const cookieTypes = [
-    { value: 'sugar', label: 'Сахарное' },
-    { value: 'oat', label: 'Овсяное' },
-    { value: 'galete', label: 'Галеты' },
-    { value: 'shortbread', label: 'Сдобное' },
-    { value: 'prolonged', label: 'Затяжное' },
-    { value: 'cracker', label: 'Крекеры' },
+    { value: 'Сахарное', label: 'Сахарное' },
+    { value: 'Овсяное', label: 'Овсяное' },
+    { value: 'Галеты', label: 'Галеты' },
+    { value: 'Сдобное', label: 'Сдобное' },
+    { value: 'Затяжное', label: 'Затяжное' },
+    { value: 'Крекеры', label: 'Крекеры' },
 ];
 
 function MenuFilter(props: MenuFilterProps) {

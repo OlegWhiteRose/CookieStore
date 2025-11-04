@@ -9,7 +9,7 @@
         display: none;
 
         &:checked + label {
-            background-color: t.$color-select-brown;    
+            background-color: t.$color-background-first;    
         }
     }
 

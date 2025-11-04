@@ -11,7 +11,7 @@ function SendButton(props: SendButtonProps) {
     
     return (
         <button 
-            className="btn btn--secondary btn--align-center send-button" 
+            className="btn btn--secondary btn--hover-effect-opacity btn--align-center send-button" 
             onClick={onClick}
         >
             {text}

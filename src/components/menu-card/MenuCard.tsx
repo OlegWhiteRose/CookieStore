@@ -26,7 +26,7 @@ function MenuCard(props: MenuCardProps) {
             </a>
             <span className="menu-card__quantity">{quantity} шт. в упаковке</span>
             <span className="menu-card__price">{price} ₽</span>
-            <MenuCardButton format={format} text="В корзину" />
+            <MenuCardButton format={format} text="В корзину" cookieId={id} />
         </div>
     )
 }

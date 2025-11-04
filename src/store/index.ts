@@ -1,22 +1,15 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import alertReducer from './alert/alertSlice';
+import { configureStore } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({
-  alerts: alertReducer,
-});
+import alertReducer from './alert/alertReducer';
+import draftReducer from './draft/draftReducer';
+
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ['alerts/addAlert'],
-        ignoredPaths: ['alerts.queue.items'],
-      },
-    })
+  reducer: {
+    alert: alertReducer,
+    draft: draftReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export default store;
 

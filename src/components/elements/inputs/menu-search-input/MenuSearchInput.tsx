@@ -26,7 +26,7 @@ function MenuSearchInput(props: MenuSearchInputProps) {
             <input 
                 className="menu-search-input__input" 
                 type="text" 
-                placeholder="Найти товар"
+                placeholder="Введите название товара"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 onKeyDown={handleKeyDown}

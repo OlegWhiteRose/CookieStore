@@ -64,6 +64,31 @@
             display: flex;
             align-items: center;
             gap: 20px;
+
+            &__cart-icon {
+                cursor: pointer;
+                position: relative;
+                font-size: v.$font-size-small;
+                color: t.$color-white;
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    position: absolute;
+                    top: 2%;
+                    left: calc(50% + 5px);
+                    z-index: 1;
+
+                    min-width: 10px;
+                    padding: 1px 5px;
+                    
+                    border-radius: 10px;
+                    
+                    background-color: t.$color-black;
+                }
+            }
         }
     }
 }

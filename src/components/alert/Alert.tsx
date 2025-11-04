@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { removeAlert } from "@/store/alert/alertSlice";
+import { removeAlert } from "@/store/alert/alertReducer";
 
 import './Alert.scss';
 

@@ -10,7 +10,7 @@ function SearchButton(props: SearchButtonProps) {
 
     return (
         <button 
-            className="btn btn--secondary btn--hover-effect-opacity search-button"
+            className="btn btn--secondary btn--hover-effect-opacity btn--align-center search-button"
             onClick={onClick}
         >
             {text}

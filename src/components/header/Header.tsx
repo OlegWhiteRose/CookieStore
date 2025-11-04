@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 import './Header.scss';
 
@@ -11,6 +13,10 @@ import LogoSmall from '@components/logo/LogoSmall';
 import CartIcon from '@assets/icon/cart.svg?react';
 
 function Header() {
+    const totalCount = useSelector((state: RootState) => 
+        state.draft.cookies.reduce((sum, cookie) => sum + cookie.quantity, 0)
+    );
+
     return (
         <div>
             <header className="header">
@@ -35,7 +41,14 @@ function Header() {
                                 text="заказать"
                                 onClick={() => console.log('Order clicked')}
                             />
-                            <CartIcon className="header__main-personal__cart-icon" />
+                            <div className="header__main-personal__cart-icon">
+                                <CartIcon />
+                                {totalCount > 0 && (
+                                    <div>
+                                        <span>{totalCount}</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </SectionContent>
                 </HorizontalSection>

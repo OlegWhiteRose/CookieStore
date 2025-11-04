@@ -36,14 +36,16 @@
         font-size: 22px;
     }
 
-    &--format-common {
-        background-color: t.$color-light-skin;
-    }
+    background-color: t.$color-light-skin;
 
-    &--format-special {
-        background-color: t.$color-black;
-        color: t.$color-white;
-    }
+    // &--format-common {
+    //     background-color: t.$color-light-skin;
+    // }
+
+    // &--format-special {
+    //     background-color: t.$color-black;
+    //     color: t.$color-white;
+    // }
 
     a {
         display: block;

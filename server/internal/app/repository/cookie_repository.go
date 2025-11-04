@@ -20,10 +20,21 @@ func (r *Repository) GetCookies(filter CookieFilter) ([]map[string]interface{}, 
 	var args []interface{}
 	argNum := 1
 
-	if filter.Type != nil {
-		query += fmt.Sprintf(" AND type = $%d", argNum)
-		args = append(args, *filter.Type)
-		argNum++
+	if filter.Type != nil && *filter.Type != "" {
+		types := strings.Split(*filter.Type, ",")
+		if len(types) == 1 {
+			query += fmt.Sprintf(" AND type = $%d", argNum)
+			args = append(args, types[0])
+			argNum++
+		} else {
+			placeholders := []string{}
+			for _, t := range types {
+				placeholders = append(placeholders, fmt.Sprintf("$%d", argNum))
+				args = append(args, strings.TrimSpace(t))
+				argNum++
+			}
+			query += fmt.Sprintf(" AND type IN (%s)", strings.Join(placeholders, ","))
+		}
 	}
 
 	if filter.CostFrom != nil {

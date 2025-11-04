@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCookie, decreaseCookie } from '@/store/draft/draftReducer';
+import { RootState } from '@/store';
 
 import '../buttons.scss';
 import './MenuCardButton.scss';
@@ -6,31 +8,36 @@ import './MenuCardButton.scss';
 interface MenuCardButtonProps {
     format: string;
     text: string;
+    cookieId: number;
 }
 
 function MenuCardButton(props: MenuCardButtonProps) {
-    const { text, format } = props;
+    const { text, format, cookieId } = props;
+    const dispatch = useDispatch();
 
-    const btnType = format === 'special' 
-        ? 'default' : 'secondary';
+    // const btnType = format === 'special' 
+    //     ? 'default' : 'secondary';
     
-    const [cnt, setCnt] = useState(0);
+    const btnType = 'secondary';
+
+    const cnt = useSelector((state: RootState) => {
+        const cookie = state.draft.cookies.find(c => c.id === cookieId);
+        return cookie ? cookie.quantity : 0;
+    });
 
     const handleDecrease = (e: React.MouseEvent) => {
         e.stopPropagation();
-        if (cnt > 0) {
-            setCnt(cnt - 1);
-        }
+        dispatch(decreaseCookie(cookieId));
     };
 
     const handleIncrease = (e: React.MouseEvent) => {
         e.stopPropagation();
-        setCnt(cnt + 1);
+        dispatch(addCookie(cookieId));
     };
 
     const handleMainClick = () => {
         if (cnt === 0) {
-            setCnt(1);
+            dispatch(addCookie(cookieId));
         }
     };
 

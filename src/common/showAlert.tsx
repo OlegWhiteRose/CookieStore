@@ -1,5 +1,5 @@
 import { store } from '@/store';
-import { addAlert } from '@/store/alert/alertSlice';
+import { addAlert } from '@/store/alert/alertReducer';
 
 export const showAlert = (
     text: string, 

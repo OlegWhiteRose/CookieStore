@@ -10,7 +10,7 @@ function FilterApplyButton(props: FilterApplyButtonProps) {
 
     return (
         <button 
-            className="btn btn--secondary btn--hover-effect-opacity filter-apply-button"
+            className="btn btn--secondary btn--hover-effect-opacity btn--align-center filter-apply-button"
             onClick={onClick}
         >
             {text}
