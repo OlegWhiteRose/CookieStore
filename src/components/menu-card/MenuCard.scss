@@ -9,6 +9,8 @@
     border-radius: 10px;
     padding: 20px;
 
+    background-color: t.$color-light-skin;
+
     &__type {
         font-size: 14px; 
         width: fit-content;
@@ -35,8 +37,6 @@
         font-family: v.$font-family-secondary;
         font-size: 22px;
     }
-
-    background-color: t.$color-light-skin;
 
     // &--format-common {
     //     background-color: t.$color-light-skin;

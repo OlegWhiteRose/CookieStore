@@ -11,7 +11,7 @@ function OrderButton(props: OrderButtonProps) {
     
     return (
         <button 
-            className="btn btn--secondary btn--hover-effect-opacity btn--align-center order-button" 
+            className="btn btn--primary btn--hover-effect-opacity btn--align-center order-button" 
             onClick={onClick}
         >
             {text}
@@ -21,3 +21,4 @@ function OrderButton(props: OrderButtonProps) {
 
 export default OrderButton;
 
+ 

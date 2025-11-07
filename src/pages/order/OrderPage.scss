@@ -1,0 +1,77 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.order-page {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 40px;
+    }
+
+    &__cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 60px;
+        width: 100%;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 60px;
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        width: 700px;
+        padding: 30px;
+        
+        background-color: t.$color-white;
+        border-radius: 20px;
+
+        gap: 40px;
+
+        &-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        
+            gap: 20px;
+
+            &-label {
+                font-family: v.$font-family-main;
+                font-size: v.$font-size-side-content;
+                font-weight: v.$font-weight-medium;
+                color: t.$color-black;
+            }
+
+            &-price {
+                font-family: v.$font-family-secondary;
+                font-size: v.$font-size-attention;
+                font-weight: v.$font-weight-bold;
+                color: t.$color-black;
+            }
+        }
+    }
+
+    &__loader,
+    &__empty {
+        font-size: v.$font-size-content-top;
+        color: t.$color-white;
+
+        padding: 40px;
+    }
+
+    &__order {
+        min-height: 200px;
+    }
+}

@@ -22,6 +22,31 @@
         margin: 0 0 12px 0;
     }
 
+    &__format-select {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__radio {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        user-select: none;
+
+        input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: t.$color-black;
+        }
+
+        span {
+            font-size: calc(v.$font-size-main - 2px);
+        }
+    }
+
     &__checkboxes {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -39,7 +64,7 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
-            accent-color: t.$color-background;
+            accent-color: t.$color-black;
         }
 
         span {

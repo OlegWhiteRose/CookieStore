@@ -11,7 +11,6 @@ import VerticalSection from '@components/templates/vertical-section/VerticalSect
 import MenuSearchInput from '@components/elements/inputs/menu-search-input/MenuSearchInput';
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import MenuFilterButton from '@components/elements/buttons/menu-filter-button/MenuFilterButton';
-import CardsTypeSelect from '@components/sections/cards-type-select/CardsTypeSelect';
 import MenuCard from '@components/menu-card/MenuCard';
 
 import FilterIcon from '@assets/icon/filter.svg?react';
@@ -38,19 +37,8 @@ function MenuPage() {
         quantityTo: searchParams.get('quantity_to') ? Number(searchParams.get('quantity_to')) : undefined,
     };
 
-    const handleFormatChange = (format: string) => {
-        reloadWithParams('/menu', {
-            title: titleParam,
-            format,
-            type: filters.types,
-            cost_from: filters.costFrom,
-            cost_to: filters.costTo,
-            quantity_from: filters.quantityFrom,
-            quantity_to: filters.quantityTo,
-        });
-    };
-
     const handleFilterApply = (newFilters: {
+        format: string;
         types: string[];
         costFrom?: number;
         costTo?: number;
@@ -59,7 +47,7 @@ function MenuPage() {
     }) => {
         reloadWithParams('/menu', {
             title: titleParam,
-            format: formatParam,
+            format: newFilters.format,
             type: newFilters.types,
             cost_from: newFilters.costFrom,
             cost_to: newFilters.costTo,
@@ -106,6 +94,7 @@ function MenuPage() {
                     <MenuFilterButton 
                         text="Фильтры" 
                         icon={<FilterIcon />}
+                        initialFormat={formatParam}
                         initialTypes={filters.types}
                         initialCostFrom={filters.costFrom}
                         initialCostTo={filters.costTo}
@@ -114,12 +103,6 @@ function MenuPage() {
                         onApply={handleFilterApply}
                     />
                 </div>
-            </SectionContent>
-            <SectionContent className="menu-page__cards-type-select">
-                <CardsTypeSelect 
-                    value={formatParam}
-                    onChange={handleFormatChange}
-                />
             </SectionContent>
             <SectionContent className="menu-page__cards-wrapper">
                 {loading && <div className="menu-page__loader">Загрузка...</div>}

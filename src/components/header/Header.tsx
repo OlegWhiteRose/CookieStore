@@ -41,14 +41,14 @@ function Header() {
                                 text="заказать"
                                 onClick={() => console.log('Order clicked')}
                             />
-                            <div className="header__main-personal__cart-icon">
+                            <Link to="/order?mode=cart" className="header__main-personal__cart-icon">
                                 <CartIcon />
                                 {totalCount > 0 && (
                                     <div>
                                         <span>{totalCount}</span>
                                     </div>
                                 )}
-                            </div>
+                            </Link>
                         </div>
                     </SectionContent>
                 </HorizontalSection>

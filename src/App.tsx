@@ -7,6 +7,7 @@ import AboutPage from '@/pages/about/AboutPage';
 import ContactsPage from '@/pages/contact/ContactsPage';
 import FeedbackPage from '@/pages/feedback/FeedbackPage';
 import GoodPage from '@/pages/good/GoodPage';
+import OrderPage from '@/pages/order/OrderPage';
 import ScrollToTop from '@/components/scroll-to-top/ScrollToTop';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/good/:id" element={<GoodPage />} />
+          <Route path="/order" element={<OrderPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />

@@ -11,12 +11,14 @@ import CloseIcon from '@assets/icon/close-bold.svg?react';
 interface MenuFilterButtonProps {
     text: string;
     icon: React.ReactNode;
+    initialFormat?: string;
     initialTypes?: string[];
     initialCostFrom?: number;
     initialCostTo?: number;
     initialQuantityFrom?: number;
     initialQuantityTo?: number;
     onApply: (filters: {
+        format: string;
         types: string[];
         costFrom?: number;
         costTo?: number;
@@ -28,7 +30,8 @@ interface MenuFilterButtonProps {
 function MenuFilterButton(props: MenuFilterButtonProps) {
     const { 
         text, 
-        icon, 
+        icon,
+        initialFormat,
         initialTypes,
         initialCostFrom,
         initialCostTo,
@@ -45,6 +48,7 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
     };
 
     const handleApply = (filters: {
+        format: string;
         types: string[];
         costFrom?: number;
         costTo?: number;
@@ -67,7 +71,8 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
             </button>
 
             <Poppup active={active} setActive={setActive} tagFor={buttonRef} align="right" top={80}>
-                <MenuFilter 
+                <MenuFilter
+                    initialFormat={initialFormat}
                     initialTypes={initialTypes}
                     initialCostFrom={initialCostFrom}
                     initialCostTo={initialCostTo}

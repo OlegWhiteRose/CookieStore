@@ -1,0 +1,104 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.cart-item-form {
+    position: relative;
+    display: flex;
+
+    width: 700px;
+
+    gap: 20px;
+    padding: 30px;
+
+    background-color: t.$color-light-skin;
+    border-radius: 20px;
+
+    &__remove {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        background: none;
+        border: none;
+
+        padding: 5px;
+        
+        transition: opacity 0.2s ease;
+
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__image-wrapper {
+        flex-shrink: 0;
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+
+        overflow: hidden;
+        background-color: t.$color-white;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        flex: 1;
+        padding-right: 30px;
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        width: fit-content;
+    }
+
+    &__title {
+        font-family: v.$font-family-secondary;
+        font-size: v.$font-size-side-content;
+        font-weight: v.$font-weight-bold;
+        margin: 0;
+    }
+
+    &__divider {
+        width: 100%;
+        height: 4px;
+        background-color: t.$color-background-first;
+
+        border-radius: 2px;
+
+        margin-top: 5px;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    &__price {  
+        font-family: v.$font-family-secondary;
+        font-size: v.$font-size-side-content;
+    }
+}
