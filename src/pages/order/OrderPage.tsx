@@ -11,9 +11,9 @@ import './OrderPage.scss';
 
 import VerticalSection from '@components/templates/vertical-section/VerticalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
-import CartItemForm from '@/components/forms/cart-item-form/CartItemForm';
-import ProceedToOrderButton from '@components/elements/buttons/proceed-to-order-button/ProceedToOrderButton';
 import OrderModeSwitcher from '@/components/sections/order-mode-switcher/OrderModeSwitcher';
+import CartMode from './CartMode';
+import OrderMode from './OrderMode';
 
 type Mode = 'cart' | 'order';
 
@@ -70,53 +70,17 @@ function OrderPage() {
                 />
 
                 {mode === 'cart' ? (
-                    <div className="order-page__cart">
-                        {loading && <div className="order-page__loader">Загрузка...</div>}
-                        {!loading && cookies.length === 0 && (
-                            <span className="order-page__empty">Корзина пуста</span>
-                        )}
-                        {!loading && cookies.length > 0 && (
-                            <>
-                                <div className="order-page__items">
-                                    {cookies.map(cookie => {
-                                        const draftCookie = draftCookies.find(dc => dc.id === cookie.id);
-                                        const quantity = draftCookie?.quantity || 0;
-                                        const totalPrice = cookie.price * quantity;
-
-                                        return (
-                                            <CartItemForm
-                                                key={cookie.id}
-                                                id={cookie.id}
-                                                title={cookie.title}
-                                                quantity={cookie.quantity}
-                                                totalPrice={totalPrice}
-                                                imgUrl={cookie.img_url}
-                                            />
-                                        );
-                                    })}
-
-                                </div>
-                                
-                                <div className="order-page__total">
-                                    <div className="order-page__total-content">
-                                        <span className="order-page__total-content-label">Итого:</span>
-                                        <span className="order-page__total-content-price">
-                                            {cookies.reduce((sum, cookie) => {
-                                                const draftCookie = draftCookies.find(dc => dc.id === cookie.id);
-                                                const quantity = draftCookie?.quantity || 0;
-                                                return sum + (cookie.price * quantity);
-                                            }, 0)} ₽
-                                        </span>
-                                    </div>
-                                    <ProceedToOrderButton text="Перейти к заказу" />
-                                </div>
-                            </>
-                        )}
-                    </div>
+                    <CartMode 
+                        cookies={cookies}
+                        draftCookies={draftCookies}
+                        loading={loading}
+                    />
                 ) : (
-                    <div className="order-page__order">
-                        {/* Раздел заказа - пока пустой */}
-                    </div>
+                    <OrderMode 
+                        cookies={cookies}
+                        draftCookies={draftCookies}
+                        loading={loading}
+                    />
                 )}
             </SectionContent>
         </VerticalSection>

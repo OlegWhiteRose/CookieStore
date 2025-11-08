@@ -70,6 +70,7 @@
         
         position: relative;
         width: fit-content;
+        contain: paint;
     }
 
     &__link-icon {

@@ -11,7 +11,7 @@ function OrderButton(props: OrderButtonProps) {
     
     return (
         <button 
-            className="btn btn--primary btn--hover-effect-opacity btn--align-center order-button" 
+            className="btn btn--primary btn--hover-effect-lift btn--align-center order-button" 
             onClick={onClick}
         >
             {text}

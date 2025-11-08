@@ -1,0 +1,9 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.submit-order-button {
+    padding: 18px 40px;
+    font-weight: v.$font-weight-bold;
+    width: fit-content;
+    align-self: center;
+}

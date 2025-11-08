@@ -19,7 +19,7 @@ function ProceedToOrderButton(props: ProceedToOrderButtonProps) {
     
     return (
         <button 
-            className="btn btn--secondary btn--hover-effect-opacity proceed-to-order-button" 
+            className="btn btn--secondary btn--hover-effect-lift proceed-to-order-button" 
             onClick={handleClick}
         >
             <RedirectIcon />

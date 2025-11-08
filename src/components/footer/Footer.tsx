@@ -17,7 +17,7 @@ function Footer() {
                         <Link to="/contacts#about">
                             <span>обратная связь</span>
                         </Link>
-                        <Link to="/contacts">
+                        <Link to="/contacts#contacts">
                             <span>контакты</span>
                         </Link>
                     </div>

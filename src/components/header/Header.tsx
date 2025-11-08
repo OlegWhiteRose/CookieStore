@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
@@ -13,9 +13,14 @@ import LogoSmall from '@components/logo/LogoSmall';
 import CartIcon from '@assets/icon/cart.svg?react';
 
 function Header() {
+    const navigate = useNavigate();
     const totalCount = useSelector((state: RootState) => 
         state.draft.cookies.reduce((sum, cookie) => sum + cookie.quantity, 0)
     );
+
+    const handleOrderClick = () => {
+        navigate('/order?mode=order');
+    };
 
     return (
         <div>
@@ -39,7 +44,7 @@ function Header() {
                         <div className="header__main-personal">
                             <OrderButton 
                                 text="заказать"
-                                onClick={() => console.log('Order clicked')}
+                                onClick={handleOrderClick}
                             />
                             <Link to="/order?mode=cart" className="header__main-personal__cart-icon">
                                 <CartIcon />

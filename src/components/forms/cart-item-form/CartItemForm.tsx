@@ -35,7 +35,6 @@ function CartItemForm(props: CartItemFormProps) {
                 <div className="cart-item-form__left">
                     <span className="cart-item-form__title">{title}</span>
                     <span className="cart-item-form__quantity">{quantity} шт. в упаковке</span>
-                    <div className="cart-item-form__divider" />
                     <span className="cart-item-form__price">{totalPrice} ₽</span>
                 </div>
                 <div className="cart-item-form__footer">

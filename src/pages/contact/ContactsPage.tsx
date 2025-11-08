@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useContacts } from '@/hooks/useContacts';
+import { showAlert } from '@/common/showAlert';
 
 import '../pages.scss';
 import './ContactsPage.scss';
@@ -43,6 +46,53 @@ const INPUTS: InputConfig[] = [
 
 function ContactsPage() {
     const { contacts, loading } = useContacts();
+    const location = useLocation();
+
+    const [formValues, setFormValues] = useState({
+        name: '',
+        contactInfo: '',
+        message: ''
+    });
+
+    const [errors, setErrors] = useState({
+        name: false,
+        contactInfo: false,
+        message: false
+    });
+
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.querySelector(location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, [location]);
+
+    const updateField = (field: keyof typeof formValues, value: string) => {
+        setFormValues({ ...formValues, [field]: value });
+        if (errors[field as keyof typeof errors]) {
+            setErrors({ ...errors, [field]: false });
+        }
+    };
+
+    const handleSubmit = () => {
+        const newErrors = {
+            name: !formValues.name.trim(),
+            contactInfo: !formValues.contactInfo.trim(),
+            message: !formValues.message.trim()
+        };
+
+        setErrors(newErrors);
+
+        if (Object.values(newErrors).some(error => error)) {
+            showAlert('Заполните все поля', 'error');
+            return;
+        }
+
+        showAlert('Письмо отправлено', 'success');
+        setFormValues({ name: '', contactInfo: '', message: '' });
+    };
 
     const CONTACTS = [
         {
@@ -81,7 +131,7 @@ function ContactsPage() {
         <VerticalSection className="page contacts-page">
             <SectionContent className="contacts-page__main">
                 <div className="contacts-page__main__title">
-                    <h1>Контакты</h1>
+                    <h1 id="contacts">Контакты</h1>
                 </div>
                 <div className="contacts-page__main__contacts">
                     {CONTACTS.map((contact) => (
@@ -101,15 +151,33 @@ function ContactsPage() {
                 </span>
                 <div className="contacts-page__main__feedback">
                     <div className="contacts-page__main__feedback-data">
-                        {INPUTS.map((input) => (
-                            <FeedbackInput key={input.title} 
-                                title={input.title} 
-                                inputHeight={input.inputHeight} 
-                                inputType={input.inputType} />
-                        ))}
+                        <FeedbackInput 
+                            title="Ваши имя и фамилия"
+                            inputHeight="30px"
+                            inputType="input"
+                            value={formValues.name}
+                            onChange={(value) => updateField('name', value)}
+                            error={errors.name}
+                        />
+                        <FeedbackInput 
+                            title="Ваши контакты для обратной связи"
+                            inputHeight="40px"
+                            inputType="textarea"
+                            value={formValues.contactInfo}
+                            onChange={(value) => updateField('contactInfo', value)}
+                            error={errors.contactInfo}
+                        />
+                        <FeedbackInput 
+                            title="Ваше сообщение"
+                            inputHeight="200px"
+                            inputType="textarea"
+                            value={formValues.message}
+                            onChange={(value) => updateField('message', value)}
+                            error={errors.message}
+                        />
                         <SendButton 
                             text="Отправить сообщение"
-                            onClick={() => console.log('Form submitted')}
+                            onClick={handleSubmit}
                         />
                     </div>
                     <div className="contacts-page__main__feedback-imageContainer">

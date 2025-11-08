@@ -8,7 +8,7 @@ import '../pages.scss';
 import './MenuPage.scss';
 
 import VerticalSection from '@components/templates/vertical-section/VerticalSection';
-import MenuSearchInput from '@components/elements/inputs/menu-search-input/MenuSearchInput';
+import SearchInput from '@components/elements/inputs/search-input/SearchInput';
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import MenuFilterButton from '@components/elements/buttons/menu-filter-button/MenuFilterButton';
 import MenuCard from '@components/menu-card/MenuCard';
@@ -86,7 +86,7 @@ function MenuPage() {
         <VerticalSection className="page menu-page">
             <SectionContent className="menu-page__main">
                 <div className="menu-page__main-search">
-                    <MenuSearchInput 
+                    <SearchInput 
                         value={searchQuery}
                         onChange={handleSearchChange}
                         onSubmit={handleSearchSubmit}
