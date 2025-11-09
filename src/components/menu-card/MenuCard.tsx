@@ -1,6 +1,7 @@
 import './MenuCard.scss';
 
 import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton';
+import DefaultMenuImg from '@/assets/img/default-menu.jpg';
 
 interface MenuCardProps {
     id: number;
@@ -18,7 +19,14 @@ function MenuCard(props: MenuCardProps) {
     return (
         <div className={`menu-card menu-card--format-${format}`}>
             <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer">
-                <img src={imgUrl} alt="Карточка" />
+                <img 
+                    src={imgUrl || DefaultMenuImg} 
+                    alt="Карточка" 
+                    onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = DefaultMenuImg;
+                    }}
+                />
             </a>
             <span className="menu-card__type">{type}</span> 
             <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer" className="menu-card__title">

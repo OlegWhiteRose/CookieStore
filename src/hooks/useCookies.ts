@@ -15,8 +15,14 @@ export interface Cookie {
   quantity: number;
 }
 
+export interface CookiesMetadata {
+  max_price: number;
+  max_quantity: number;
+}
+
 export const useCookies = (filter?: CookiesFilter) => {
   const [cookies, setCookies] = useState<Cookie[]>([]);
+  const [metadata, setMetadata] = useState<CookiesMetadata>({ max_price: 10000, max_quantity: 500 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +39,13 @@ export const useCookies = (filter?: CookiesFilter) => {
         }
 
         setCookies(data.data || []);
+        
+        if (data.max_price && data.max_quantity) {
+          setMetadata({
+            max_price: data.max_price,
+            max_quantity: data.max_quantity,
+          });
+        }
       } catch (err) {
         console.error('Failed to load cookies:', err);
         setError(err instanceof Error ? err.message : 'Failed to load cookies');
@@ -52,5 +65,5 @@ export const useCookies = (filter?: CookiesFilter) => {
     filter?.title,
   ]);
 
-  return { cookies, loading, error };
+  return { cookies, metadata, loading, error };
 };

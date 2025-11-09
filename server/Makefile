@@ -1,34 +1,42 @@
 .PHONY: help build run docker-up docker-down docker-build docker-logs clean test
 
-help: ## Показать справку
+help: 
 	@echo "Доступные команды:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-build: ## Собрать бинарный файл
+build: 
 	go build -o bin/server ./cmd/server
 
-run: ## Запустить сервер локально
+run: 
 	go run ./cmd/server/main.go
 
-docker-up: ## Запустить все сервисы в Docker
+docker-up: 
 	docker-compose up -d
 
-docker-down: ## Остановить все сервисы Docker
+docker-down: 
 	docker-compose down
 
-docker-build: ## Пересобрать и запустить Docker контейнеры
+docker-build: 
 	docker-compose up --build -d
 
-docker-logs: ## Показать логи Docker контейнеров
+docker-logs: 
 	docker-compose logs -f
 
-clean: ## Очистить сгенерированные файлы
 	rm -rf bin/
 	docker-compose down -v
 
-test: ## Запустить тесты
+test: 
 	go test -v ./...
 
-deps: ## Установить зависимости
+deps: 
 	go mod download
 	go mod tidy
+
+seed-cookies: 
+	docker exec -i cookiestore_postgres psql -U cookiestore_user -d cookiestore_db < seed_cookies.sql
+
+migrate-stats: 
+	docker exec -i cookiestore_postgres psql -U cookiestore_user -d cookiestore_db < migration_stats.sql
+
+clear-minio: 
+	docker exec cookiestore_minio mc rm --recursive --force /data/cookies/ || true

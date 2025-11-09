@@ -2,20 +2,53 @@ package repository
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
 type CookieFilter struct {
-	Type       *string
-	CostFrom   *float64
-	CostTo     *float64
-	QtyFrom    *int
-	QtyTo      *int
-	Format     *string
-	TitleLike  *string
+	Type      *string
+	CostFrom  *float64
+	CostTo    *float64
+	QtyFrom   *int
+	QtyTo     *int
+	Format    *string
+	TitleLike *string
 }
 
-func (r *Repository) GetCookies(filter CookieFilter) ([]map[string]interface{}, error) {
+type CookiesResponse struct {
+	Cookies     []map[string]interface{} `json:"cookies"`
+	MaxPrice    int                      `json:"max_price"`
+	MaxQuantity int                      `json:"max_quantity"`
+}
+
+func convertImageURL(imgURL string) string {
+	if imgURL == "" {
+		return ""
+	}
+
+	if strings.HasPrefix(imgURL, "http://") || strings.HasPrefix(imgURL, "https://") {
+		return imgURL
+	}
+
+	if strings.HasPrefix(imgURL, "/img/cookies/") {
+		filename := strings.TrimPrefix(imgURL, "/img/cookies/")
+		endpoint := os.Getenv("MINIO_ENDPOINT")
+		if endpoint == "" {
+			endpoint = "localhost:9000"
+		}
+		return fmt.Sprintf("http://%s/cookies/%s", endpoint, filename)
+	}
+	return imgURL
+}
+
+func (r *Repository) GetCookies(filter CookieFilter) (*CookiesResponse, error) {
+	var maxPrice, maxQuantity int
+	err := r.db.QueryRow("SELECT COALESCE(MAX(price), 0), COALESCE(MAX(quantity), 0) FROM cookies").Scan(&maxPrice, &maxQuantity)
+	if err != nil {
+		return nil, err
+	}
+
 	query := "SELECT id, title, price, format, type, img_url, description, ingredients, address, quantity FROM cookies WHERE 1=1"
 	var args []interface{}
 	argNum := 1
@@ -84,18 +117,18 @@ func (r *Repository) GetCookies(filter CookieFilter) ([]map[string]interface{}, 
 		var id, quantity int
 		var price float64
 		var title, format, cookieType, imgURL, description, ingredients, address string
-		
+
 		if err := rows.Scan(&id, &title, &price, &format, &cookieType, &imgURL, &description, &ingredients, &address, &quantity); err != nil {
 			return nil, err
 		}
-		
+
 		cookie := map[string]interface{}{
 			"id":          id,
 			"title":       title,
 			"price":       int(price),
 			"format":      format,
 			"type":        cookieType,
-			"img_url":     imgURL,
+			"img_url":     convertImageURL(imgURL),
 			"description": description,
 			"ingredients": ingredients,
 			"address":     address,
@@ -104,32 +137,40 @@ func (r *Repository) GetCookies(filter CookieFilter) ([]map[string]interface{}, 
 		cookies = append(cookies, cookie)
 	}
 
-	return cookies, rows.Err()
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return &CookiesResponse{
+		Cookies:     cookies,
+		MaxPrice:    maxPrice,
+		MaxQuantity: maxQuantity,
+	}, nil
 }
 
 func (r *Repository) GetCookieByID(id int) (map[string]interface{}, error) {
 	var cookieID, quantity int
 	var price float64
 	var title, format, cookieType, imgURL, description, ingredients, address string
-	
+
 	err := r.db.QueryRow("SELECT id, title, price, format, type, img_url, description, ingredients, address, quantity FROM cookies WHERE id = $1", id).
 		Scan(&cookieID, &title, &price, &format, &cookieType, &imgURL, &description, &ingredients, &address, &quantity)
 	if err != nil {
 		return nil, err
 	}
-	
+
 	cookie := map[string]interface{}{
 		"id":          cookieID,
 		"title":       title,
 		"price":       int(price),
 		"format":      format,
 		"type":        cookieType,
-		"img_url":     imgURL,
+		"img_url":     convertImageURL(imgURL),
 		"description": description,
 		"ingredients": ingredients,
 		"address":     address,
 		"quantity":    quantity,
 	}
-	
+
 	return cookie, nil
 }

@@ -68,13 +68,13 @@ function MenuPage() {
         });
     };
 
-    const { cookies, loading } = useCookies({ 
+    const { cookies, metadata, loading } = useCookies({ 
         title: titleParam || undefined,
         format: formatParam || undefined,
-        cost_from: filters.costFrom ?? 0,
-        cost_to: filters.costTo ?? 10000,
-        quantity_from: filters.quantityFrom ?? 0,
-        quantity_to: filters.quantityTo ?? 50,
+        cost_from: filters.costFrom,
+        cost_to: filters.costTo,
+        quantity_from: filters.quantityFrom,
+        quantity_to: filters.quantityTo,
         type: filters.types.length > 0 ? filters.types.join(',') : undefined,
     });
 
@@ -100,6 +100,8 @@ function MenuPage() {
                         initialCostTo={filters.costTo}
                         initialQuantityFrom={filters.quantityFrom}
                         initialQuantityTo={filters.quantityTo}
+                        maxCostTo={metadata.max_price}
+                        maxQuantityTo={metadata.max_quantity}
                         onApply={handleFilterApply}
                     />
                 </div>

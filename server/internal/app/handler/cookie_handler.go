@@ -48,7 +48,7 @@ func (h *Handler) GetCookiesAPI(ctx *gin.Context) {
 		filter.TitleLike = &title
 	}
 
-	cookies, err := h.Repository.GetCookies(filter)
+	response, err := h.Repository.GetCookies(filter)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{
 			"status":  "error",
@@ -58,8 +58,10 @@ func (h *Handler) GetCookiesAPI(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
-		"status": "ok",
-		"data":   cookies,
+		"status":       "ok",
+		"data":         response.Cookies,
+		"max_price":    response.MaxPrice,
+		"max_quantity": response.MaxQuantity,
 	})
 }
 

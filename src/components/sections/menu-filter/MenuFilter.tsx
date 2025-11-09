@@ -12,6 +12,8 @@ interface MenuFilterProps {
     initialCostTo?: number;
     initialQuantityFrom?: number;
     initialQuantityTo?: number;
+    maxCostTo?: number;
+    maxQuantityTo?: number;
     onApply: (filters: {
         format: string;
         types: string[];
@@ -39,6 +41,8 @@ function MenuFilter(props: MenuFilterProps) {
         initialCostTo,
         initialQuantityFrom,
         initialQuantityTo,
+        maxCostTo = 10000,
+        maxQuantityTo = 500,
         onApply
     } = props;
 
@@ -132,7 +136,7 @@ function MenuFilter(props: MenuFilterProps) {
                 <span className="menu-filter__section-title">Цена</span>
                 <RangeInput 
                     placeholderFrom="от 0" 
-                    placeholderTo="до 10000"
+                    placeholderTo={`до ${maxCostTo}`}
                     valueFrom={costFrom}
                     valueTo={costTo}
                     onChangeFrom={setCostFrom}
@@ -144,7 +148,7 @@ function MenuFilter(props: MenuFilterProps) {
                 <span className="menu-filter__section-title">Кол-во штук в упаковке</span>
                 <RangeInput 
                     placeholderFrom="от 0" 
-                    placeholderTo="до 50"
+                    placeholderTo={`до ${maxQuantityTo}`}
                     valueFrom={quantityFrom}
                     valueTo={quantityTo}
                     onChangeFrom={setQuantityFrom}

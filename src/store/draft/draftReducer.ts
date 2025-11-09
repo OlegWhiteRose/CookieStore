@@ -65,8 +65,12 @@ const draftSlice = createSlice({
             state.cookies = [];
             saveToLocalStorage(state);
         },
+        syncFromLocalStorage: (state) => {
+            const loaded = loadFromLocalStorage();
+            state.cookies = loaded.cookies;
+        },
     },
 });
 
 export default draftSlice.reducer;
-export const { addCookie, decreaseCookie, removeCookie, clearDraft } = draftSlice.actions;
+export const { addCookie, decreaseCookie, removeCookie, clearDraft, syncFromLocalStorage } = draftSlice.actions;

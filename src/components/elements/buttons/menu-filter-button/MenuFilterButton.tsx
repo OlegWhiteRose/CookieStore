@@ -17,6 +17,8 @@ interface MenuFilterButtonProps {
     initialCostTo?: number;
     initialQuantityFrom?: number;
     initialQuantityTo?: number;
+    maxCostTo?: number;
+    maxQuantityTo?: number;
     onApply: (filters: {
         format: string;
         types: string[];
@@ -37,6 +39,8 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
         initialCostTo,
         initialQuantityFrom,
         initialQuantityTo,
+        maxCostTo,
+        maxQuantityTo,
         onApply 
     } = props;
     
@@ -78,6 +82,8 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                     initialCostTo={initialCostTo}
                     initialQuantityFrom={initialQuantityFrom}
                     initialQuantityTo={initialQuantityTo}
+                    maxCostTo={maxCostTo}
+                    maxQuantityTo={maxQuantityTo}
                     onApply={handleApply}
                 />
             </Poppup>

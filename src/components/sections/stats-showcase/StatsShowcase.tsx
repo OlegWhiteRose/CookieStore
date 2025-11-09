@@ -9,6 +9,10 @@ import VerticalSection from '@/components/templates/vertical-section/VerticalSec
 function StatsShowcase() {
     const { stats, loading } = useStatsShowcase();
 
+    if (loading) {
+        return <></>;
+    }
+
     return (
         <VerticalSection className="stats-showcase">
             <SectionContent>

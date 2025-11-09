@@ -6,6 +6,7 @@ import './CartItemForm.scss';
 import CartItemQuantityButton from '@components/elements/buttons/cart-item-quantity-button/CartItemQuantityButton';
 
 import CloseBoldIcon from '@assets/icon/close-bold.svg?react';
+import DefaultMenuImg from '@/assets/img/default-menu.jpg';
 
 interface CartItemFormProps {
     id: number;
@@ -29,7 +30,15 @@ function CartItemForm(props: CartItemFormProps) {
                 <CloseBoldIcon />
             </button>
             <div className="cart-item-form__image-wrapper">
-                <img src={imgUrl} alt={title} className="cart-item-form__image" />
+                <img 
+                    src={imgUrl || DefaultMenuImg} 
+                    alt={title} 
+                    className="cart-item-form__image"
+                    onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = DefaultMenuImg;
+                    }}
+                />
             </div>
             <div className="cart-item-form__content">
                 <div className="cart-item-form__left">

@@ -4,6 +4,7 @@ import '../pages.scss';
 import './GoodPage.scss';
 
 import AttentionIcon from '@/assets/icon/attention_danger_icon.svg?react';
+import DefaultMenuImg from '@/assets/img/default-menu.jpg';
 
 import VerticalSection from '@components/templates/vertical-section/VerticalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
@@ -41,7 +42,14 @@ function GoodPage() {
             <SectionContent className={`good-page__main good-page__main--format-${format}`}>
                 <div className="good-page__main__container">
                     <div className="good-page__main__container__image-container">
-                        <img src={cookie.img_url} alt={cookie.title} />
+                        <img 
+                            src={cookie.img_url || DefaultMenuImg} 
+                            alt={cookie.title}
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = DefaultMenuImg;
+                            }}
+                        />
                     </div>
 
                     <div className="good-page__main__container__right">
