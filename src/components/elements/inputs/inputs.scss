@@ -14,6 +14,14 @@
     font-size: v.$font-size-small;
     font-weight: v.$font-weight-medium;
     user-select: none;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-small-tablet;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-small-mobile;
+    }
 }
 
 .input-label--light {
@@ -27,6 +35,18 @@
 .input-label--large {
     font-size: v.$font-size-attention;
     font-family: v.$font-family-secondary;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-attention-tablet;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-attention-mobile;
+    }
+
+    @media (max-width: 450px) {
+        font-size: v.$font-size-main-mobile;
+    }
 }
 
 .input-control,
@@ -41,6 +61,21 @@
     background-color: t.$color-white;
     border: 2px solid t.$color-background-first;
     color: t.$color-black;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-input-tablet;
+        padding: 10px 14px;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-input-mobile;
+        padding: 8px 12px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: v.$font-size-small-mobile;
+        padding: 8px 10px;
+    }
 
     &::placeholder {
         color: t.$color-background-first;
@@ -82,7 +117,57 @@
 
 .textarea-control {
     resize: none;
-    min-height: 80px;
+}
+
+.input-control--small,
+.textarea-control--small {
+    height: 40px;
+
+    @media (max-width: 1024px) {
+        height: 36px;
+    }
+
+    @media (max-width: 800px) {
+        height: 30px;
+    }
+
+    @media (max-width: 400px) {
+        height: 15px;
+    }
+}
+
+.input-control--medium,
+.textarea-control--medium {
+    height: 60px;
+
+    @media (max-width: 1024px) {
+        height: 50px;
+    }
+
+    @media (max-width: 800px) {
+        height: 50px;
+    }
+
+    @media (max-width: 400px) {
+        height: 15px;
+    }
+}
+
+.input-control--large,
+.textarea-control--large {
+    height: 200px;
+
+    @media (max-width: 1024px) {
+        height: 160px;
+    }
+
+    @media (max-width: 800px) {
+        height: 80px;
+    }
+
+    @media (max-width: 400px) {
+        height: 40px;
+    }
 }
 
 .input-field--wide {

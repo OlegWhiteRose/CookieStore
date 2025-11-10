@@ -1,0 +1,69 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.special-date-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    padding: 0;
+    
+    width: 32px;
+    height: 32px;
+
+    color: t.$color-red-highlight;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 900px) {
+        width: 28px;
+        height: 28px;
+    }
+
+    @media (max-width: 600px) {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__content {
+        background-color: t.$color-white;
+        border: solid 2px t.$color-background-first;
+        border-radius: 10px;
+        padding: 10px 15px;
+        font-size: v.$font-size-main;
+        font-family: v.$font-family-secondary;
+        white-space: nowrap;
+
+        @media (max-width: 1100px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 900px) {
+            font-size: v.$font-size-small-mobile;
+            padding: 8px 12px;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 12px;
+            padding: 6px 10px;
+            white-space: normal;
+            max-width: 200px;
+        }
+    }
+}

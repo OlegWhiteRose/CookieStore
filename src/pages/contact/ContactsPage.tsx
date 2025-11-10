@@ -18,32 +18,6 @@ import Browser from '@assets/icon/browser.svg?react';
 import MoneyDatabase from '@assets/icon/money-database.svg?react';
 import MapFeedback from '@assets/img/cookie-male-box.jpg';
 
-type InputType = 'input' | 'textarea';
-
-interface InputConfig {
-  title: string;
-  inputHeight: string;
-  inputType: InputType;
-}
-
-const INPUTS: InputConfig[] = [
-  {
-    title: 'Ваши имя и фамилия',
-    inputHeight: '30px',
-    inputType: 'input'
-  },
-  {
-    title: 'Ваши контакты для обратной связи',
-    inputHeight: '40px',
-    inputType: 'textarea'
-  },
-  {
-    title: 'Ваше сообщение',
-    inputHeight: '200px',
-    inputType: 'textarea'
-  }
-];
-
 function ContactsPage() {
     const { contacts, loading } = useContacts();
     const location = useLocation();
@@ -153,7 +127,7 @@ function ContactsPage() {
                     <div className="contacts-page__main__feedback-data">
                         <FeedbackInput 
                             title="Ваши имя и фамилия"
-                            inputHeight="30px"
+                            size="small"
                             inputType="input"
                             value={formValues.name}
                             onChange={(value) => updateField('name', value)}
@@ -161,7 +135,7 @@ function ContactsPage() {
                         />
                         <FeedbackInput 
                             title="Ваши контакты для обратной связи"
-                            inputHeight="40px"
+                            size="medium"
                             inputType="textarea"
                             value={formValues.contactInfo}
                             onChange={(value) => updateField('contactInfo', value)}
@@ -169,7 +143,7 @@ function ContactsPage() {
                         />
                         <FeedbackInput 
                             title="Ваше сообщение"
-                            inputHeight="200px"
+                            size="large"
                             inputType="textarea"
                             value={formValues.message}
                             onChange={(value) => updateField('message', value)}

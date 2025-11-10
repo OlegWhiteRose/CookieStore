@@ -1,6 +1,7 @@
 import './MenuCard.scss';
 
 import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton';
+import SpecialDateButton from '../elements/buttons/special-date-button/SpecialDateButton';
 import DefaultMenuImg from '@/assets/img/default-menu.jpg';
 
 interface MenuCardProps {
@@ -33,7 +34,12 @@ function MenuCard(props: MenuCardProps) {
                 {title}
             </a>
             <span className="menu-card__quantity">{quantity} шт. в упаковке</span>
-            <span className="menu-card__price">{price} ₽</span>
+            <div className="menu-card__price-row">
+                <span className="menu-card__price">{price} ₽</span>
+                {format === 'special' && (
+                    <SpecialDateButton dateText="Заказать можно только до 10.12.2025" />
+                )}
+            </div>
             <MenuCardButton format={format} text="В корзину" cookieId={id} />
         </div>
     )

@@ -3,5 +3,13 @@
 
 .feedback-input {
     gap: 28px;
+
+    @media (max-width: 599px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 450px) {
+        gap: 16px;
+    }
 }
 

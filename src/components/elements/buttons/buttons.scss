@@ -17,19 +17,16 @@
 
     border-radius: 10px;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1300px) {
         font-size: v.$font-size-main-tablet;
-        padding: 9px 18px;
     }
 
-    @media (max-width: 599px) {
+    @media (max-width: 1100px) {
         font-size: v.$font-size-main-mobile;
-        padding: 8px 16px;
     }
 
-    @media (max-width: 450px) {
-        font-size: 13px;
-        padding: 7px 14px;
+    @media (max-width: 700px) {
+        font-size: v.$font-size-small-mobile;
     }
 }
 

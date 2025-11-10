@@ -31,10 +31,6 @@
         font-weight: v.$font-weight-medium;
         margin: 0 0 12px 0;
 
-        @media (max-width: 1024px) {
-            font-size: v.$font-size-main-tablet;
-        }
-
         @media (max-width: 600px) {
             font-size: v.$font-size-main-mobile;
             margin: 0 0 10px 0;
@@ -76,15 +72,11 @@
         }
 
         span {
-            font-size: calc(v.$font-size-main - 2px);
+            font-size: v.$font-size-main;
             font-family: v.$font-family-secondary;
 
-            @media (max-width: 1024px) {
-                font-size: calc(v.$font-size-main-tablet - 2px);
-            }
-
             @media (max-width: 600px) {
-                font-size: calc(v.$font-size-main-mobile - 1px);
+                font-size: v.$font-size-main-mobile;
             }
 
             @media (max-width: 450px) {
@@ -128,15 +120,11 @@
         }
 
         span {
-            font-size: calc(v.$font-size-main - 2px);
+            font-size: v.$font-size-main;
             font-family: v.$font-family-secondary;
 
-            @media (max-width: 1024px) {
-                font-size: calc(v.$font-size-main-tablet - 2px);
-            }
-
             @media (max-width: 600px) {
-                font-size: calc(v.$font-size-main-mobile - 1px);
+                font-size: v.$font-size-main-mobile;
             }
 
             @media (max-width: 450px) {

@@ -14,5 +14,16 @@
         border-radius: 10px;
         border: 2px solid t.$color-background-first;
         background-color: t.$color-white;
+        font-size: v.$font-size-main;
+        font-family: v.$font-family-secondary;
+
+        @media (max-width: 600px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 450px) {
+            font-size: 12px;
+            padding: 8px;
+        }
     }
 }

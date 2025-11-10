@@ -14,7 +14,7 @@ function AboutPage() {
     return (
         <div className='page about-page'>
             <button ref={buttonRef} onClick={() => setActive(!active)}>Open</button>
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={100} align='right'>
+            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={100}>
                 <p>123</p>
             </Poppup>
         </div>

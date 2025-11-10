@@ -15,12 +15,47 @@
     border-radius: 20px;
     padding: 20px 20px;
 
+    @media (max-width: 599px) {
+        min-height: 180px;
+        padding: 16px 16px;
+    }
+
+    @media (max-width: 450px) {
+        min-height: 160px;
+        padding: 14px 14px;
+        gap: 8px;
+    }
+
     &__title {
         font-size: v.$font-size-main;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-main-tablet;
+        }
+
+        @media (max-width: 800px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 450px) {
+            font-size: v.$font-size-small-mobile;
+        }
     }
 
     &__content {
         font-size: v.$font-size-content-top;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-content-top-tablet;
+        }
+
+        @media (max-width: 799px) {
+            font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 500px) {
+            font-size: v.$font-size-small-mobile;
+        }
     }
 
     &__bottom { 
@@ -31,6 +66,22 @@
         span {
             font-size: v.$font-size-main;
             color: t.$color-background-first;
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-main-tablet;
+            }
+
+            @media (max-width: 799px) {
+                font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 500px) {
+                font-size: v.$font-size-small-mobile;
+            }
+
+            @media (max-width: 450px) {
+                font-size: v.$font-size-small-mobile;
+            }
         }
 
         &-icon {
@@ -39,6 +90,18 @@
             flex-shrink: 0; 
             
             padding-left: 20px;
+
+            @media (max-width: 599px) {
+                width: 40px;
+                height: 40px;
+                padding-left: 15px;
+            }
+
+            @media (max-width: 450px) {
+                width: 35px;
+                height: 35px;
+                padding-left: 10px;
+            }
         }
     } 
 

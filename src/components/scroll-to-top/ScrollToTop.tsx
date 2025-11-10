@@ -6,8 +6,6 @@ function ScrollToTop() {
   const prevPathnameRef = useRef(pathname);
 
   useEffect(() => {
-    // Скроллим только если pathname действительно изменился (переход на другую страницу)
-    // Игнорируем изменения query параметров
     if (prevPathnameRef.current !== pathname) {
       if (hash) {
         const el = document.querySelector(hash);

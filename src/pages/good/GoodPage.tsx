@@ -9,6 +9,7 @@ import DefaultMenuImg from '@/assets/img/default-menu.jpg';
 import VerticalSection from '@components/templates/vertical-section/VerticalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import GoodCardButton from '@components/elements/buttons/good-card-button/GoodCardButton';
+import SpecialDateButton from '@components/elements/buttons/special-date-button/SpecialDateButton';
 import { useCookie } from '@/hooks/useCookie';
 
 function GoodPage() {
@@ -54,8 +55,16 @@ function GoodPage() {
 
                     <div className="good-page__main__container__right">
                         <div className="good-page__main__container__right__title">{cookie.title}</div>
-                        <div className="good-page__main__container__right__price">{cookie.price} ₽</div>
                         
+                        <div className="good-page__main__container__right__price-row">
+                            <div className="good-page__main__container__right__price">{cookie.price} ₽</div>
+                            {format === 'special' && (
+                                <div className="good-page__main__container__right__special-date">
+                                    <SpecialDateButton dateText="Заказать можно только до 10.12.2025" />
+                                </div>
+                            )}
+                        </div>
+
                         <div className="good-page__main__container__right__add-to-cart">
                             <GoodCardButton text="В корзину" cookieId={cookie.id} />
                         </div>
@@ -83,6 +92,22 @@ function GoodPage() {
                             <span>Заказать можно только до 10.12.2025</span>
                             <div className="good-page__main__container__bottom__attention-date__icon">
                                 <AttentionIcon />
+                            </div>
+                        </div>
+
+                        <div className="good-page__main__container__bottom__info-sections">
+                            <div className="good-page__main__container__bottom__info-section">
+                                <span className="good-page__main__container__bottom__info-section-label">Тип печенья:</span>
+                                <span className="good-page__main__container__bottom__info-section-text">
+                                    <span>{cookie.type}</span>
+                                </span>
+                            </div>
+
+                            <div className="good-page__main__container__bottom__info-section">
+                                <span className="good-page__main__container__bottom__info-section-label">Количество штук в упаковке:</span>
+                                <span className="good-page__main__container__bottom__info-section-text">
+                                    <span>{cookie.quantity}</span>
+                                </span>
                             </div>
                         </div>
 

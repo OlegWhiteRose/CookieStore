@@ -3,7 +3,7 @@ import './FeedbackInput.scss';
 
 interface FeedbackInputProps {
     title: string;
-    inputHeight?: string;
+    size?: 'small' | 'medium' | 'large';
     inputType: 'textarea' | 'input';
     value?: string;
     onChange?: (value: string) => void;
@@ -12,10 +12,11 @@ interface FeedbackInputProps {
 }
 
 function FeedbackInput(props: FeedbackInputProps) {
-    const { title, inputHeight, inputType, value, onChange, placeholder, error = false } = props;
+    const { title, size = 'medium', inputType, value, onChange, placeholder, error = false } = props;
     
-    const inputClass = `input-control input-control--dark ${error ? 'input-control--error' : ''}`.trim();
-    const textareaClass = `textarea-control textarea-control--dark ${error ? 'textarea-control--error' : ''}`.trim();
+    const sizeClass = size ? `input-control--${size}` : '';
+    const inputClass = `input-control input-control--dark ${sizeClass} ${error ? 'input-control--error' : ''}`.trim();
+    const textareaClass = `textarea-control textarea-control--dark ${sizeClass} ${error ? 'textarea-control--error' : ''}`.trim();
     
     return (
         <div className="input-field feedback-input">
@@ -25,7 +26,6 @@ function FeedbackInput(props: FeedbackInputProps) {
             {inputType === 'textarea' ? (
                 <textarea 
                     className={textareaClass}
-                    style={{ height: inputHeight }}
                     value={value}
                     onChange={(e) => onChange?.(e.target.value)}
                     placeholder={placeholder}
@@ -33,7 +33,6 @@ function FeedbackInput(props: FeedbackInputProps) {
             ) : (
                 <input 
                     className={inputClass}
-                    style={{ height: inputHeight }}
                     type="text"
                     value={value}
                     onChange={(e) => onChange?.(e.target.value)}

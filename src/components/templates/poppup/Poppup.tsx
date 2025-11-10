@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import './Poppup.scss';
 
 interface PoppupProps {
@@ -7,63 +8,117 @@ interface PoppupProps {
     children: React.ReactNode;
     tagFor: React.RefObject<HTMLElement | null>;
     top?: number;
-    align?: 'left' | 'right'; 
 }
 
 function Poppup(props: PoppupProps) {
-    const { active, setActive, children, tagFor, top, align = 'left' } = props;
+    const { active, setActive, children, tagFor, top } = props;
 
     const [coords, setCoords] = useState({ top: 0, left: 0 });
+    const [alignRight, setAlignRight] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const popupRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!active) return;
+
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node;
+            const button = tagFor.current;
+            const popup = popupRef.current;
+
+            if (
+                button && !button.contains(target) &&
+                popup && !popup.contains(target)
+            ) {
+                setActive(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [active, setActive, tagFor]);
 
     useEffect(() => {
         if (!active) return;
 
         const updateCoords = () => {
             const el = tagFor.current;
-            if (!el) return;
+            const content = contentRef.current;
+            if (!el || !content) return;
 
             const rect = el.getBoundingClientRect();
-            let left = rect.x;
+            const contentWidth = content.offsetWidth || 200;
+            
+            const distanceFromLeft = rect.x;
+            const distanceFromRight = window.innerWidth - (rect.x + rect.width);
+            
+            const shouldAlignRight = distanceFromRight < distanceFromLeft;
+            
+            setAlignRight(shouldAlignRight);
 
-            if (align === 'right') {
+            let left = rect.x;
+            if (shouldAlignRight) {
                 left = rect.x + rect.width;
             }
 
             setCoords({
-                top: rect.y + (top ?? 0) + window.scrollY,
-                left: left + window.scrollX,
+                top: rect.y + (top ?? 0),
+                left: left,
             });
         };
         
         updateCoords();
 
+        const handleScroll = () => {
+            setIsVisible(false);
+            
+            setTimeout(() => {
+                if (active) {
+                    setActive(false);
+                }
+            }, 200);
+        };
+
         window.addEventListener('resize', updateCoords);
-        window.addEventListener('scroll', updateCoords);
+        window.addEventListener('scroll', handleScroll, true);
 
         return () => {
             window.removeEventListener('resize', updateCoords);
-            window.removeEventListener('scroll', updateCoords);
+            window.removeEventListener('scroll', handleScroll, true);
         };
-    }, [active, align, top, tagFor]);
+    }, [active, top, tagFor, setActive]);
+
+    useEffect(() => {
+        if (active) {
+            setIsVisible(true);
+        }
+    }, [active]);
 
 
-    return (
+    if (!active) return null;
+
+    return createPortal(
         <div
-            className={`poppup ${active ? 'active' : ''}`}
-            onClick={() => setActive(false)}
+            ref={popupRef}
+            className={`poppup ${isVisible ? 'poppup--visible' : 'poppup--hidden'}`}
         >
             <div
+                ref={contentRef}
                 className="poppup__content" 
-                onClick={(e) => e.stopPropagation()}
                 style={{
                     top: coords.top,
                     left: coords.left,
-                    transform: align === 'right' ? 'translateX(-100%)' : undefined,
+                    transform: alignRight ? 'translateX(-100%)' : undefined,
                 }}
             >
                 {children}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 

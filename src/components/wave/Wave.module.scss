@@ -15,7 +15,6 @@
     overflow: hidden;
     font-size: 0;
     
-    // Убираем любые возможные зазоры
     margin-top: -1px;
     margin-bottom: -1px;
 
@@ -23,7 +22,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        // Добавляем небольшое растяжение для компенсации субпиксельного рендеринга
+
         transform: scaleY(1.01);
     }
 

@@ -64,30 +64,24 @@
             pointer-events: none;
         }
 
-        // Для больших экранов - 4 колонки
         @media (min-width: 1200px) {
             grid-template-columns: repeat(4, 1fr);
         }
-
-        // Для средних экранов - 3 колонки
         @media (min-width: 900px) and (max-width: 1199px) {
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        // Для планшетов - 2 колонки
         @media (min-width: 600px) and (max-width: 899px) {
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
 
-        // Для мобильных - минимум 2 колонки
         @media (max-width: 599px) {
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
-        // Для очень маленьких экранов - 2 колонки с меньшим gap
         @media (max-width: 450px) {
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;

@@ -74,7 +74,7 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                 <span className="menu-filter-button__text">{text}</span>
             </button>
 
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} align="right" top={80}>
+            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={80}>
                 <MenuFilter
                     initialFormat={initialFormat}
                     initialTypes={initialTypes}
