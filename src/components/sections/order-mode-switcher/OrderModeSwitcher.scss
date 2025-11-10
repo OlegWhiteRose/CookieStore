@@ -44,6 +44,10 @@
         position: relative;
         z-index: 2;
 
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-main-tablet;
+        }
+
         &--active {
             .order-mode-switcher__circle {
                 background-color: t.$color-white;
@@ -68,6 +72,10 @@
         transition: all 0.3s ease;
         position: relative;
         z-index: 3;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-content-top-tablet;
+        }
     }
 
     &__line {

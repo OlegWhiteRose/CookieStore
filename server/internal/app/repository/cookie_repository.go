@@ -44,7 +44,7 @@ func convertImageURL(imgURL string) string {
 
 func (r *Repository) GetCookies(filter CookieFilter) (*CookiesResponse, error) {
 	var maxPrice, maxQuantity int
-	err := r.db.QueryRow("SELECT COALESCE(MAX(price), 0), COALESCE(MAX(quantity), 0) FROM cookies").Scan(&maxPrice, &maxQuantity)
+	err := r.db.QueryRow("SELECT COALESCE(MAX(price)::INTEGER, 0), COALESCE(MAX(quantity)::INTEGER, 0) FROM cookies").Scan(&maxPrice, &maxQuantity)
 	if err != nil {
 		return nil, err
 	}

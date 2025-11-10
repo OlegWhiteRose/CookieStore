@@ -1,0 +1,51 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.side-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &--active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    background-color: t.$color-light-skin;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+
+    &--right {
+        right: 0;
+        transform: translateX(100%);
+    }
+
+    &--left {
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    &--open {
+        transform: translateX(0);
+    }
+
+    @media (max-width: 900px) {
+        width: 280px;
+    }
+}

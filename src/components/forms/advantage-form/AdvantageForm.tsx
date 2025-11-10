@@ -9,28 +9,23 @@ export interface AdvantageFormProps {
     description: string;
     className?: string;
     imgSrc: string;
-    size?: [number, number];
+    size: [number, number];
     bottom?: number;
     right?: number;
 }
 
 function AdvantageForm(props: AdvantageFormProps) {
-    const { title, description, className = '', imgSrc, size, bottom = 20, right = 20} = props;
+    const { title, description, className = '', imgSrc, size, bottom, right} = props;
 
     const navigate = useNavigate();
-
-    const [width, height] = size || [175, 175];
-
-    const imageStyle = {
-        width: `${width}px`,
-        height: `${height}px`,
-        bottom: `${bottom}px`,
-        right: `${right}px`
-    };
     
     function handleGlobalClick() {
         navigate('/about');    
     }
+
+    const [width, height] = size;
+    const bottomValue = bottom || 5;
+    const rightValue = right || 5;
 
     return (
         <div onClick={handleGlobalClick} className={`advantage-form ${className}`}>
@@ -44,8 +39,12 @@ function AdvantageForm(props: AdvantageFormProps) {
                     <NextIcon className="advantage-form__link-icon" />
                 </span>
             </div>
-            <img className="advantage-form__image" src={imgSrc} style={imageStyle}>
-            </img>
+            <img className="advantage-form__image" 
+                src={imgSrc} 
+                alt={title} 
+                width={width} 
+                height={height} 
+                style={{ bottom: bottomValue, right: rightValue }} />
         </div>
     );
 }

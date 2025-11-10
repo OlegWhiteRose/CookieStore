@@ -30,7 +30,7 @@ $font-size-stats-number: 90px;
 
 // Max and Min width no-resizing
 $critical-max-width: 1400px;
-$critical-min-width: 1000px;
+$critical-min-width: 400px;
 
 // Spacing
 $card-breakpoint-additive: 400px;
@@ -41,3 +41,26 @@ $section-padding-vertical: 20px;
 
 // gap
 $section-gap: 50px;
+
+
+$font-size-small-tablet: 13px;           
+$font-size-main-tablet: 15px;          
+$font-size-input-tablet: 17px;           
+$font-size-content-top-tablet: 18px;     
+$font-size-side-content-tablet: 22px;    
+$font-size-attention-tablet: 23px;       
+$font-size-section-title-main-tablet: 20px;
+$font-size-h1-title-tablet: 32px;      
+$font-size-attention-big-tablet: 38px;  
+$font-size-stats-number-tablet: 70px;    
+
+$font-size-small-mobile: 12px;           
+$font-size-main-mobile: 14px;            
+$font-size-input-mobile: 16px;           
+$font-size-content-top-mobile: 16px;     
+$font-size-side-content-mobile: 20px;    
+$font-size-attention-mobile: 24px;       
+$font-size-section-title-main-mobile: 16px; 
+$font-size-h1-title-mobile: 28px;        
+$font-size-attention-big-mobile: 32px;   
+$font-size-stats-number-mobile: 50px;    

@@ -12,9 +12,21 @@
 
         padding: v.$section-padding-vertical v.$main-padding-horizontal;
 
+        @media (max-width: 900px) {
+            padding: 15px 20px;
+        }
+
         &-links {
             display: flex;
             gap: 70px;
+
+            @media (max-width: 1024px) {
+                gap: 40px;
+            }
+
+            @media (max-width: 900px) {
+                display: none;
+            }
 
             span {
                 display: inline-block;
@@ -54,6 +66,10 @@
             align-items: center;
             gap: 20px;
 
+            @media (max-width: 900px) {
+                display: none;
+            }
+
             &__cart-icon {
                 cursor: pointer;
                 position: relative;
@@ -77,6 +93,89 @@
                     
                     background-color: t.$color-background;
                 }
+            }
+        }
+
+        &-mobile-controls {
+            display: none;
+            align-items: center;
+            gap: 12px;
+
+            @media (max-width: 900px) {
+                display: flex;
+            }
+
+            &__cart-icon {
+                cursor: pointer;
+                position: relative;
+                font-size: v.$font-size-small;
+                color: t.$color-white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                }
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    position: absolute;
+                    top: 2%;
+                    left: calc(50% + 5px);
+                    z-index: 1;
+
+                    min-width: 10px;
+                    padding: 1px 5px;
+                    
+                    border-radius: 10px;
+                    
+                    background-color: t.$color-background;
+                }
+            }
+        }
+
+        &-burger {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: t.$color-black;
+            padding: 8px;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border-radius: 8px;
+
+            @media (max-width: 900px) {
+                display: flex;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
             }
         }
     }

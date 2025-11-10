@@ -8,6 +8,14 @@
 
     padding: v.$section-padding-vertical 0;
 
+    @media (max-width: 1024px) {
+        gap: 60px;
+    }
+
+    @media (max-width: 850px) {
+        gap: 40px;
+    }
+
     &__header {
         gap: v.$section-gap;
 
@@ -17,12 +25,32 @@
 
         padding: 0 v.$main-padding-horizontal;
 
+        @media (max-width: 1024px) {
+            gap: 35px;
+        }
+
+        @media (max-width: 850px) {
+            gap: 25px;
+        }
+
         &__title {
             font-size: v.$font-size-attention-big;
             font-weight: v.$font-weight-medium;
             font-family: v.$font-family-secondary;
             color: t.$color-white;
             text-align: center;
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-attention-tablet;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-side-content-mobile;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
         }
 
         &__description {
@@ -34,6 +62,18 @@
             font-family: v.$font-family-secondary;
             color: t.$color-white;
             text-align: center;
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-side-content-tablet;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-main-mobile;
+            }
         }
     }
 
@@ -46,11 +86,14 @@
                 background-color: t.$color-light-skin;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                gap: clamp(10px, 13%, 13%);
+                gap: clamp(2px, 13%, 13%);
 
                 padding: v.$section-padding-vertical v.$main-padding-horizontal;
+
+                @media (max-width: 450px) {
+                    gap: 20px;
+                }
             }
         }
     }
 }
-

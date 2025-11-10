@@ -5,12 +5,32 @@
     padding: v.$section-padding-vertical v.$main-padding-horizontal;
     gap: 80px;
 
+    @media (max-width: 1024px) {
+        gap: 60px;
+    }
+
+    @media (max-width: 850px) {
+        gap: 40px;
+    }
+
     &__title {
         color: t.$color-white;
         font-weight: v.$font-weight-medium;
         font-family: v.$font-family-secondary;
         font-size: v.$font-size-attention-big;
         text-align: center;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-attention-tablet;
+        }
+
+        @media (max-width: 850px) {
+            font-size: v.$font-size-side-content-mobile;
+        }
+
+        @media (max-width: 600px) {
+            font-size: v.$font-size-content-top-mobile;
+        }
     }
 
     &__content {
@@ -20,7 +40,15 @@
         gap: 20px;
 
         @media (max-width: 1400px) {
-            gap: 10px;
+            gap: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            gap: 12px;
+        }
+
+        @media (max-width: 850px) {
+            gap: 20px;
         }
     }
 }

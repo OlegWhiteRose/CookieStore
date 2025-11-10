@@ -13,10 +13,9 @@
     
     pointer-events: none;
     
-    @media (max-width: 768px) {
+    @media (max-width: 850px) {
         right: 15px;
         bottom: 20px;
-        left: 15px;
     }
 
     &__alert {
@@ -86,7 +85,7 @@
                 word-wrap: break-word;
                 overflow-wrap: break-word;
                 
-                @media (max-width: 768px) {
+                @media (max-width: 850px) {
                     font-size: calc(#{v.$font-size-main} * 0.9);
                 }
             }
@@ -142,28 +141,6 @@
     }
     to {
         transform: translateX(calc(100% + 25px));
-        opacity: 0;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOutToLeft {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(-100%);
         opacity: 0;
     }
 }

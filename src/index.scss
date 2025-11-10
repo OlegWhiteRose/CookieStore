@@ -19,6 +19,10 @@ body {
   font-family: v.$font-family-main;
   font-size: v.$font-size-main;
   color: t.$color-black;
+  
+  @media (max-width: 850px) {
+    font-size: v.$font-size-main-mobile;
+  }
 }
 
 a {

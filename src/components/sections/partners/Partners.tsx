@@ -1,10 +1,10 @@
 import './Partners.scss';
 
-import TopWave from '@components/wave/WaveTop';
-import BottomWave from '@components/wave/WaveBottom';
 import PartnerForm from '@components/forms/partner-form/PartnerForm';
 import HorizontalSection from '@/components/templates/horizontal-section/HorizontalSection';
 import SectionContent from '@/components/templates/section-content/SectionContent';
+import WaveTop from '@/components/wave/WaveTop';
+import WaveBottom from '@/components/wave/WaveBottom';
 
 import SellerBeller from '@assets/img/partners/seller-beller.svg?react';
 import ReturnZero from '@assets/img/partners/return-zero.svg?react';
@@ -41,7 +41,7 @@ function Partners() {
             </div>
 
             <div className="partners__content">
-                <TopWave />
+                <WaveTop />
                 <HorizontalSection className="partners__content__section">
                     <SectionContent className="partners__content__section-items">
                         { PARTNERS.map((partner) => (
@@ -52,7 +52,7 @@ function Partners() {
                         )) }
                     </SectionContent> 
                 </HorizontalSection>
-                <BottomWave />
+                <WaveBottom />
             </div>
         </div>
     );

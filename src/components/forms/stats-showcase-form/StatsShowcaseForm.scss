@@ -12,8 +12,16 @@
         font-family: v.$font-family-secondary;
         color: t.$color-white;
 
-        @media (max-width: 1400px) {
-            font-size: v.$font-size-stats-number - 20px;
+        @media (max-width: 1250px) {
+            font-size: v.$font-size-stats-number-tablet;
+        }
+
+        @media (max-width: 900px) {
+            font-size: v.$font-size-stats-number-mobile;
+        }
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-attention-mobile;
         }
     }
 
@@ -23,8 +31,18 @@
         font-family: v.$font-family-secondary;
         color: t.$color-white;
 
-        @media (max-width: 1400px) {
-            font-size: v.$font-size-attention - 10px;
+        text-align: center;
+
+        @media (max-width: 1250px) {
+            font-size: v.$font-size-section-title-main-tablet;
+        }
+
+        @media (max-width: 900px) {
+            font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-small-mobile;
         }
     }
     

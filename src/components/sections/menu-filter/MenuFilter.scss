@@ -20,6 +20,10 @@
         display: block;
         font-size: v.$font-size-main;
         margin: 0 0 12px 0;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-main-tablet;
+        }
     }
 
     &__format-select {
@@ -44,6 +48,10 @@
 
         span {
             font-size: calc(v.$font-size-main - 2px);
+
+            @media (max-width: 1024px) {
+                font-size: calc(v.$font-size-main-tablet - 2px);
+            }
         }
     }
 
@@ -69,6 +77,10 @@
 
         span {
             font-size: calc(v.$font-size-main - 2px);
+
+            @media (max-width: 1024px) {
+                font-size: calc(v.$font-size-main-tablet - 2px);
+            }
         }
     }
 }

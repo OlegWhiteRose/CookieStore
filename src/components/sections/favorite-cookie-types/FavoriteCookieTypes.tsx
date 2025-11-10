@@ -1,10 +1,10 @@
 import './FavoriteCookieTypes.scss';
 
-import TopWave from '@components/wave/WaveTop';
-import BottomWave from '@components/wave/WaveBottom';
 import TypeForm from '@components/forms/type-form/TypeForm';
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
+import WaveTop from '@/components/wave/WaveTop';
+import WaveBottom from '@/components/wave/WaveBottom';
 
 import SugarCookie from '@assets/img/sugar-cookie.jpg';
 import Crackers from '@assets/img/сrackers.jpg';
@@ -49,7 +49,7 @@ const COOKIE_TYPES = [
 function FavoriteCookieTypes() {
     return (
         <div className="favorite-cookie-types">
-            <TopWave />
+            <WaveTop />
             <VerticalSection className="favorite-cookie-types__content">
                 <SectionContent>
                     <h1 className="favorite-cookie-types__content__title">Любимые виды печенья на выбор</h1>
@@ -60,7 +60,7 @@ function FavoriteCookieTypes() {
                     ))}
                 </SectionContent>
             </VerticalSection>
-            <BottomWave />
+            <WaveBottom />
         </div>
     )
 }

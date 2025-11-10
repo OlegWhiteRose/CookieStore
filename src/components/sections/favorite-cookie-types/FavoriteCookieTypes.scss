@@ -8,22 +8,61 @@
 
         background-color: t.$color-light-skin;
 
+        @media (max-width: 1024px) {
+            gap: 35px;
+        }
+
+        @media (max-width: 850px) {
+            gap: 25px;
+        }
+
         &__title {
             user-select: none;
             font-size: v.$font-size-section-title-main;
             font-family: v.$font-family-main;
             color: t.$color-black;
             font-weight: v.$font-weight-medium;
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-section-title-main-tablet;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-section-title-main-mobile;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 450px) {
+                font-size: v.$font-size-small-mobile;
+            }
         }
 
         &__types {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 50px;
+            gap: 30px;
 
-            @media (max-width: 1400px) {
+            @media (max-width: 1024px) {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            @media (max-width: 1024px) {
+                gap: 25px;
+            }
+
+            @media (max-width: 850px) {
+                gap: 20px;
+            }
+
+            @media (max-width: 450px) {
+                // grid-template-columns: 1fr;
+                // grid-template-rows: auto auto auto;
+                gap: 10px;
             }
         }
     }
