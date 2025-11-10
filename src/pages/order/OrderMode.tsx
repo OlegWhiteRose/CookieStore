@@ -178,7 +178,7 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
                         />
                     </div>
 
-                    <div className="order-page__form-row">
+                    <div className="order-page__form-row order-page__form-row--triple">
                         <TextInput 
                             label="Дом" 
                             placeholder="12" 

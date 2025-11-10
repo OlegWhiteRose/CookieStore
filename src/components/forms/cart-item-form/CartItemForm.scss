@@ -5,10 +5,15 @@
     position: relative;
     display: flex;
     width: 100%;
-    min-width: 0;
+    min-width: 310px;
 
     gap: 20px;
     padding: 20px;
+
+    @media (max-width: 700px) {
+        gap: 10px;
+        padding: 10px;
+    }
 
     background-color: transparent;
     border: 2px solid t.$color-background-first;
@@ -35,6 +40,11 @@
         svg {
             width: 24px;
             height: 24px;
+
+            @media (max-width: 700px) {
+                width: 16px;
+                height: 16px;
+            }
         }
 
         &:hover {
@@ -46,6 +56,12 @@
         flex-shrink: 0;
         width: 140px;
         height: 140px;
+
+        @media (max-width: 700px) {
+            width: 100px;
+            height: 100px;   
+        }
+
         border-radius: 12px;
 
         overflow: hidden;
@@ -66,6 +82,10 @@
         flex: 1;
         min-width: 0;
         padding-right: 15px;
+
+        @media (max-width: 700px) {
+            padding-right: 50px;
+        }
     }
 
     &__left {
@@ -73,6 +93,10 @@
         flex-direction: column;
         gap: 12px;
         min-width: 0;
+
+        @media (max-width: 700px) {
+            gap: 8px;
+        }
     }
 
     &__title {
@@ -81,6 +105,10 @@
         font-weight: v.$font-weight-bold;
         margin: 0;
         word-wrap: break-word;
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-small;
+        }
     }
 
     &__quantity {
@@ -88,6 +116,10 @@
         font-size: v.$font-size-small;
         font-weight: v.$font-weight-medium;
         color: t.$color-background-first;
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-small-mobile;
+        }
     }
 
     &__footer {
@@ -95,11 +127,23 @@
         justify-content: space-between;
         align-items: flex-end;
         justify-content: flex-end;
+
+        @media (max-width: 700px) {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            margin-top: 30px;
+        }
     }
 
     &__price {  
         font-family: v.$font-family-secondary;
         font-size: v.$font-size-content-top;
         font-weight: v.$font-weight-bold;
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-small;
+        }
     }
 }

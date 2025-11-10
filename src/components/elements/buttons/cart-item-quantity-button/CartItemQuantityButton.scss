@@ -26,6 +26,11 @@
         &:hover {
             opacity: 0.8;
         }
+
+        @media (max-width: 700px) {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &__count {
@@ -33,5 +38,9 @@
         color: t.$color-black;
         min-width: 20px;
         text-align: center;
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-small;
+        }
     }
 }

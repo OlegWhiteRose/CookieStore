@@ -2,12 +2,22 @@
 @use '@/variables.scss' as v;
 
 .order-page {
+    padding: 0 40px;
+
+    @media (max-width: 900px) {
+        padding: 20px;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
         align-items: center;
 
         gap: 40px;
+
+        @media (max-width: 700px) {
+            gap: 20px;
+        }
     }
 
     &__cart {
@@ -21,7 +31,13 @@
             background-color: t.$color-white;
             border-radius: 20px;
             padding: 35px 40px;
+
+            @media (max-width: 700px) {
+                padding: 20px;
+            }
+            
             width: 100%;
+
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -41,6 +57,11 @@
             gap: 40px;
             padding-top: 30px;
 
+            @media (max-width: 700px) {
+                gap: 20px;
+                flex-direction: column;
+            }
+
             &-total {
                 display: flex;
                 align-items: center;
@@ -52,6 +73,10 @@
                 font-size: v.$font-size-side-content;
                 font-weight: v.$font-weight-medium;
                 color: t.$color-black;
+
+                @media (max-width: 700px) {
+                    font-size: v.$font-size-side-content-tablet;
+                }
             }
 
             &-value {
@@ -59,6 +84,10 @@
                 font-size: v.$font-size-attention;
                 font-weight: v.$font-weight-bold;
                 color: t.$color-black;
+
+                @media (max-width: 700px) {
+                    font-size: v.$font-size-attention-tablet;
+                }
             }
         }
     }
@@ -85,6 +114,7 @@
         border-radius: 20px;
         padding: 35px 40px;
         width: 100%;
+        box-sizing: border-box;
 
         &-title {
             font-family: v.$font-family-main;
@@ -93,6 +123,10 @@
             color: t.$color-black;
             margin: 0 0 25px 0;
             user-select: none;
+
+            @media (max-width: 700px) {
+                font-size: v.$font-size-content-top-tablet;;
+            }
         }
 
         &-products {
@@ -170,6 +204,10 @@
                 font-size: v.$font-size-attention;
                 font-weight: v.$font-weight-bold;
                 color: t.$color-black;
+
+                @media (max-width: 700px) {
+                    font-size: v.$font-size-attention-mobile;
+                }
             }
         }
     }
@@ -180,6 +218,8 @@
         padding: 35px 40px;
         width: 100%;
 
+        box-sizing: border-box;
+
         &-title {
             font-family: v.$font-family-main;
             font-size: v.$font-size-side-content;
@@ -187,6 +227,10 @@
             color: t.$color-black;
             margin: 0;
             user-select: none;
+
+            @media (max-width: 700px) {
+                font-size: v.$font-size-content-top-tablet;
+            }
         }
     }
 
@@ -196,9 +240,22 @@
         gap: 25px;
 
         &-row {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             width: 100%;
+
+            @media (max-width: 700px) {
+                grid-template-columns: 1fr;
+            }
+
+            &--triple {
+                grid-template-columns: repeat(3, 1fr);
+
+                @media (max-width: 700px) {
+                    grid-template-columns: 1fr;
+                }
+            }
         }
     }
 }
