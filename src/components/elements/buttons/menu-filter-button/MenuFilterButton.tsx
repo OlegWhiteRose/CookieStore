@@ -71,7 +71,7 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                 onClick={handleButtonClick}
             >
                 <span className="menu-filter-button__icon">{active ? <CloseIcon /> : icon}</span>
-                {text}  
+                <span className="menu-filter-button__text">{text}</span>
             </button>
 
             <Poppup active={active} setActive={setActive} tagFor={buttonRef} align="right" top={80}>

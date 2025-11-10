@@ -16,6 +16,21 @@
     text-decoration: none;
 
     border-radius: 10px;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-main-tablet;
+        padding: 9px 18px;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-main-mobile;
+        padding: 8px 16px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
 }
 
 .btn--align-center { 

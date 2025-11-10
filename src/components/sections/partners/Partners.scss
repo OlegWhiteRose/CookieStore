@@ -77,10 +77,16 @@
         }
     }
 
-    &__content {    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        line-height: 0;
 
         &__section {
             background-color: t.$color-light-skin;
+            line-height: normal;
 
             &-items {
                 background-color: t.$color-light-skin;

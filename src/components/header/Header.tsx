@@ -36,7 +36,7 @@ function Header() {
     };
 
     return (
-        <div>
+        <div className="header-wrapper">
             <header className="header">
                 <HorizontalSection>
                     <SectionContent className="header__main">

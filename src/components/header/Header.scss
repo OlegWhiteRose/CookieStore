@@ -1,9 +1,18 @@
 @use '@/theme.scss' as t;
 @use '@/variables.scss' as v;
 
+.header-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
 .header {
     gap: 0px;
     background-color: t.$color-light-skin;
+    line-height: normal;
 
     &__main {
         display: flex;

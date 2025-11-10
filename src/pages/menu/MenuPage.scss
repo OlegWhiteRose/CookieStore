@@ -4,10 +4,30 @@
 .menu-page {
     padding: 60px v.$main-padding-horizontal;
 
+    @media (max-width: 899px) {
+        padding: 40px 30px;
+    }
+
+    @media (max-width: 599px) {
+        padding: 30px 20px;
+    }
+
+    @media (max-width: 450px) {
+        padding: 20px 15px;
+    }
+
     &__main {
         &-search {
             display: flex;
             gap: 40px;
+
+            @media (max-width: 899px) {
+                gap: 25px;
+            }
+
+            @media (max-width: 599px) {
+                gap: 15px;
+            }
         }
     }
 
@@ -35,7 +55,7 @@
 
     &__cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
         gap: 40px;
         transition: opacity 0.2s ease;
 
@@ -44,22 +64,33 @@
             pointer-events: none;
         }
 
-        @media (min-width: v.$critical-max-width) {
+        // Для больших экранов - 4 колонки
+        @media (min-width: 1200px) {
             grid-template-columns: repeat(4, 1fr);
         }
 
-        @media (min-width: calc(v.$critical-max-width - v.$card-breakpoint-additive)) 
-                and (max-width: v.$critical-max-width) {
+        // Для средних экранов - 3 колонки
+        @media (min-width: 900px) and (max-width: 1199px) {
             grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
-        @media (min-width: calc(v.$critical-max-width - v.$card-breakpoint-additive * 2)) 
-                and (max-width: calc(v.$critical-max-width - v.$card-breakpoint-additive)) {
+        // Для планшетов - 2 колонки
+        @media (min-width: 600px) and (max-width: 899px) {
             grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
         }
 
-        @media (max-width: calc(v.$critical-max-width - v.$card-breakpoint-additive * 2)) {
-            grid-template-columns: repeat(1, 1fr);
+        // Для мобильных - минимум 2 колонки
+        @media (max-width: 599px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        // Для очень маленьких экранов - 2 колонки с меньшим gap
+        @media (max-width: 450px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
     }
 

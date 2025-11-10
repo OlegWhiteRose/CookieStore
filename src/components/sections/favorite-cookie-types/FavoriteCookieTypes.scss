@@ -2,9 +2,16 @@
 @use '@/variables.scss' as v;
 
 .favorite-cookie-types {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+
     &__content {
         gap: v.$section-gap;
         padding: v.$section-padding-vertical v.$main-padding-horizontal;
+        line-height: normal;
 
         background-color: t.$color-light-skin;
 
