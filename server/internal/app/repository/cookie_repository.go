@@ -27,6 +27,15 @@ func convertImageURL(imgURL string) string {
 		return ""
 	}
 
+	// Replace internal minio URL with public URL
+	if strings.Contains(imgURL, "http://minio:9000/cookies/") {
+		// Extract filename
+		parts := strings.Split(imgURL, "/cookies/")
+		if len(parts) == 2 {
+			return "/cookies/" + parts[1]
+		}
+	}
+
 	if strings.HasPrefix(imgURL, "http://") || strings.HasPrefix(imgURL, "https://") {
 		return imgURL
 	}

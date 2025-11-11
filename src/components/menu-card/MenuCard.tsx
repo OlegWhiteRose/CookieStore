@@ -1,8 +1,10 @@
 import './MenuCard.scss';
+import { useState } from 'react';
 
 import MenuCardButton from '../elements/buttons/menu-card-button/MenuCardButton';
 import SpecialDateButton from '../elements/buttons/special-date-button/SpecialDateButton';
 import DefaultMenuImg from '@/assets/img/default-menu.jpg';
+import { ImageSkeleton } from '@/components/skeletons';
 
 interface MenuCardProps {
     id: number;
@@ -16,16 +18,21 @@ interface MenuCardProps {
 
 function MenuCard(props: MenuCardProps) {
     const { id, format, type, title, quantity, price, imgUrl } = props;
+    const [imageLoading, setImageLoading] = useState(true);
 
     return (
         <div className={`menu-card menu-card--format-${format}`}>
             <a href={`/good/${id}`} target="_blank" rel="noopener noreferrer">
+                {imageLoading && <ImageSkeleton className="menu-card__skeleton" />}
                 <img 
                     src={imgUrl || DefaultMenuImg} 
                     alt="Карточка" 
+                    style={{ display: imageLoading ? 'none' : 'block' }}
+                    onLoad={() => setImageLoading(false)}
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = DefaultMenuImg;
+                        setImageLoading(false);
                     }}
                 />
             </a>

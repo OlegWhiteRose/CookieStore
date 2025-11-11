@@ -1,6 +1,10 @@
 @use '@/theme.scss' as t;
 @use '@/variables.scss' as v;
 
+.menu-filter-button-wrapper {
+    position: relative;
+}
+
 .menu-filter-button {
     padding: 4px 24px;
     font-size: v.$font-size-main;

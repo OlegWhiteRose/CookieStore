@@ -65,14 +65,29 @@
             gap: 10px;
             text-align: right;
 
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                 font-size: v.$font-size-small;
+                gap: 9px;
+            }
+
+            @media (max-width: 1024px) {
+                font-size: 13px;
                 gap: 8px;
             }
 
             @media (max-width: 900px) {
                 font-size: 12px;
                 gap: 6px;
+            }
+
+            @media (max-width: 640px) {
+                font-size: 11px;
+                gap: 5px;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 10px;
+                gap: 4px;
             }
         }
     }

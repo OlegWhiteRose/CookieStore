@@ -28,13 +28,17 @@
 
     &__title {
         font-family: v.$font-family-main;
-        font-size: v.$font-size-attention;
+        font-size: v.$font-size-content-top;
         font-weight: v.$font-weight-medium;
         color: t.$color-black;
         margin: 0;
 
         @media (max-width: 900px) {
-            font-size: v.$font-size-side-content;
+            font-size: v.$font-size-main;
+        }
+
+        @media (max-width: 600px) {
+            font-size: v.$font-size-main-mobile;
         }
     }
 

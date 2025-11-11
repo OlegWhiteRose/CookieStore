@@ -8,12 +8,24 @@
 
     padding: v.$section-padding-vertical 0;
 
+    @media (max-width: 1200px) {
+        gap: 70px;
+    }
+
     @media (max-width: 1024px) {
         gap: 60px;
     }
 
     @media (max-width: 850px) {
-        gap: 40px;
+        gap: 45px;
+    }
+
+    @media (max-width: 640px) {
+        gap: 35px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 28px;
     }
 
     &__header {
@@ -25,12 +37,28 @@
 
         padding: 0 v.$main-padding-horizontal;
 
+        @media (max-width: 900px) {
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1200px) {
+            gap: 40px;
+        }
+
         @media (max-width: 1024px) {
             gap: 35px;
         }
 
         @media (max-width: 850px) {
-            gap: 25px;
+            gap: 28px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 22px;
+        }
+
+        @media (max-width: 480px) {
+            gap: 18px;
         }
 
         &__title {
@@ -40,16 +68,28 @@
             color: t.$color-white;
             text-align: center;
 
+            @media (max-width: 1200px) {
+                font-size: v.$font-size-attention;
+            }
+
             @media (max-width: 1024px) {
                 font-size: v.$font-size-attention-tablet;
             }
 
             @media (max-width: 850px) {
+                font-size: v.$font-size-side-content;
+            }
+
+            @media (max-width: 640px) {
                 font-size: v.$font-size-side-content-mobile;
             }
 
             @media (max-width: 600px) {
                 font-size: v.$font-size-content-top-mobile;
+            }
+
+            @media (max-width: 480px) {
+                font-size: v.$font-size-main;
             }
         }
 
@@ -63,16 +103,28 @@
             color: t.$color-white;
             text-align: center;
 
+            @media (max-width: 1200px) {
+                font-size: v.$font-size-side-content;
+            }
+
             @media (max-width: 1024px) {
                 font-size: v.$font-size-side-content-tablet;
             }
 
             @media (max-width: 850px) {
+                font-size: v.$font-size-content-top;
+            }
+
+            @media (max-width: 640px) {
                 font-size: v.$font-size-content-top-mobile;
             }
 
             @media (max-width: 600px) {
                 font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 480px) {
+                font-size: v.$font-size-small-mobile;
             }
         }
     }
@@ -95,6 +147,10 @@
                 gap: clamp(2px, 13%, 13%);
 
                 padding: v.$section-padding-vertical v.$main-padding-horizontal;
+
+                @media (max-width: 900px) {
+                    padding: v.$section-padding-vertical 20px;
+                }
 
                 @media (max-width: 450px) {
                     gap: 20px;

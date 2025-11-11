@@ -1,0 +1,62 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.about-page__section--highlight {
+    background-image: url('@/assets/img/make-people-happy.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 70px 50px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+
+    @media (max-width: 1200px) {
+        padding: 60px 40px;
+    }
+
+    @media (max-width: 900px) {
+        background-image: none;
+        background: linear-gradient(135deg, t.$color-background 0%, t.$color-background-dark 100%);
+        padding: 50px 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 45px 25px;
+        border-radius: 15px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 40px 20px;
+    }
+}
+
+.about-page__mission-content {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 50px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 1000px;
+    width: 100%;
+
+    @media (max-width: 1200px) {
+        padding: 40px;
+        max-width: 900px;
+    }
+
+    @media (max-width: 900px) {
+        background: none;
+        backdrop-filter: none;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .about-page__section-title {
+        color: t.$color-white;
+    }
+
+    .about-page__text {
+        color: t.$color-white;
+    }
+}

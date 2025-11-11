@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './MobileMenu.scss';
 
 import CloseIcon from '@assets/icon/close-bold.svg?react';
@@ -8,8 +8,18 @@ export interface MobileMenuProps {
     onClose: () => void;
 }
 
+const getPageTitle = (pathname: string): string => {
+    if (pathname.startsWith('/menu')) return 'Меню';
+    if (pathname.startsWith('/about')) return 'О нас';
+    if (pathname.startsWith('/contacts')) return 'Контакты';
+    if (pathname.startsWith('/order')) return 'Оформление заказа';
+    if (pathname === '/') return 'Главная';
+    return 'CookieStore';
+};
+
 function MobileMenu({ onClose }: MobileMenuProps) {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLinkClick = () => {
         onClose();
@@ -23,7 +33,7 @@ function MobileMenu({ onClose }: MobileMenuProps) {
     return (
         <div className="mobile-menu">
             <div className="mobile-menu__header">
-                <span className="mobile-menu__title">Меню</span>
+                <span className="mobile-menu__title">{getPageTitle(location.pathname)}</span>
                 <button className="mobile-menu__close" onClick={onClose}>
                     <CloseIcon />
                 </button>

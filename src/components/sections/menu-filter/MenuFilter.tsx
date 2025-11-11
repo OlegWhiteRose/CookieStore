@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './MenuFilter.scss';
 
 import RangeInput from '@/components/elements/inputs/range-input/RangeInput';
 import FilterApplyButton from '@/components/elements/buttons/filter-apply-button/FilterApplyButton';
+import CloseIcon from '@assets/icon/close-bold.svg?react';
 
 interface MenuFilterProps {
     initialFormat?: string;
@@ -22,6 +23,7 @@ interface MenuFilterProps {
         quantityFrom?: number;
         quantityTo?: number;
     }) => void;
+    onClose?: () => void;
 }
 
 const cookieTypes = [
@@ -43,7 +45,8 @@ function MenuFilter(props: MenuFilterProps) {
         initialQuantityTo,
         maxCostTo = 10000,
         maxQuantityTo = 500,
-        onApply
+        onApply,
+        onClose
     } = props;
 
     const [selectedFormat, setSelectedFormat] = useState<string>(initialFormat);
@@ -52,6 +55,12 @@ function MenuFilter(props: MenuFilterProps) {
     const [costTo, setCostTo] = useState<number | undefined>(initialCostTo);
     const [quantityFrom, setQuantityFrom] = useState<number | undefined>(initialQuantityFrom);
     const [quantityTo, setQuantityTo] = useState<number | undefined>(initialQuantityTo);
+
+    const panelRef = useRef<HTMLDivElement>(null);
+    const touchStartY = useRef<number>(0);
+    const scrollTop = useRef<number>(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [translateY, setTranslateY] = useState(0);
 
     useEffect(() => {
         setSelectedFormat(initialFormat);
@@ -70,6 +79,39 @@ function MenuFilter(props: MenuFilterProps) {
         );
     };
 
+    const handleTouchStart = (e: React.TouchEvent) => {
+        if (panelRef.current) {
+            scrollTop.current = panelRef.current.scrollTop;
+        }
+        touchStartY.current = e.touches[0].clientY;
+        setIsDragging(true);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!isDragging) return;
+        
+        const currentY = e.touches[0].clientY;
+        const diff = currentY - touchStartY.current;
+        
+        if (diff > 0 && scrollTop.current === 0) {
+            e.preventDefault(); 
+            setTranslateY(diff);
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+        
+        if (translateY > 80) {
+            setTranslateY(400);
+            setTimeout(() => {
+                onClose?.();
+            }, 200);
+        } else {
+            setTranslateY(0);
+        }
+    };
+
     const handleApply = () => {
         onApply({
             format: selectedFormat,
@@ -82,7 +124,32 @@ function MenuFilter(props: MenuFilterProps) {
     };
 
     return (
-        <div className="menu-filter">
+        <div 
+            className="menu-filter"
+            ref={panelRef}
+            style={{
+                transform: `translateY(${translateY}px)`,
+                transition: isDragging ? 'none' : 'transform 0.3s ease-out, opacity 0.3s ease-out',
+                opacity: translateY > 0 ? Math.max(0.5, 1 - translateY / 300) : 1
+            }}
+        >
+            <div 
+                className="menu-filter__handle"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchEnd}
+            ></div>
+            <div className="menu-filter__header">
+                <h3 className="menu-filter__title">Фильтры</h3>
+                <button 
+                    className="menu-filter__close" 
+                    onClick={onClose}
+                    aria-label="Закрыть"
+                >
+                    <CloseIcon />
+                </button>
+            </div>
             <div className="menu-filter__section">
                 <span className="menu-filter__section-title">Формат товара</span>
                 <div className="menu-filter__format-select">

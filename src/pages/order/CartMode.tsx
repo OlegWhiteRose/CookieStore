@@ -27,7 +27,11 @@ function CartMode({ cookies, draftCookies, loading }: CartModeProps) {
         return <div className="order-page__loader">Загрузка...</div>;
     }
 
-    if (cookies.length === 0) {
+    if (draftCookies.length > 0 && cookies.length === 0) {
+        return <span className="order-page__empty">Не удалось загрузить данные о товарах</span>;
+    }
+
+    if (draftCookies.length === 0) {
         return <span className="order-page__empty">Корзина пуста</span>;
     }
 

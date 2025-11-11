@@ -14,16 +14,19 @@
     @media (max-width: 899px) {
         padding: 15px;
         gap: 8px;
+        border-radius: 8px;
     }
 
     @media (max-width: 599px) {
         padding: 12px;
         gap: 6px;
+        border-radius: 6px;
     }
 
     @media (max-width: 450px) {
         padding: 8px;
         gap: 5px;
+        border-radius: 5px;
     }
 
     &__type {
@@ -130,18 +133,61 @@
         display: block;
         text-decoration: none;
         color: inherit;
+        position: relative;
 
         img {
             width: 100%;
             aspect-ratio: 1 / 1;
             border-radius: 10px;
             border: 2px solid t.$color-background-first;
+
+            @media (max-width: 899px) {
+                border-radius: 8px;
+            }
+
+            @media (max-width: 599px) {
+                border-radius: 6px;
+            }
+
+            @media (max-width: 450px) {
+                border-radius: 5px;
+            }
+        }
+    }
+
+    &__skeleton {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 10px;
+
+        @media (max-width: 899px) {
+            border-radius: 8px;
+        }
+
+        @media (max-width: 599px) {
+            border-radius: 6px;
+        }
+
+        @media (max-width: 450px) {
+            border-radius: 5px;
         }
     }
 
     img {
         width: 100%;
         border-radius: 10px;
+
+        @media (max-width: 899px) {
+            border-radius: 8px;
+        }
+
+        @media (max-width: 599px) {
+            border-radius: 6px;
+        }
+
+        @media (max-width: 450px) {
+            border-radius: 5px;
+        }
     }
 }
 

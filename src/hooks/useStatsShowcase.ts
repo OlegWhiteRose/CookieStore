@@ -10,10 +10,12 @@ interface StatsShowcase {
 export const useStatsShowcase = () => {
     const [stats, setStats] = useState<StatsShowcase[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const loadStats = async () => {
             setLoading(true);
+            setError(false);
 
             try {
                 const { data } = await showcaseApi.getStats();
@@ -35,6 +37,7 @@ export const useStatsShowcase = () => {
                 setStats(stats);
             } catch (err) {
                 console.error('Failed to load stats:', err);
+                setError(true);
             } finally {
                 setLoading(false);
             }
@@ -42,7 +45,7 @@ export const useStatsShowcase = () => {
     loadStats();
   }, []);
 
-  return { stats, loading };
+  return { stats, loading, error };
 };
 
 

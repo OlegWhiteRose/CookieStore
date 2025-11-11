@@ -15,7 +15,7 @@ function SpecialDateButton({ dateText }: SpecialDateButtonProps) {
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     return (
-        <>
+        <div className="special-date-button-wrapper">
             <button 
                 ref={buttonRef}
                 className="special-date-button" 
@@ -25,12 +25,12 @@ function SpecialDateButton({ dateText }: SpecialDateButtonProps) {
                 <AttentionIcon />
             </button>
 
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={40}>
+            <Poppup active={active} setActive={setActive} tagFor={buttonRef}>
                 <div className="special-date-button__content">
                     {dateText}
                 </div>
             </Poppup>
-        </>
+        </div>
     );
 }
 

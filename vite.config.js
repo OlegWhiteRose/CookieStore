@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(), 
     svgr(),
-    dts()
+    dts(),
   ],
   resolve: {
     alias: {
@@ -21,5 +21,19 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
       '@api': path.resolve(__dirname, './src/api'),
     }
-  }
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    minify: 'esbuild', 
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'redux-vendor': ['react-redux', '@reduxjs/toolkit'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 })

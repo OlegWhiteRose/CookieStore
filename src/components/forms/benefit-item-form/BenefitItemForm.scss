@@ -1,0 +1,60 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.about-page__benefit {
+    background-color: t.$color-white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 1200px) {
+        padding: 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 25px;
+        border-radius: 12px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 20px;
+    }
+}
+
+.about-page__benefit-icon {
+    font-size: 52px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 44px;
+        margin-bottom: 15px;
+    }
+}
+
+.about-page__benefit-title {
+    font-size: v.$font-size-content-top;
+    font-family: v.$font-family-main;
+    font-weight: v.$font-weight-bold;
+    color: t.$color-black;
+    margin: 0 0 15px 0;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: v.$font-size-content-top-mobile;
+        margin: 0 0 10px 0;
+    }
+}
+
+.about-page__benefit-text {
+    font-size: v.$font-size-main;
+    font-family: v.$font-family-secondary;
+    color: t.$color-background-first;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: v.$font-size-main-mobile;
+    }
+}

@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
 import './Poppup.scss';
 
 interface PoppupProps {
@@ -11,114 +10,82 @@ interface PoppupProps {
 }
 
 function Poppup(props: PoppupProps) {
-    const { active, setActive, children, tagFor, top } = props;
-
-    const [coords, setCoords] = useState({ top: 0, left: 0 });
-    const [alignRight, setAlignRight] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+    const { active, setActive, children } = props;
     const popupRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
+    const [alignLeft, setAlignLeft] = useState(false);
 
     useEffect(() => {
         if (!active) return;
 
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
-            const button = tagFor.current;
             const popup = popupRef.current;
+            const button = props.tagFor.current;
 
             if (
-                button && !button.contains(target) &&
-                popup && !popup.contains(target)
+                popup && !popup.contains(target) &&
+                button && !button.contains(target)
             ) {
                 setActive(false);
             }
         };
 
-        document.addEventListener('mousedown', handleClickOutside);
+        const timeoutId = setTimeout(() => {
+            document.addEventListener('mousedown', handleClickOutside);
+        }, 0);
 
         return () => {
+            clearTimeout(timeoutId);
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [active, setActive, tagFor]);
+    }, [active, setActive, props.tagFor]);
+
+    useEffect(() => {
+        if (!active) return;
+        
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) return;
+
+        const button = props.tagFor.current;
+        if (!button) return;
+
+        const rect = button.getBoundingClientRect();
+        const distanceFromLeft = rect.left;
+        const distanceFromRight = window.innerWidth - rect.right;
+
+        setAlignLeft(distanceFromLeft < distanceFromRight);
+    }, [active, props.tagFor]);
 
     useEffect(() => {
         if (!active) return;
 
-        const updateCoords = () => {
-            const el = tagFor.current;
-            const content = contentRef.current;
-            if (!el || !content) return;
-
-            const rect = el.getBoundingClientRect();
-            const contentWidth = content.offsetWidth || 200;
-            
-            const distanceFromLeft = rect.x;
-            const distanceFromRight = window.innerWidth - (rect.x + rect.width);
-            
-            const shouldAlignRight = distanceFromRight < distanceFromLeft;
-            
-            setAlignRight(shouldAlignRight);
-
-            let left = rect.x;
-            if (shouldAlignRight) {
-                left = rect.x + rect.width;
-            }
-
-            setCoords({
-                top: rect.y + (top ?? 0),
-                left: left,
-            });
-        };
+        const isMobile = window.innerWidth <= 768;
         
-        updateCoords();
-
-        const handleScroll = () => {
-            setIsVisible(false);
-            
-            setTimeout(() => {
-                if (active) {
-                    setActive(false);
-                }
-            }, 200);
-        };
-
-        window.addEventListener('resize', updateCoords);
-        window.addEventListener('scroll', handleScroll, true);
-
-        return () => {
-            window.removeEventListener('resize', updateCoords);
-            window.removeEventListener('scroll', handleScroll, true);
-        };
-    }, [active, top, tagFor, setActive]);
-
-    useEffect(() => {
-        if (active) {
-            setIsVisible(true);
-        }
-    }, [active]);
+        if (isMobile) {
+            document.body.style.overflow = 'hidden';
+            return () => {
+                document.body.style.overflow = '';
+            };
+        } 
+    }, [active, setActive]);
 
 
     if (!active) return null;
 
-    return createPortal(
-        <div
-            ref={popupRef}
-            className={`poppup ${isVisible ? 'poppup--visible' : 'poppup--hidden'}`}
-        >
+    return (
+        <>
+            <div 
+                className="poppup-overlay" 
+                onClick={() => setActive(false)}
+            />
+            
             <div
-                ref={contentRef}
-                className="poppup__content" 
-                style={{
-                    top: coords.top,
-                    left: coords.left,
-                    transform: alignRight ? 'translateX(-100%)' : undefined,
-                }}
+                ref={popupRef}
+                className={`poppup ${alignLeft ? 'poppup--align-left' : ''}`}
             >
                 {children}
             </div>
-        </div>,
-        document.body
+        </>
     );
 }
 

@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeCookie } from '@/store/draft/draftReducer';
 
 import './CartItemForm.scss';
 
 import CartItemQuantityButton from '@components/elements/buttons/cart-item-quantity-button/CartItemQuantityButton';
+import { ImageSkeleton } from '@/components/skeletons';
 
 import CloseBoldIcon from '@assets/icon/close-bold.svg?react';
 import DefaultMenuImg from '@/assets/img/default-menu.jpg';
@@ -19,6 +21,7 @@ interface CartItemFormProps {
 function CartItemForm(props: CartItemFormProps) {
     const { id, title, quantity, totalPrice, imgUrl } = props;
     const dispatch = useDispatch();
+    const [imageLoading, setImageLoading] = useState(true);
 
     const handleRemove = () => {
         dispatch(removeCookie(id));
@@ -30,13 +33,17 @@ function CartItemForm(props: CartItemFormProps) {
                 <CloseBoldIcon />
             </button>
             <div className="cart-item-form__image-wrapper">
+                {imageLoading && <ImageSkeleton className="cart-item-form__skeleton" />}
                 <img 
                     src={imgUrl || DefaultMenuImg} 
                     alt={title} 
                     className="cart-item-form__image"
+                    style={{ display: imageLoading ? 'none' : 'block' }}
+                    onLoad={() => setImageLoading(false)}
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = DefaultMenuImg;
+                        setImageLoading(false);
                     }}
                 />
             </div>

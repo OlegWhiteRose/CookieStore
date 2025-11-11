@@ -1,0 +1,34 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.about-page__benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    margin-top: 45px;
+
+    @media (max-width: 1200px) {
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 15px;
+        margin-top: 25px;
+    }
+}

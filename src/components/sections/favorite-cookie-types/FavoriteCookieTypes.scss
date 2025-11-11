@@ -15,12 +15,28 @@
 
         background-color: t.$color-light-skin;
 
+        @media (max-width: 900px) {
+            padding: v.$section-padding-vertical 20px;
+        }
+
+        @media (max-width: 1200px) {
+            gap: 40px;
+        }
+
         @media (max-width: 1024px) {
             gap: 35px;
         }
 
         @media (max-width: 850px) {
-            gap: 25px;
+            gap: 28px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 22px;
+        }
+
+        @media (max-width: 480px) {
+            gap: 18px;
         }
 
         &__title {
@@ -30,12 +46,20 @@
             color: t.$color-black;
             font-weight: v.$font-weight-medium;
 
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                 font-size: v.$font-size-section-title-main-tablet;
+            }
+
+            @media (max-width: 1024px) {
+                font-size: calc(v.$font-size-section-title-main-tablet - 2px);
             }
 
             @media (max-width: 850px) {
                 font-size: v.$font-size-section-title-main-mobile;
+            }
+
+            @media (max-width: 640px) {
+                font-size: v.$font-size-main;
             }
 
             @media (max-width: 600px) {
@@ -51,14 +75,14 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 30px;
+            gap: 35px;
 
-            @media (max-width: 1024px) {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            @media (max-width: 1200px) {
+                gap: 30px;
             }
 
             @media (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
 
@@ -66,10 +90,12 @@
                 gap: 20px;
             }
 
+            @media (max-width: 640px) {
+                gap: 15px;
+            }
+
             @media (max-width: 450px) {
-                // grid-template-columns: 1fr;
-                // grid-template-rows: auto auto auto;
-                gap: 10px;
+                gap: 12px;
             }
         }
     }

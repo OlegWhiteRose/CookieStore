@@ -2,13 +2,20 @@
 @use '@/variables.scss' as v;
 
 .range-input {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     width: 100%;
 
+    @media (max-width: 450px) {
+        gap: 8px;
+    }
+
     &__field {
         display: block;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
 
         padding: 10px;
         border-radius: 10px;

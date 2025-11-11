@@ -17,11 +17,15 @@
         }
 
         @media (max-width: 900px) {
-            font-size: v.$font-size-stats-number-mobile;
+            font-size: 52px;
         }
 
         @media (max-width: 700px) {
-            font-size: v.$font-size-attention-mobile;
+            font-size: 44px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 28px;
         }
     }
 
@@ -38,11 +42,15 @@
         }
 
         @media (max-width: 900px) {
-            font-size: v.$font-size-content-top-mobile;
+            font-size: v.$font-size-side-content-mobile;
         }
 
         @media (max-width: 700px) {
-            font-size: v.$font-size-small-mobile;
+            font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 480px) {
+            font-size: v.$font-size-main-mobile;
         }
     }
     

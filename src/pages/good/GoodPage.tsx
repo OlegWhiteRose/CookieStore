@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import '../pages.scss';
@@ -10,11 +11,13 @@ import VerticalSection from '@components/templates/vertical-section/VerticalSect
 import SectionContent from '@/components/templates/section-content/SectionContent';
 import GoodCardButton from '@components/elements/buttons/good-card-button/GoodCardButton';
 import SpecialDateButton from '@components/elements/buttons/special-date-button/SpecialDateButton';
+import { ImageSkeleton } from '@/components/skeletons';
 import { useCookie } from '@/hooks/useCookie';
 
 function GoodPage() {
     const { id } = useParams();
     const { cookie, loading, error } = useCookie(id);
+    const [imageLoading, setImageLoading] = useState(true);
 
     if (loading) {
         return (
@@ -43,12 +46,16 @@ function GoodPage() {
             <SectionContent className={`good-page__main good-page__main--format-${format}`}>
                 <div className="good-page__main__container">
                     <div className="good-page__main__container__image-container">
+                        {imageLoading && <ImageSkeleton className="good-page__image-skeleton" />}
                         <img 
                             src={cookie.img_url || DefaultMenuImg} 
                             alt={cookie.title}
+                            style={{ display: imageLoading ? 'none' : 'block' }}
+                            onLoad={() => setImageLoading(false)}
                             onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 target.src = DefaultMenuImg;
+                                setImageLoading(false);
                             }}
                         />
                     </div>

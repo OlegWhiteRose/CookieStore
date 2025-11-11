@@ -6,12 +6,28 @@
     gap: 80px;
     padding: v.$section-padding-vertical v.$main-padding-horizontal;
 
+    @media (max-width: 900px) {
+        padding: v.$section-padding-vertical 20px;
+    }
+
+    @media (max-width: 1200px) {
+        gap: 70px;
+    }
+
     @media (max-width: 1024px) {
         gap: 60px;
     }
 
     @media (max-width: 850px) {
-        gap: 40px;
+        gap: 45px;
+    }
+
+    @media (max-width: 640px) {
+        gap: 35px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 28px;
     }
 
     &__title {
@@ -21,16 +37,28 @@
         font-size: v.$font-size-attention-big;
         text-align: center;
 
+        @media (max-width: 1200px) {
+            font-size: v.$font-size-attention;
+        }
+
         @media (max-width: 1024px) {
             font-size: v.$font-size-attention-tablet;
         }
 
         @media (max-width: 850px) {
+            font-size: v.$font-size-side-content;
+        }
+
+        @media (max-width: 640px) {
             font-size: v.$font-size-side-content-mobile;
         }
 
         @media (max-width: 600px) {
             font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 480px) {
+            font-size: v.$font-size-main;
         }
     }
 
@@ -44,12 +72,20 @@
         gap: v.$section-gap;
         align-items: stretch;
 
+        @media (max-width: 1200px) {
+            gap: 45px;
+        }
+
         @media (max-width: 1024px) {
             gap: 40px;
         }
 
         @media (max-width: 850px) {
-            gap: 30px;
+            gap: 32px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 25px;
         }
 
         @media (max-width: 600px) {
@@ -60,6 +96,10 @@
                 "main"
                 "left"
                 "right";
+        }
+
+        @media (max-width: 480px) {
+            gap: 18px;
         }
     }
 

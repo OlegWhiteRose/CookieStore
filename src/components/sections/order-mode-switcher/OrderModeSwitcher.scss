@@ -13,6 +13,22 @@
         align-items: flex-start;
         position: relative;
 
+        @media (max-width: 900px) {
+            gap: 50px;
+        }
+
+        @media (max-width: 768px) {
+            gap: 45px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 40px;
+        }
+
+        @media (max-width: 480px) {
+            gap: 35px;
+        }
+
         &::before {
             content: '';
             position: absolute;
@@ -23,6 +39,26 @@
             height: 2px;
             background-color: t.$color-background-first;
             z-index: 1;
+
+            @media (max-width: 900px) {
+                top: 22px;
+                width: calc(100% - 100px);
+            }
+
+            @media (max-width: 768px) {
+                top: 20px;
+                width: calc(100% - 90px);
+            }
+
+            @media (max-width: 640px) {
+                top: 18px;
+                width: calc(100% - 80px);
+            }
+
+            @media (max-width: 480px) {
+                top: 16px;
+                width: calc(100% - 70px);
+            }
         }
     }
 
@@ -46,6 +82,21 @@
 
         @media (max-width: 1024px) {
             font-size: v.$font-size-main-tablet;
+            gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 640px) {
+            font-size: v.$font-size-small-mobile;
+            gap: 7px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 11px;
+            gap: 6px;
         }
 
         &--active {
@@ -75,6 +126,26 @@
 
         @media (max-width: 1024px) {
             font-size: v.$font-size-content-top-tablet;
+            width: 45px;
+            height: 45px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: v.$font-size-content-top-mobile;
+            width: 40px;
+            height: 40px;
+        }
+
+        @media (max-width: 640px) {
+            font-size: v.$font-size-main-mobile;
+            width: 36px;
+            height: 36px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: v.$font-size-small-mobile;
+            width: 32px;
+            height: 32px;
         }
     }
 

@@ -1,12 +1,93 @@
-# React + Vite
+# CookieStore
+Интернет-магазин печенья 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img width="100%" src="readme-img.jpg" alt="CookieStore Preview">
 
-Currently, two official plugins are available:
+## 🔗 Ссылки
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Сайт проекта](http://82.202.141.106)
 
-## Expanding the ESLint configuration
+## 🛠 Используемые технологии
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- **React** 
+- **TypeScript** 
+- **Redux Toolkit** 
+- **React Router** 
+- **Vite**
+- **SCSS**
+
+### Backend
+- **Golang**
+- **PostgreSQL** 
+- **Minio** 
+- **Docker** 
+
+## Ключевые решения
+
+### Корзина на клиенте
+- Корзина товаров хранится в **Redux store** и синхронизируется с **localStorage**
+- Данные о товарах загружаются с сервера только при необходимости
+
+### Адаптивный дизайн
+- Полная адаптация под все устройства (от 300px до 1400px+)
+
+### Конфигурация
+- Docker Compose
+- Nginx 
+
+## 📋 Возможности проекта
+
+- ✅ Каталог товаров с фильтрацией и поиском
+- ✅ Карточки товаров с подробной информацией
+- ✅ Корзина покупок
+- ✅ Оформление заказа 
+- ✅ Адаптивный дизайн для всех устройств
+- ✅ Система уведомлений 
+- ✅ Копирование контактов в буфер обмена
+- ✅ Синхронизация между вкладками с помощью localstorage
+
+## 🚀 Запуск проекта
+
+### Production (Docker Compose)
+
+```bash
+# Клонирование репозитория
+git clone <repository-url>
+cd CookieStore
+
+# Запуск всех сервисов (Frontend, Backend, PostgreSQL)
+docker-compose -f docker-compose.prod.yml up -d
+
+# Остановка сервисов
+docker-compose -f docker-compose.prod.yml down
+```
+### Development
+
+#### Backend
+
+```bash
+cd server
+
+# Запуск сервера на 8090 порту
+go run cmd/server/main.go
+```
+
+#### Frontend
+
+```bash
+# Из корня проекта
+
+# Установка зависимостей
+npm install
+
+# Запуск dev сервера
+npm run dev
+
+# Production сборка
+npm run build
+```
+
+## 📄 Лицензия
+
+MIT

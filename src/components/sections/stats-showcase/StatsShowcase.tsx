@@ -7,9 +7,9 @@ import SectionContent from '@/components/templates/section-content/SectionConten
 import VerticalSection from '@/components/templates/vertical-section/VerticalSection';
 
 function StatsShowcase() {
-    const { stats, loading } = useStatsShowcase();
+    const { stats, loading, error } = useStatsShowcase();
 
-    if (loading) {
+    if (loading || error) {
         return <></>;
     }
 

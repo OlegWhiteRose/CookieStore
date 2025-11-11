@@ -64,7 +64,7 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
     };
 
     return (
-        <>
+        <div className="menu-filter-button-wrapper">
             <button 
                 ref={buttonRef}
                 className="btn btn--default btn--align-center menu-filter-button" 
@@ -74,7 +74,7 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                 <span className="menu-filter-button__text">{text}</span>
             </button>
 
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={80}>
+            <Poppup active={active} setActive={setActive} tagFor={buttonRef}>
                 <MenuFilter
                     initialFormat={initialFormat}
                     initialTypes={initialTypes}
@@ -85,9 +85,10 @@ function MenuFilterButton(props: MenuFilterButtonProps) {
                     maxCostTo={maxCostTo}
                     maxQuantityTo={maxQuantityTo}
                     onApply={handleApply}
+                    onClose={() => setActive(false)}
                 />
             </Poppup>
-        </>
+        </div>
     );
 }
 

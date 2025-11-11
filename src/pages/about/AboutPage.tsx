@@ -1,23 +1,22 @@
-import { useRef, useState } from 'react';
-
 import '../pages.scss';
 import './AboutPage.scss';
 
-import Poppup from '@/components/templates/poppup/Poppup';
+import VerticalSection from '@components/templates/vertical-section/VerticalSection';
+import AboutHero from '@/components/sections/about-hero/AboutHero';
+import AboutHistory from '@/components/sections/about-history/AboutHistory';
+import AboutMission from '@/components/sections/about-mission/AboutMission';
+import AboutBenefits from '@/components/sections/about-benefits/AboutBenefits';
+import AboutAssortment from '@/components/sections/about-assortment/AboutAssortment';
 
 function AboutPage() {
-    const [active, setActive] = useState(false);
-    const buttonRef = useRef<HTMLButtonElement>(null);
-
-    console.log(active);
-
     return (
-        <div className='page about-page'>
-            <button ref={buttonRef} onClick={() => setActive(!active)}>Open</button>
-            <Poppup active={active} setActive={setActive} tagFor={buttonRef} top={100}>
-                <p>123</p>
-            </Poppup>
-        </div>
+        <VerticalSection className='page about-page'>
+            <AboutHero />
+            <AboutHistory />
+            <AboutMission />
+            <AboutBenefits />
+            <AboutAssortment />
+        </VerticalSection>
     )
 }
 
