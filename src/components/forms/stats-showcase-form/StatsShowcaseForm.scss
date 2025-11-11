@@ -1,0 +1,58 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.stats-showcase-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__number {
+        font-size: v.$font-size-stats-number;
+        font-weight: v.$font-weight-medium;
+        font-family: v.$font-family-secondary;
+        color: t.$color-white;
+
+        @media (max-width: 1250px) {
+            font-size: v.$font-size-stats-number-tablet;
+        }
+
+        @media (max-width: 900px) {
+            font-size: 52px;
+        }
+
+        @media (max-width: 700px) {
+            font-size: 44px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 28px;
+        }
+    }
+
+    &__description {
+        font-size: v.$font-size-attention;
+        font-weight: v.$font-weight-medium;
+        font-family: v.$font-family-secondary;
+        color: t.$color-white;
+
+        text-align: center;
+
+        @media (max-width: 1250px) {
+            font-size: v.$font-size-section-title-main-tablet;
+        }
+
+        @media (max-width: 900px) {
+            font-size: v.$font-size-side-content-mobile;
+        }
+
+        @media (max-width: 700px) {
+            font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 480px) {
+            font-size: v.$font-size-main-mobile;
+        }
+    }
+    
+}
+

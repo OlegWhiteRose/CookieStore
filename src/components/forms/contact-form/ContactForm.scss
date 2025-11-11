@@ -1,0 +1,125 @@
+@use '@/variables' as v;
+@use '@/theme' as t;
+
+.contact-form {
+    cursor: pointer;
+    display: grid;
+    background-color: t.$color-light-skin;
+    gap: 10px;
+
+    will-change: transform;
+
+    min-height: 210px;
+    grid-template-rows: auto auto 1fr;
+
+    border-radius: 20px;
+    padding: 20px 20px;
+
+    @media (max-width: 900px) {
+        border-radius: 15px;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 190px;
+        padding: 18px 18px;
+    }
+
+    @media (max-width: 640px) {
+        min-height: 180px;
+        padding: 16px 16px;
+        border-radius: 12px;
+    }
+
+    @media (max-width: 480px) {
+        min-height: 100px;
+        padding: 14px 14px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    &__title {
+        font-size: v.$font-size-main;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-main-tablet;
+        }
+
+        @media (max-width: 800px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 450px) {
+            font-size: v.$font-size-small-mobile;
+        }
+    }
+
+    &__content {
+        font-size: v.$font-size-content-top;
+
+        @media (max-width: 1024px) {
+            font-size: v.$font-size-content-top-tablet;
+        }
+
+        @media (max-width: 799px) {
+            font-size: v.$font-size-content-top-mobile;
+        }
+
+        @media (max-width: 500px) {
+            font-size: v.$font-size-small-mobile;
+        }
+    }
+
+    &__bottom { 
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        span {
+            font-size: v.$font-size-main;
+            color: t.$color-background-first;
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-main-tablet;
+            }
+
+            @media (max-width: 799px) {
+                font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 500px) {
+                font-size: v.$font-size-small-mobile;
+            }
+
+            @media (max-width: 450px) {
+                font-size: v.$font-size-small-mobile;
+            }
+        }
+
+        &-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0; 
+            
+            padding-left: 20px;
+
+            @media (max-width: 599px) {
+                width: 40px;
+                height: 40px;
+                padding-left: 15px;
+            }
+
+            @media (max-width: 450px) {
+                width: 35px;
+                height: 35px;
+                padding-left: 10px;
+            }
+        }
+    } 
+
+    &:hover {
+        transform: scale(1.01);
+        transition: transform 0.5s ease-in-out;
+    }
+}
+
+

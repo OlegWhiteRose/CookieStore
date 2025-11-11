@@ -1,0 +1,40 @@
+@use '@/theme.scss' as t;
+
+.bottom {
+    transform: rotate(180deg);
+}
+
+.top, .bottom {
+    --wave-color: #{t.$color-light-skin};
+
+    display: block;
+    height: 60px;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+    
+    margin-top: -1px;
+    margin-bottom: -1px;
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        transform: scaleY(1.01);
+    }
+
+    @media (max-width: 1024px) {
+        height: 45px;
+    }
+
+    @media (max-width: 850px) {
+        height: 30px;
+    }
+
+    @media (max-width: 600px) {
+        height: 20px;
+    }
+}

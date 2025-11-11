@@ -1,0 +1,90 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.type-form {
+    will-change: transform;
+
+    &__background {
+        display: flex;
+        overflow: hidden;
+        aspect-ratio: 3 / 1;
+        max-width: 600px;
+        position: relative;
+        cursor: pointer;
+
+        padding: 30px 40px;
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 20px;
+        filter: drop-shadow(0 4px 4px rgba(0,0,0,0.25));
+
+        @media (max-width: 1400px) {
+            padding: 20px 30px;
+        }
+
+        @media (max-width: 600px) {
+            padding: 15px 20px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 450px) {
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: inherit;
+            z-index: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        &:hover::before {
+            transform: scale(1.05);
+        }
+
+        * {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    &__title-container {
+        user-select: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: min-content;
+        width: min-content;
+
+        padding: 10px;
+        border-radius: 20px;
+
+        font-size: v.$font-size-section-title-main;
+        color: t.$color-white;
+        text-align: center;
+
+        @media (max-width: 1400px) {
+            font-size: v.$font-size-section-title-main-tablet;
+        }
+
+        @media (max-width: 850px) {
+            font-size: v.$font-size-section-title-main-mobile;
+        }
+
+        @media (max-width: 450px) {
+            font-size: v.$font-size-small-mobile;
+        }
+    }
+
+    &:hover {
+        .type-form__title-container {
+            background-color: rgba(0, 0, 0, 0.7);;
+        }
+    }    
+}
+

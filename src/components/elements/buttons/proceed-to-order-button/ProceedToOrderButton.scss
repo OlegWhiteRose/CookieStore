@@ -1,0 +1,16 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.proceed-to-order-button {
+    gap: 10px;
+    width: fit-content;
+
+    padding: 15px;
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+

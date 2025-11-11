@@ -1,12 +1,48 @@
-@import './theme.scss';
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
 
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background-color: $color-background;
+  background-color: t.$color-background;
+  width: 100%;
+  max-width: 100vw;
 }
 
+#root {
+  font-family: v.$font-family-main;
+  font-size: v.$font-size-main;
+  color: t.$color-black;
+  
+  @media (max-width: 850px) {
+    font-size: v.$font-size-main-mobile;
+  }
+}
+
+a {
+  cursor: pointer;
+  color: inherit;  
+  text-decoration-line: none;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+span, h1, label {
+  user-select: none;
+  margin: 0;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}

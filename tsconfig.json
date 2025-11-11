@@ -21,10 +21,13 @@
             "@components/*": ["src/components/*"],
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
-            "@assets/*": ["src/assets/*"]
+            "@assets/*": ["public/assets/*"],
+            "@common/*": ["src/common/*"],
+            "@store/*": ["src/store/*"],
+            "@api/*": ["src/api/*"],
         }
     },
-    "include": ["src"],
+    "include": ["src", "vite-env.d.ts"],
     "exclude": ["node_modules"],
 }
 

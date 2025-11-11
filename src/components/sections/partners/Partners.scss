@@ -1,0 +1,161 @@
+@use '@/variables.scss' as v;
+@use '@/theme.scss' as t;
+
+.partners { 
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    padding: v.$section-padding-vertical 0;
+
+    @media (max-width: 1200px) {
+        gap: 70px;
+    }
+
+    @media (max-width: 1024px) {
+        gap: 60px;
+    }
+
+    @media (max-width: 850px) {
+        gap: 45px;
+    }
+
+    @media (max-width: 640px) {
+        gap: 35px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 28px;
+    }
+
+    &__header {
+        gap: v.$section-gap;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        padding: 0 v.$main-padding-horizontal;
+
+        @media (max-width: 900px) {
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1200px) {
+            gap: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            gap: 35px;
+        }
+
+        @media (max-width: 850px) {
+            gap: 28px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 22px;
+        }
+
+        @media (max-width: 480px) {
+            gap: 18px;
+        }
+
+        &__title {
+            font-size: v.$font-size-attention-big;
+            font-weight: v.$font-weight-medium;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+            text-align: center;
+
+            @media (max-width: 1200px) {
+                font-size: v.$font-size-attention;
+            }
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-attention-tablet;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-side-content;
+            }
+
+            @media (max-width: 640px) {
+                font-size: v.$font-size-side-content-mobile;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
+
+            @media (max-width: 480px) {
+                font-size: v.$font-size-main;
+            }
+        }
+
+        &__description {
+            margin: 0;
+
+            user-select: none;  
+            font-size: v.$font-size-attention;
+            font-weight: v.$font-weight-medium;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+            text-align: center;
+
+            @media (max-width: 1200px) {
+                font-size: v.$font-size-side-content;
+            }
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-side-content-tablet;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-content-top;
+            }
+
+            @media (max-width: 640px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 480px) {
+                font-size: v.$font-size-small-mobile;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+
+        &__section {
+            background-color: t.$color-light-skin;
+            line-height: normal;
+
+            &-items {
+                background-color: t.$color-light-skin;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: clamp(2px, 13%, 13%);
+
+                padding: v.$section-padding-vertical v.$main-padding-horizontal;
+
+                @media (max-width: 900px) {
+                    padding: v.$section-padding-vertical 20px;
+                }
+
+                @media (max-width: 450px) {
+                    gap: 20px;
+                }
+            }
+        }
+    }
+}

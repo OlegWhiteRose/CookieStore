@@ -1,0 +1,53 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.menu-filter-button-wrapper {
+    position: relative;
+}
+
+.menu-filter-button {
+    padding: 4px 24px;
+    font-size: v.$font-size-main;
+    font-family: v.$font-family-main;
+    height: 50px;
+    white-space: nowrap;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-main-tablet;
+    }
+
+    @media (max-width: 599px) {
+        height: 45px;
+        padding: 12px;
+        min-width: 45px;
+    }
+
+    @media (max-width: 450px) {
+        height: 42px;
+        padding: 10px;
+        min-width: 42px;
+    }
+
+    &__icon {
+        margin-right: 10px;
+        width: 1em;
+        height: 1em;
+
+        @media (max-width: 599px) {
+            margin-right: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 450px) {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__text {
+        @media (max-width: 599px) {
+            display: none;
+        }
+    }
+}

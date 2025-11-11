@@ -1,9 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import svgr from 'vite-plugin-svgr'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(), 
+    svgr(),
+    dts(),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -11,6 +17,23 @@ export default defineConfig({
       '@layouts': path.resolve(__dirname, './src/layouts'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@assets': path.resolve(__dirname, './src/assets'),
+      '@common': path.resolve(__dirname, './src/common'),
+      '@store': path.resolve(__dirname, './src/store'),
+      '@api': path.resolve(__dirname, './src/api'),
     }
-  }
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    minify: 'esbuild', 
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'redux-vendor': ['react-redux', '@reduxjs/toolkit'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 })

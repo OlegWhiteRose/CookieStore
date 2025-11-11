@@ -1,0 +1,60 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.about-page__hero {
+    text-align: center;
+    padding: 80px 40px;
+    background-image: url('@/assets/img/cookies-falling-down.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-bottom: 60px;
+    position: relative;
+
+    @media (max-width: 1200px) {
+        padding: 60px 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 50px 20px;
+        margin-bottom: 40px;
+        border-radius: 15px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 40px 15px;
+        margin-bottom: 30px;
+    }
+}
+
+.about-page__hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 20px 40px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 90%;
+
+    @media (max-width: 768px) {
+        padding: 15px 30px;
+        max-width: 95%;
+    }
+
+    @media (max-width: 480px) {
+        padding: 12px 20px;
+        max-width: 100%;
+    }
+}
+
+.about-page__title {
+    font-size: v.$font-size-h1-title;
+    font-family: v.$font-family-main;
+    font-weight: v.$font-weight-bold;
+    color: t.$color-white;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: v.$font-size-h1-title-mobile;
+    }
+}

@@ -1,0 +1,36 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.range-input {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+
+    @media (max-width: 450px) {
+        gap: 8px;
+    }
+
+    &__field {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid t.$color-background-first;
+        background-color: t.$color-white;
+        font-size: v.$font-size-main;
+        font-family: v.$font-family-secondary;
+
+        @media (max-width: 600px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        @media (max-width: 450px) {
+            font-size: 12px;
+            padding: 8px;
+        }
+    }
+}

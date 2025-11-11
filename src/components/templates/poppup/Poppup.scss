@@ -1,0 +1,111 @@
+.poppup {
+    @media (min-width: 769px) {
+        position: absolute;
+        top: 100%;
+        z-index: 1000;
+        margin-top: 10px;
+        
+        max-width: calc(100vw - 20px);
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        right: 0;
+        
+        &--align-left {
+            right: auto;
+            left: 0;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    @media (max-width: 768px) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        
+        width: 100%;
+        max-height: 85vh;
+        
+        background: white;
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        animation: slideUp 0.3s ease-out;
+        
+        .special-date-button__content {
+            margin: 0 auto;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+        }
+    }
+}
+
+.poppup-overlay {
+    @media (max-width: 768px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s ease-out;
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+    @media (min-width: 769px) {
+        display: none;
+    }
+}
+

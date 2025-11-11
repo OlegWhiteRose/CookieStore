@@ -1,0 +1,35 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.search-button {
+    cursor: pointer;
+    height: 50px;
+    
+    border: none;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+    margin-right: -16px;
+    transition: opacity 0.2s;
+    font-size: v.$font-size-main;
+    font-family: v.$font-family-main;
+    font-weight: v.$font-weight-medium;
+    white-space: nowrap;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-main-tablet;
+    }
+
+    @media (max-width: 599px) {
+        height: 45px;
+        padding: 12px 15px;
+        font-size: v.$font-size-main-mobile;
+        font-weight: normal;
+    }
+
+    @media (max-width: 450px) {
+        height: 42px;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: normal;
+    }
+}

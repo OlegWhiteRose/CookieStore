@@ -1,0 +1,15 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.send-button {
+    padding: 15px;
+    width: 100%;
+
+    @media (max-width: 599px) {
+        padding: 12px;
+    }
+
+    @media (max-width: 450px) {
+        padding: 10px;
+    }
+}

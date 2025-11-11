@@ -1,0 +1,40 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.cart-quantity-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: t.$color-black;
+    padding: 6px 10px;
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: none;
+        border: none;
+
+        cursor: pointer;
+        color: t.$color-white;
+        
+        padding: 4px 10px;
+
+        transition: background-color 0.2s ease;
+        
+        line-height: 1;
+        min-width: 28px;
+        
+        &:hover {
+            background-color: t.$color-background-first;
+        }
+    }
+
+    &__count {
+        color: t.$color-white;
+
+        min-width: 24px;
+        text-align: center;
+    }
+}

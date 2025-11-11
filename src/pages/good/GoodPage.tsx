@@ -1,0 +1,142 @@
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import '../pages.scss';
+import './GoodPage.scss';
+
+import AttentionIcon from '@/assets/icon/attention_danger_icon.svg?react';
+import DefaultMenuImg from '@/assets/img/default-menu.jpg';
+
+import VerticalSection from '@components/templates/vertical-section/VerticalSection';
+import SectionContent from '@/components/templates/section-content/SectionContent';
+import GoodCardButton from '@components/elements/buttons/good-card-button/GoodCardButton';
+import SpecialDateButton from '@components/elements/buttons/special-date-button/SpecialDateButton';
+import { ImageSkeleton } from '@/components/skeletons';
+import { useCookie } from '@/hooks/useCookie';
+
+function GoodPage() {
+    const { id } = useParams();
+    const { cookie, loading, error } = useCookie(id);
+    const [imageLoading, setImageLoading] = useState(true);
+
+    if (loading) {
+        return (
+            <VerticalSection className="page good-page">
+                <SectionContent className="good-page__main">
+                    <div>Загрузка...</div>
+                </SectionContent>
+            </VerticalSection>
+        );
+    }
+
+    if (error || !cookie) {
+        return (
+            <VerticalSection className="page good-page">
+                <SectionContent className="good-page__main">
+                    <div>Товар не найден</div>
+                </SectionContent>
+            </VerticalSection>
+        );
+    }
+
+    const format = cookie.format;
+
+    return (
+        <VerticalSection className="page good-page">
+            <SectionContent className={`good-page__main good-page__main--format-${format}`}>
+                <div className="good-page__main__container">
+                    <div className="good-page__main__container__image-container">
+                        {imageLoading && <ImageSkeleton className="good-page__image-skeleton" />}
+                        <img 
+                            src={cookie.img_url || DefaultMenuImg} 
+                            alt={cookie.title}
+                            style={{ display: imageLoading ? 'none' : 'block' }}
+                            onLoad={() => setImageLoading(false)}
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = DefaultMenuImg;
+                                setImageLoading(false);
+                            }}
+                        />
+                    </div>
+
+                    <div className="good-page__main__container__right">
+                        <div className="good-page__main__container__right__title">{cookie.title}</div>
+                        
+                        <div className="good-page__main__container__right__price-row">
+                            <div className="good-page__main__container__right__price">{cookie.price} ₽</div>
+                            {format === 'special' && (
+                                <div className="good-page__main__container__right__special-date">
+                                    <SpecialDateButton dateText="Заказать можно только до 10.12.2025" />
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="good-page__main__container__right__add-to-cart">
+                            <GoodCardButton text="В корзину" cookieId={cookie.id} />
+                        </div>
+
+                        <div className="good-page__main__container__right__section">
+                            <span className="good-page__main__container__right__section-label">Тип печенья:</span>
+                            <span className="good-page__main__container__right__section-text">
+                                <span>{cookie.type}</span>
+                            </span>
+                        </div>
+
+                        <div className="good-page__main__container__right__section">
+                            <span className="good-page__main__container__right__section-label">Количество штук в упаковке:</span>
+                            <span className="good-page__main__container__right__section-text">
+                                <span>{cookie.quantity}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="good-page__main__container__bottom">
+                        <div className="good-page__main__container__bottom__attention-date">
+                            <div className="good-page__main__container__bottom__attention-date__icon">
+                                <AttentionIcon />
+                            </div>
+                            <span>Заказать можно только до 10.12.2025</span>
+                            <div className="good-page__main__container__bottom__attention-date__icon">
+                                <AttentionIcon />
+                            </div>
+                        </div>
+
+                        <div className="good-page__main__container__bottom__info-sections">
+                            <div className="good-page__main__container__bottom__info-section">
+                                <span className="good-page__main__container__bottom__info-section-label">Тип печенья:</span>
+                                <span className="good-page__main__container__bottom__info-section-text">
+                                    <span>{cookie.type}</span>
+                                </span>
+                            </div>
+
+                            <div className="good-page__main__container__bottom__info-section">
+                                <span className="good-page__main__container__bottom__info-section-label">Количество штук в упаковке:</span>
+                                <span className="good-page__main__container__bottom__info-section-text">
+                                    <span>{cookie.quantity}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="good-page__main__container__bottom__section">
+                            <div className="good-page__main__container__bottom__section-label">Описание:</div>
+                            <div className="good-page__main__container__bottom__section-text">{cookie.description}</div>
+                        </div>
+
+                        <div className="good-page__main__container__bottom__section">
+                            <div className="good-page__main__container__bottom__section-label">Состав:</div>
+                            <div className="good-page__main__container__bottom__section-text">{cookie.ingredients}</div>
+                        </div>
+
+                        <div className="good-page__main__container__bottom__section">
+                            <div className="good-page__main__container__bottom__section-label">Адрес производства:</div>
+                            <div className="good-page__main__container__bottom__section-text">{cookie.address}</div>
+                        </div>
+                    </div>
+                </div>
+            </SectionContent>
+        </VerticalSection>  
+    )
+}
+
+export default GoodPage;

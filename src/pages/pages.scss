@@ -1,0 +1,25 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 60px 0;
+
+    @media (max-width: 1024px) {
+        gap: 60px;
+        padding: 40px 0;
+    }
+
+    @media (max-width: 850px) {
+        gap: 40px;
+        padding: 30px 0;
+    }
+
+    @media (max-width: 900px) {
+        padding: 20px 0;
+    }
+}
+
+

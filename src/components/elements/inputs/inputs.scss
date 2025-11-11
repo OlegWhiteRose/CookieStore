@@ -1,0 +1,178 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.input-label {
+    font-family: v.$font-family-main;
+    font-size: v.$font-size-small;
+    font-weight: v.$font-weight-medium;
+    user-select: none;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-small-tablet;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-small-mobile;
+    }
+}
+
+.input-label--light {
+    color: t.$color-white;
+}
+
+.input-label--dark {
+    color: t.$color-black;
+}
+
+.input-label--large {
+    font-size: v.$font-size-attention;
+    font-family: v.$font-family-secondary;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-attention-tablet;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-attention-mobile;
+    }
+
+    @media (max-width: 450px) {
+        font-size: v.$font-size-main-mobile;
+    }
+}
+
+.input-control,
+.textarea-control {
+    font-family: v.$font-family-secondary;
+    font-size: v.$font-size-input;
+    font-weight: v.$font-weight-medium;
+    padding: 12px 16px;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: t.$color-white;
+    border: 2px solid t.$color-background-first;
+    color: t.$color-black;
+
+    @media (max-width: 1024px) {
+        font-size: v.$font-size-input-tablet;
+        padding: 10px 14px;
+    }
+
+    @media (max-width: 599px) {
+        font-size: v.$font-size-input-mobile;
+        padding: 8px 12px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: v.$font-size-small-mobile;
+        padding: 8px 10px;
+    }
+
+    &::placeholder {
+        color: t.$color-background-first;
+    }
+
+    &:focus {
+        border-color: t.$color-black;
+    }
+}
+
+.input-control--light,
+.textarea-control--light {
+    background-color: t.$color-light-skin;
+    border: 2px solid t.$color-background-first;
+
+    &:focus {
+        border-color: t.$color-black;
+        background-color: t.$color-white;
+    }
+}
+
+.input-control--dark,
+.textarea-control--dark {
+    background-color: t.$color-white;
+}
+
+.input-control--transparent,
+.textarea-control--transparent {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+}
+
+.input-control--error,
+.textarea-control--error {
+    border-color: t.$color-red-highlight !important;
+}
+
+.textarea-control {
+    resize: none;
+}
+
+.input-control--small,
+.textarea-control--small {
+    height: 40px;
+
+    @media (max-width: 1024px) {
+        height: 36px;
+    }
+
+    @media (max-width: 800px) {
+        height: 30px;
+    }
+
+    @media (max-width: 400px) {
+        height: 15px;
+    }
+}
+
+.input-control--medium,
+.textarea-control--medium {
+    height: 60px;
+
+    @media (max-width: 1024px) {
+        height: 50px;
+    }
+
+    @media (max-width: 800px) {
+        height: 50px;
+    }
+
+    @media (max-width: 400px) {
+        height: 15px;
+    }
+}
+
+.input-control--large,
+.textarea-control--large {
+    height: 200px;
+
+    @media (max-width: 1024px) {
+        height: 160px;
+    }
+
+    @media (max-width: 800px) {
+        height: 80px;
+    }
+
+    @media (max-width: 400px) {
+        height: 40px;
+    }
+}
+
+.input-field--wide {
+    grid-column: 1 / -1;
+}
+
+.input-field--half {
+    flex: 1;
+}

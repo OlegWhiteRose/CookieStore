@@ -1,0 +1,75 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.home-page {
+    &__logo-container {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: min-content;
+
+        @media (max-width: 1200px) {
+            gap: 12px;
+        }
+
+        @media (max-width: 850px) {
+            gap: 10px;
+        }
+
+        @media (max-width: 640px) {
+            gap: 8px;
+        }
+
+        &__attention {
+            font-size: v.$font-size-attention;
+            font-family: v.$font-family-secondary;
+            color: t.$color-white;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.4;
+            padding: 0 10px;
+
+            @media (max-width: 1200px) {
+                font-size: v.$font-size-attention-tablet;
+                max-width: 700px;
+            }
+
+            @media (max-width: 1024px) {
+                font-size: v.$font-size-section-title-main-tablet;
+                max-width: 600px;
+            }
+
+            @media (max-width: 850px) {
+                font-size: v.$font-size-section-title-main-mobile;
+                max-width: 500px;
+                line-height: 1.3;
+            }
+
+            @media (max-width: 640px) {
+                font-size: v.$font-size-main;
+                max-width: 400px;
+            }
+
+            @media (max-width: 600px) {
+                font-size: v.$font-size-main-mobile;
+                max-width: 350px;
+            }
+
+            @media (max-width: 480px) {
+                font-size: v.$font-size-small-mobile;
+                max-width: 300px;
+                line-height: 1.2;
+            }
+
+            @media (max-width: 360px) {
+                font-size: calc(v.$font-size-small-mobile - 1px);
+                max-width: 250px;
+            }
+        }
+    }
+}
+

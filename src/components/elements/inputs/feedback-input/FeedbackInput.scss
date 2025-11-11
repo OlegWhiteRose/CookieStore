@@ -1,0 +1,23 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.feedback-input {
+    gap: 28px;
+
+    @media (max-width: 900px) {
+        gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+        gap: 22px;
+    }
+
+    @media (max-width: 640px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 16px;
+    }
+}
+

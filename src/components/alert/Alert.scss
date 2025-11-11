@@ -1,0 +1,177 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.alert-container {
+    position: fixed;
+    z-index: 10000;
+    right: 25px;
+    bottom: 40px;
+    
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    
+    pointer-events: none;
+    
+    @media (max-width: 850px) {
+        right: 15px;
+        bottom: 20px;
+    }
+
+    &__alert {
+        position: relative;
+        z-index: 100;
+    
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    
+        background-color: t.$color-black;
+        border-radius: 10px;
+        
+        width: 300px;
+        padding: 20px;
+        
+        @media (max-width: 900px) {
+            width: 220px;
+            padding: 15px;
+        }
+
+        @media (max-width: 600px) {
+            width: 180px;
+            padding: 10px;
+        }
+
+        pointer-events: all;
+        
+        transform: translateX(calc(100% + 25px));
+        opacity: 0;
+        
+        animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.15),
+            0 2px 6px rgba(0, 0, 0, 0.1);
+        
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+        &:hover {
+            transform: translateX(0) scale(1.02);
+            box-shadow: 
+                0 6px 16px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        &--closing {
+            animation: slideOutToRight 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+        }
+    
+        &__content {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+    
+            gap: 10px;
+    
+            width: fit-content;
+    
+            &-icon {
+                user-select: none;
+                flex-shrink: 0;
+    
+                width: 24px;
+                height: 24px;
+                
+                animation: iconPulse 0.6s ease-out;
+            }
+    
+            &-text {
+                color: t.$color-white;
+                font-family: v.$font-family-main;
+                font-size: v.$font-size-main;
+                line-height: 1.4;
+                
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                
+                @media (max-width: 900px) {
+                    font-size: v.$font-size-main-mobile;
+                }
+
+                @media (max-width: 600px) {
+                    font-size: v.$font-size-small-mobile;
+                }
+            }
+        }
+    
+        &__close {
+            cursor: pointer;
+            flex-shrink: 0; 
+            
+            width: 30px;
+            height: 30px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            border: none;
+            background-color: transparent;
+
+            margin-left: 5px;
+
+            transition: all 0.2s ease;
+            
+            &:hover {
+                scale: 1.1;
+                background-color: rgba(255, 255, 255, 0.1);
+                
+                transform: rotate(90deg);
+            }
+            
+            &:active {
+                scale: 0.95;
+            }
+        }
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(calc(100% + 25px));
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(calc(100% + 25px));
+        opacity: 0;
+    }
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+

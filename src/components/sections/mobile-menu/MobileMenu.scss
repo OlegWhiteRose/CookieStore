@@ -1,0 +1,141 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: v.$main-padding-horizontal;
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+        padding: 20px;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 30px;
+        border-bottom: 2px solid t.$color-background-first;
+        margin-bottom: 30px;
+
+        @media (max-width: 900px) {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__title {
+        font-family: v.$font-family-main;
+        font-size: v.$font-size-content-top;
+        font-weight: v.$font-weight-medium;
+        color: t.$color-black;
+        margin: 0;
+
+        @media (max-width: 900px) {
+            font-size: v.$font-size-main;
+        }
+
+        @media (max-width: 600px) {
+            font-size: v.$font-size-main-mobile;
+        }
+    }
+
+    &__close {
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: t.$color-black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: auto;
+        flex: 1;
+
+        @media (max-width: 900px) {
+            gap: 15px;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: t.$color-background-first;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: t.$color-background;
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 20px;
+        border-radius: 10px;
+        background-color: t.$color-white;
+        transition: all 0.2s ease;
+        text-decoration: none;
+
+        @media (max-width: 900px) {
+            padding: 12px 16px;
+        }
+
+        span {
+            font-family: v.$font-family-main;
+            font-size: v.$font-size-content-top;
+            color: t.$color-black;
+            text-transform: lowercase;
+
+            @media (max-width: 900px) {
+                font-size: v.$font-size-main;
+            }
+        }
+
+        &:hover {
+            background-color: t.$color-background-first;
+            
+            span {
+                color: t.$color-white;
+            }
+        }
+
+        &--primary {
+            background-color: t.$color-background-first;
+
+            span {
+                color: t.$color-white;
+                font-weight: v.$font-weight-medium;
+            }
+
+            &:hover {
+                background-color: t.$color-background;
+            }
+        }
+    }
+}

@@ -1,10 +1,13 @@
 import { Outlet } from 'react-router-dom';
+
+import './layouts.scss';
+
 import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer';
 
 function MainLayout() {
   return (
-    <div>
+    <div className="layout main-layout">
       <Header />
       <main>
         <Outlet />
@@ -14,5 +17,5 @@ function MainLayout() {
   )
 }
 
-export default MainLayout
+export default MainLayout;
 

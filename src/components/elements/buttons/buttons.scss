@@ -1,0 +1,73 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+
+    font-family: v.$font-family-main;
+    font-size: v.$font-size-main;
+    
+    transition: all 0.3s ease;
+    
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    @media (max-width: 1300px) {
+        font-size: v.$font-size-main-tablet;
+    }
+
+    @media (max-width: 1100px) {
+        font-size: v.$font-size-main-mobile;
+    }
+
+    @media (max-width: 700px) {
+        font-size: v.$font-size-small-mobile;
+    }
+}
+
+.btn--align-center { 
+    justify-content: center;
+}
+
+.btn--primary {
+    background-color: t.$color-background;
+    color: t.$color-light-skin;
+}
+
+.btn--secondary {
+    background-color: t.$color-black;
+    color: t.$color-white;
+}
+
+.btn--default {
+    background-color: t.$color-white;
+    color: t.$color-black;
+}
+
+.btn--hover-effect-opacity {
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.btn--hover-effect-lift {
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+

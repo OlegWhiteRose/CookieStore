@@ -1,0 +1,65 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: cookiestore_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cookiestore_db}
+      POSTGRES_USER: ${POSTGRES_USER:-cookiestore_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cookiestore_password}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cookiestore_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cookiestore_user -d cookiestore_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: cookiestore_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-cookiestore_admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-cookiestore_password123}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - cookiestore_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio-setup:
+    image: minio/mc:latest
+    container_name: cookiestore_minio_setup
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-cookiestore_admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-cookiestore_password123}
+    volumes:
+      - ../cookies:/images:ro
+      - ./upload-images.sh:/upload-images.sh:ro
+    networks:
+      - cookiestore_network
+    entrypoint: /bin/sh
+    command: /upload-images.sh
+
+volumes:
+  postgres_data:
+  minio_data:
+
+networks:
+  cookiestore_network:
+    driver: bridge

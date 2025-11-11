@@ -1,0 +1,79 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.good-card-button {
+    width: 100%;
+    padding: 12px;
+    // border: solid 2px t.$color-background-first;
+
+    @media (max-width: 899px) {
+        padding: 8px;
+    }
+
+    @media (max-width: 599px) {
+        padding: 8px;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        &-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-family: v.$font-family-main;
+            padding: 5px 12px;
+            margin: -5px 10px;
+            line-height: 1;
+            color: inherit;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            
+            @media (max-width: 899px) {
+                font-size: 18px;
+                padding: 4px 10px;
+                margin: -4px 8px;
+            }
+
+            @media (max-width: 599px) {
+                font-size: 16px;
+                padding: 3px 8px;
+                margin: -3px 6px;
+            }
+            
+            &:hover {
+                background-color: t.$color-background-first;
+            }
+        }
+
+        &-count {
+            font-family: v.$font-family-main;
+            font-size: v.$font-size-main;
+            min-width: 20px;
+            text-align: center;
+
+            @media (max-width: 1300px) {
+                font-size: v.$font-size-main-tablet;
+            }
+
+            @media (max-width: 1100px) {
+                font-size: v.$font-size-main-mobile;
+            }
+
+            @media (max-width: 899px) {
+                font-size: v.$font-size-small-mobile;
+                min-width: 18px;
+            }
+
+            @media (max-width: 599px) {
+                font-size: 12px;
+                min-width: 16px;
+            }
+        }
+    }
+}
+

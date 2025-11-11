@@ -1,0 +1,96 @@
+@use '@/theme.scss' as t;
+@use '@/variables.scss' as v;
+
+.about-page {
+    padding: 40px;
+    user-select: none;
+
+    @media (max-width: 900px) {
+        padding: 20px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    &__section {
+        margin-bottom: 70px;
+
+        @media (max-width: 1200px) {
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            margin-bottom: 45px;
+        }
+
+        @media (max-width: 480px) {
+            margin-bottom: 35px;
+        }
+    }
+
+    &__section-title {
+        font-size: v.$font-size-attention;
+        font-family: v.$font-family-main;
+        font-weight: v.$font-weight-bold;
+        color: t.$color-white;
+        margin: 0 0 30px 0;
+
+        @media (max-width: 1200px) {
+            margin: 0 0 25px 0;
+        }
+
+        @media (max-width: 768px) {
+            font-size: v.$font-size-attention-tablet;
+            margin: 0 0 20px 0;
+        }
+
+        @media (max-width: 480px) {
+            margin: 0 0 15px 0;
+        }
+    }
+
+    &__text {
+        font-size: v.$font-size-main;
+        font-family: v.$font-family-secondary;
+        color: t.$color-white;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+
+        strong {
+            color: t.$color-white;
+            font-weight: v.$font-weight-bold;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            font-size: v.$font-size-main-mobile;
+        }
+
+        &--large {
+            font-size: v.$font-size-content-top;
+            line-height: 1.8;
+
+            @media (max-width: 768px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
+        }
+
+        &--center {
+            text-align: center;
+        }
+
+        &--intro {
+            font-size: v.$font-size-content-top;
+            font-style: italic;
+            opacity: 0.9;
+
+            @media (max-width: 768px) {
+                font-size: v.$font-size-content-top-mobile;
+            }
+        }
+    }
+}
