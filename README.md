@@ -87,7 +87,3 @@ npm run dev
 # Production сборка
 npm run build
 ```
-
-## 📄 Лицензия
-
-MIT
