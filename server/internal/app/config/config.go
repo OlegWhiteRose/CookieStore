@@ -23,13 +23,12 @@ func NewConfig() (*Config, error) {
 		return nil, err
 	}
 
-	// Get CORS origins from environment or use default
 	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
 	if allowedOrigins == "" {
 		allowedOrigins = viper.GetString("AllowedOrigins")
 	}
 	if allowedOrigins == "" {
-		allowedOrigins = "*" // Default to all origins in development
+		allowedOrigins = "*"
 	}
 
 	return &Config{

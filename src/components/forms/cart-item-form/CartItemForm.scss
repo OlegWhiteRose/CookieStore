@@ -10,6 +10,11 @@
     gap: 20px;
     padding: 20px;
 
+    background-color: transparent;
+    border: 2px solid t.$color-background-first;
+    border-radius: 15px;
+    box-sizing: border-box;
+
     @media (max-width: 700px) {
         gap: 10px;
         padding: 10px;
@@ -20,11 +25,6 @@
         padding: 10px;
         min-width: 280px;
     }
-
-    background-color: transparent;
-    border: 2px solid t.$color-background-first;
-    border-radius: 15px;
-    box-sizing: border-box;
 
     @media (max-width: 400px) {
         border-radius: 10px;
@@ -76,8 +76,14 @@
     &__image-wrapper {
         position: relative;
         flex-shrink: 0;
+
         width: 140px;
         height: 140px;
+
+        border-radius: 12px;
+
+        overflow: hidden;
+        background-color: t.$color-light-skin;
 
         @media (max-width: 700px) {
             width: 100px;
@@ -89,14 +95,9 @@
             height: 80px;
         }
 
-        border-radius: 12px;
-
         @media (max-width: 400px) {
             border-radius: 8px;
         }
-
-        overflow: hidden;
-        background-color: t.$color-light-skin;
     }
 
     &__skeleton {
@@ -152,6 +153,7 @@
         font-family: v.$font-family-secondary;
         font-size: v.$font-size-content-top;
         font-weight: v.$font-weight-bold;
+        
         margin: 0;
         word-wrap: break-word;
 

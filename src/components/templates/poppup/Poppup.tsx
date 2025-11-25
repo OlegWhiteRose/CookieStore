@@ -11,6 +11,7 @@ interface PoppupProps {
 
 function Poppup(props: PoppupProps) {
     const { active, setActive, children } = props;
+    
     const popupRef = useRef<HTMLDivElement>(null);
     const [alignLeft, setAlignLeft] = useState(false);
 

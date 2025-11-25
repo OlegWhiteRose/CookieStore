@@ -44,7 +44,6 @@ func StartServer() {
 
 	r := gin.Default()
 
-	// CORS middleware with configurable origin
 	r.Use(func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", cfg.AllowedOrigins)
 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
