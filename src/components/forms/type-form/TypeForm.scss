@@ -2,15 +2,14 @@
 @use '@/variables.scss' as v;
 
 .type-form {
-    will-change: transform;
-
     &__background {
+        position: relative;
+        cursor: pointer;
+
         display: flex;
         overflow: hidden;
         aspect-ratio: 3 / 1;
         max-width: 600px;
-        position: relative;
-        cursor: pointer;
 
         padding: 30px 40px;
         background-size: cover;

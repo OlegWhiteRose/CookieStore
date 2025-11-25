@@ -27,6 +27,8 @@
         align-items: center;
         justify-content: space-between;
     
+        pointer-events: all;
+
         background-color: t.$color-black;
         border-radius: 10px;
         
@@ -42,8 +44,6 @@
             width: 180px;
             padding: 10px;
         }
-
-        pointer-events: all;
         
         transform: translateX(calc(100% + 25px));
         opacity: 0;

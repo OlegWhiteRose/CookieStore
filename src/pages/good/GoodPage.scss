@@ -109,6 +109,7 @@
                 grid-area: bottom;
                 display: flex;
                 flex-direction: column;
+
                 gap: 30px;
 
                 @media (max-width: 1300px) {
@@ -564,6 +565,13 @@
                 width: 555px;
                 height: 555px;
 
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                
+                gap: 20px;
+
                 @media (max-width: 1300px) {
                     width: 500px;
                     height: 500px;
@@ -608,12 +616,6 @@
                     width: 120px;
                     height: 120px;
                 }
-
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                gap: 20px;
 
                 @media (max-width: 1300px) {
                     gap: 15px;
