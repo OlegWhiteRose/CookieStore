@@ -1,3 +1,0 @@
-ServerHost = "0.0.0.0"
-ServerPort = 8080
-AllowedOrigins = "*"

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
@@ -24,38 +24,58 @@ function OrderPage() {
     const draftCookies = useSelector((state: RootState) => state.draft.cookies);
     const [cookies, setCookies] = useState<Cookie[]>([]);
     const [loading, setLoading] = useState(true);
+    
+    const prevDraftIdsRef = useRef<Set<number>>(new Set());
 
-    const cookieIds = draftCookies.map(c => c.id).sort().join(',');
+    const loadCookiesByIds = useCallback(async (ids: number[]): Promise<Cookie[]> => {
+        if (ids.length === 0) return [];
+        
+        const cookiePromises = ids.map(id => cookiesApi.getCookieById(id));
+        const responses = await Promise.all(cookiePromises);
+        
+        return responses
+            .filter(res => res.data.status === 'ok')
+            .map(res => res.data.data);
+    }, []);
 
     useEffect(() => {
-        const loadCookies = async () => {
-            if (draftCookies.length === 0) {
-                setCookies([]);
-                setLoading(false);
-                return;
-            }
+        const currentDraftIds = new Set(draftCookies.map(c => c.id));
+        const prevDraftIds = prevDraftIdsRef.current;
 
+        if (draftCookies.length === 0) {
+            setCookies([]);
+            setLoading(false);
+            prevDraftIdsRef.current = currentDraftIds;
+            return;
+        }
+
+        if (prevDraftIds.size === 0 && currentDraftIds.size > 0) {
             setLoading(true);
-            try {
-                const cookiePromises = draftCookies.map(dc => 
-                    cookiesApi.getCookieById(dc.id)
-                );
-                const responses = await Promise.all(cookiePromises);
-                
-                const loadedCookies = responses
-                    .filter(res => res.data.status === 'ok')
-                    .map(res => res.data.data);
-                
-                setCookies(loadedCookies);
-            } catch (error) {
-                console.error('Failed to load cookies:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+            loadCookiesByIds(Array.from(currentDraftIds))
+                .then(loadedCookies => setCookies(loadedCookies))
+                .catch(err => console.error('Failed to load cookies:', err))
+                .finally(() => setLoading(false));
+            prevDraftIdsRef.current = currentDraftIds;
+            return;
+        }
 
-        loadCookies();
-    }, [cookieIds]);
+        const removedIds = [...prevDraftIds].filter(id => !currentDraftIds.has(id));
+        const addedIds = [...currentDraftIds].filter(id => !prevDraftIds.has(id));
+
+        if (removedIds.length > 0) {
+            setCookies(prev => prev.filter(c => !removedIds.includes(c.id)));
+        }
+
+        if (addedIds.length > 0) {
+            loadCookiesByIds(addedIds)
+                .then(newCookies => {
+                    setCookies(prev => [...prev, ...newCookies]);
+                })
+                .catch(err => console.error('Failed to load new cookies:', err));
+        }
+
+        prevDraftIdsRef.current = currentDraftIds;
+    }, [draftCookies, loadCookiesByIds]);
 
     const handleModeChange = (newMode: Mode) => {
         setSearchParams({ mode: newMode });
