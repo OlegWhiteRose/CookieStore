@@ -5,6 +5,7 @@ import cors from 'cors';
 import rootRouter from '@routes/index';
 import { corsOptions } from '@config/cors.config';
 import { connectDB } from "./config/db.config";
+import { globalErrorHandler } from '@middleware/error.middleware';
 
 const PORT: number = Number(process.env.PORT) || 3000;
 
@@ -21,6 +22,8 @@ app.get('/', (req, res) => {
     'Сервер работает'
   )
 })
+
+app.use(globalErrorHandler);
 
 const startServer = () => {
   connectDB();
