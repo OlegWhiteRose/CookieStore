@@ -12,7 +12,8 @@
         "@/*": ["src/*"],
         "@controllers/*": ["src/controllers/*"],
         "@middleware/*": ["src/middleware/*"],
-        "@routes/*": ["src/routes/*"]
+        "@routes/*": ["src/routes/*"],
+        "@config/*": ["src/config/*"]
     }
   }
 }
