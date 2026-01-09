@@ -6,4 +6,3 @@ const statsRouter = Router();
 statsRouter.get('', StatsController.getStats);
 
 export default statsRouter;
-
