@@ -1,7 +1,8 @@
 import { CorsOptions } from 'cors';
 
 const whitelist = [
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'http://82.202.141.106'
 ];
 
 export const corsOptions: CorsOptions = {

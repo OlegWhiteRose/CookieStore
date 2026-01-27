@@ -39,3 +39,8 @@ export const getMinioBucket = (): string => {
   return process.env.MINIO_BUCKET || 'cookies';
 };
 
+export const getMinioUrl = (): string => {
+  const { MINIO_ENDPOINT, MINIO_PORT, MINIO_BUCKET } = process.env;
+  return `http://${MINIO_ENDPOINT}:${MINIO_PORT}/${MINIO_BUCKET}`;
+};
+
