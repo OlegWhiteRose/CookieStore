@@ -9,7 +9,7 @@ import { connectDB } from "./config/db.config";
 import { globalErrorHandler } from '@middleware/error.middleware';
 import { swaggerSpec } from '@config/swagger.config';
 
-const PORT: number = Number(process.env.PORT) || 3000;
+const PORT: number = Number(process.env.PORT) || 8080;
 
 const app = express();
 
