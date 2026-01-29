@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Cookie } from '@/hooks/useCookies';
 import { showAlert } from '@/common/showAlert';
 import { clearDraft } from '@/store/draft/draftReducer';
+import { ordersApi } from '@/api/ordersApi';
 
 interface CookieDraft {
     id: number;
@@ -45,6 +46,8 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
         apartment: false
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const calculateTotal = () => {
         return cookies.reduce((sum, cookie) => {
             const draftCookie = draftCookies.find(dc => dc.id === cookie.id);
@@ -60,7 +63,9 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        if (isSubmitting) return;
+
         const newErrors = {
             phone: !deliveryForm.phone.trim(),
             email: !deliveryForm.email.trim(),
@@ -81,8 +86,43 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
             return;
         }
 
-        showAlert('Заказ успешно оформлен', 'success');
-        dispatch(clearDraft());
+        setIsSubmitting(true);
+
+        try {
+            const items = cookies.map(cookie => {
+                const draftCookie = draftCookies.find(dc => dc.id === cookie.id);
+                return {
+                    cookieId: String(cookie.id),
+                    title: cookie.title,
+                    price: cookie.price,
+                    quantity: draftCookie?.quantity || 0
+                };
+            });
+
+            const response = await ordersApi.create({
+                phone: deliveryForm.phone,
+                email: deliveryForm.email,
+                city: deliveryForm.city,
+                postalCode: deliveryForm.postalCode,
+                street: deliveryForm.street,
+                house: deliveryForm.house,
+                building: deliveryForm.building,
+                apartment: deliveryForm.apartment,
+                comment: deliveryForm.comment,
+                items,
+                totalAmount: calculateTotal()
+            });
+
+            if (response.status === 201 && response.data.status === 'ok') {
+                showAlert('Заказ успешно оформлен', 'success');
+                dispatch(clearDraft());
+            }
+        } catch (error: any) {
+            showAlert('Ошибка: попробуйте позже', 'error');
+            console.error('Failed to create order:', error);
+        } finally {
+            setTimeout(() => setIsSubmitting(false), 1000);
+        }
     };
 
     if (loading) {
@@ -165,6 +205,7 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
                         <TextInput 
                             label="Почтовый индекс" 
                             placeholder="123456" 
+                            type="number"
                             value={deliveryForm.postalCode}
                             onChange={(value) => updateField('postalCode', value)}
                             error={errors.postalCode}
@@ -186,6 +227,7 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
                         <TextInput 
                             label="Дом" 
                             placeholder="12" 
+                            type="number"
                             value={deliveryForm.house}
                             onChange={(value) => updateField('house', value)}
                             error={errors.house}
@@ -193,6 +235,7 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
                         <TextInput 
                             label="Корпус" 
                             placeholder="1" 
+                            type="number"
                             value={deliveryForm.building}
                             onChange={(value) => updateField('building', value)}
                             error={errors.building}
@@ -200,6 +243,7 @@ function OrderMode({ cookies, draftCookies, loading }: OrderModeProps) {
                         <TextInput 
                             label="Квартира" 
                             placeholder="45" 
+                            type="number"
                             value={deliveryForm.apartment}
                             onChange={(value) => updateField('apartment', value)}
                             error={errors.apartment}

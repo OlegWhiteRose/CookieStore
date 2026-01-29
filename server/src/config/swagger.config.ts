@@ -30,6 +30,14 @@ const options: swaggerJsdoc.Options = {
         name: 'Stats',
         description: 'Statistics',
       },
+      {
+        name: 'Feedback',
+        description: 'Feedback submissions',
+      },
+      {
+        name: 'Orders',
+        description: 'Order management',
+      },
     ],
   },
   apis: ['./src/routes/*.ts', './src/swagger/*.ts'],

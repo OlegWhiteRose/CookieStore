@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node dist/app.ts",
-    "seed": "ts-node -r tsconfig-paths/register src/seed/index.ts"
+    "start": "node dist/app.js",
+    "seed": "ts-node -r tsconfig-paths/register src/seed/index.ts",
+    "deploy": "docker compose -f docker/docker-compose.yml --profile production up -d --build",
+    "update": "docker restart cookie-store-nginx"
   },
   "keywords": [],
   "author": "",

@@ -175,4 +175,83 @@
  *               type: "clients"
  *             - number: "3255"
  *               type: "reviews"
+ *     
+ *     Feedback:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           example: "Иван Иванов"
+ *         contactInfo:
+ *           type: string
+ *           example: "+7 (999) 123-45-67, ivan@example.com"
+ *         message:
+ *           type: string
+ *           example: "Хочу узнать о доставке"
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     
+ *     Order:
+ *       type: object
+ *       properties:
+ *         phone:
+ *           type: string
+ *           example: "+7 (999) 123-45-67"
+ *         email:
+ *           type: string
+ *           example: "ivan@example.com"
+ *         city:
+ *           type: string
+ *           example: "Москва"
+ *         postalCode:
+ *           type: string
+ *           example: "123456"
+ *         street:
+ *           type: string
+ *           example: "Тверская улица"
+ *         house:
+ *           type: string
+ *           example: "12"
+ *         building:
+ *           type: string
+ *           example: "1"
+ *         apartment:
+ *           type: string
+ *           example: "45"
+ *         comment:
+ *           type: string
+ *           example: "Доставить после 18:00"
+ *         items:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               cookieId:
+ *                 type: string
+ *               title:
+ *                 type: string
+ *               quantity:
+ *                 type: number
+ *               price:
+ *                 type: number
+ *               totalPrice:
+ *                 type: number
+ *         totalAmount:
+ *           type: number
+ *           example: 960
+ *         status:
+ *           type: string
+ *           enum: [pending, confirmed, delivered, cancelled]
+ *           example: "pending"
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
  */
+
