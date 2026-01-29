@@ -1,5 +1,6 @@
-import fetchClient from './fetchClient';
+import axiosClient from './axiosClient';
 import { ENDPOINTS } from './endpoints';
+import { CookiesResponse, CookieResponse } from '@/models';
 
 export interface CookiesFilter {
   type?: string;
@@ -28,10 +29,10 @@ export const cookiesApi = {
     const queryString = params.toString();
     const url = queryString ? `${ENDPOINTS.COOKIES}?${queryString}` : ENDPOINTS.COOKIES;
     
-    return fetchClient.get(url);
+    return axiosClient.get<CookiesResponse>(url);
   },
 
   getCookieById: (id: number | string) => {
-    return fetchClient.get(ENDPOINTS.COOKIE_BY_ID(id));
+    return axiosClient.get<CookieResponse>(ENDPOINTS.COOKIE_BY_ID(id));
   },
 };

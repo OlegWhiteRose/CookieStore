@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useContacts } from '@/hooks/useContacts';
 import { showAlert } from '@/common/showAlert';
+import { feedbackApi } from '@/api/feedbackApi';
 
 import '../pages.scss';
 import './ContactsPage.scss';
@@ -34,6 +35,8 @@ function ContactsPage() {
         message: false
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     useEffect(() => {
         if (location.hash) {
             const element = document.querySelector(location.hash);
@@ -50,7 +53,9 @@ function ContactsPage() {
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        if (isSubmitting) return;
+
         const newErrors = {
             name: !formValues.name.trim(),
             contactInfo: !formValues.contactInfo.trim(),
@@ -64,8 +69,25 @@ function ContactsPage() {
             return;
         }
 
-        showAlert('Письмо отправлено', 'success');
-        setFormValues({ name: '', contactInfo: '', message: '' });
+        setIsSubmitting(true);
+
+        try {
+            const response = await feedbackApi.create({
+                name: formValues.name,
+                contactInfo: formValues.contactInfo,
+                message: formValues.message
+            });
+
+            if (response.status === 201 && response.data.status === 'ok') {
+                showAlert('Сообщение отправлено', 'success');
+                setFormValues({ name: '', contactInfo: '', message: '' });
+            }
+        } catch (error: any) {
+            showAlert('Ошибка: попробуйте позже', 'error');
+            console.error('Failed to send feedback:', error);
+        } finally {
+            setTimeout(() => setIsSubmitting(false), 1000);
+        }
     };
 
     const CONTACTS = [

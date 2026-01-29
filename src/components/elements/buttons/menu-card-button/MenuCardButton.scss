@@ -4,15 +4,18 @@
 .menu-card-button {
     padding: 10px;
     width: 100%;
+    min-height: 44px;
 
     margin-top: auto;
 
     @media (max-width: 599px) {
         padding: 8px;
+        min-height: 40px;
     }
 
     @media (max-width: 450px) {
         padding: 6px;
+        min-height: 36px;
     }
 
     &__controls {

@@ -4,14 +4,16 @@
 .good-card-button {
     width: 100%;
     padding: 12px;
-    // border: solid 2px t.$color-background-first;
+    min-height: 48px; 
 
     @media (max-width: 899px) {
         padding: 8px;
+        min-height: 44px;
     }
 
     @media (max-width: 599px) {
         padding: 8px;
+        min-height: 40px;
     }
 
     &__controls {

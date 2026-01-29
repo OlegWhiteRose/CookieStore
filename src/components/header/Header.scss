@@ -2,6 +2,10 @@
 @use '@/variables.scss' as v;
 
 .header-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2020;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -14,15 +18,20 @@
     background-color: t.$color-light-skin;
     line-height: normal;
 
+    padding: v.$section-padding-vertical v.$main-padding-horizontal;
+
+    @media (max-width: 900px) {
+        padding: 15px 20px;
+    }
+
     &__main {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        padding: v.$section-padding-vertical v.$main-padding-horizontal;
+        height: v.$header-height; 
 
         @media (max-width: 900px) {
-            padding: 15px 20px;
+            height: v.$header-height-mobile;
         }
 
         &-links {

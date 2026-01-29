@@ -21,9 +21,10 @@
 
     color: t.$color-red-highlight;
     transition: transform 0.2s ease;
+    transform-origin: center center;
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.15);
     }
 
     &:active {

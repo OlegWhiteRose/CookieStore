@@ -3,11 +3,11 @@
 
 <img width="100%" src="readme-img.jpg" alt="CookieStore Preview">
 
-## 🔗 Ссылки
+## Ссылки
 
 - [Сайт проекта](http://82.202.141.106)
 
-## 🛠 Используемые технологии
+## Используемые технологии
 
 ### Frontend
 - **React** 
@@ -16,12 +16,15 @@
 - **React Router** 
 - **Vite**
 - **SCSS**
+- **Axios**
 
 ### Backend
-- **Golang**
-- **PostgreSQL** 
-- **Minio** 
-- **Docker** 
+- **Node.js** + **Express**
+- **TypeScript**
+- **MongoDB** 
+- **MinIO** 
+- **Swagger** (API документация)
+- **Docker** + **Nginx** 
 
 ## Ключевые решения
 
@@ -29,39 +32,65 @@
 - Корзина товаров хранится в **Redux store** и синхронизируется с **localStorage**
 - Данные о товарах загружаются с сервера только при необходимости
 
-### Адаптивный дизайн
-- Полная адаптация под все устройства (от 300px до 1400px+)
+### API и документация
+- RESTful API с полной Swagger документацией
+- Доступна по адресу `/api-docs`
 
-### Конфигурация
-- Docker Compose
-- Nginx 
+### Deployment
+- Docker Compose для оркестрации сервисов
+- Nginx для проксирования и раздачи статики
+- MinIO для хранения изображений
+- MongoDB для хранения данных 
 
-## 📋 Возможности проекта
+## Возможности проекта
 
-- ✅ Каталог товаров с фильтрацией и поиском
-- ✅ Карточки товаров с подробной информацией
-- ✅ Корзина покупок
-- ✅ Оформление заказа 
-- ✅ Адаптивный дизайн для всех устройств
-- ✅ Система уведомлений 
-- ✅ Копирование контактов в буфер обмена
-- ✅ Синхронизация между вкладками с помощью localstorage
+- Каталог товаров с фильтрацией и поиском
+- Карточки товаров с подробной информацией
+- Корзина покупок
+- Оформление заказа с валидацией
+- Форма обратной связи
+- Адаптивный дизайн для всех устройств
+- Система уведомлений (alerts)
+- Синхронизация корзины между вкладками через localStorage
 
-## 🚀 Запуск проекта
+## Запуск проекта
 
-### Production (Docker Compose)
+### Production (Docker)
 
 ```bash
 # Клонирование репозитория
-git clone <repository-url>
+git clone https://github.com/OlegWhiteRose/CookieStore.git
 cd CookieStore
+npm install
 
-# Запуск всех сервисов (Frontend, Backend, PostgreSQL)
-docker-compose -f docker-compose.prod.yml up -d
+# Настройка переменных окружения
+# Создайте файл server/.env с настройками MongoDB и MinIO
+# Пример в server/.env:
+# PORT=8080
+# NODE_ENV=production
+# MONGO_USER=admin
+# MONGO_PASSWORD=admin123
+# MONGO_HOST=mongo
+# MONGO_PORT=27017
+# MONGO_DB=cookie_store
+# MINIO_ENDPOINT=minio
+# MINIO_PORT=9000
+# MINIO_ROOT_USER=minioadmin
+# MINIO_ROOT_PASSWORD=minioadmin123
+# MINIO_BUCKET=cookies
 
-# Остановка сервисов
-docker-compose -f docker-compose.prod.yml down
+# Запуск всех сервисов (MongoDB, MinIO, Server, Nginx)
+cd server
+npm install
+npm run deploy
+
+# Обновление статики (после сборки фронтенда)
+# 1. Соберите фронтенд: npm run build (из корня)
+# 2. Загрузите папку dist на сервер
+# 3. Перезапустите nginx:
+npm run update
 ```
+
 ### Development
 
 #### Backend
@@ -69,8 +98,24 @@ docker-compose -f docker-compose.prod.yml down
 ```bash
 cd server
 
-# Запуск сервера на 8090 порту
-go run cmd/server/main.go
+# Установка зависимостей
+npm install
+
+# Настройка .env для development
+# MONGO_HOST=localhost
+# MINIO_ENDPOINT=localhost
+
+# Запуск MongoDB и MinIO через Docker
+docker compose -f docker/docker-compose.yml up mongo minio -d
+
+# Заполнение базы данных
+npm run seed
+
+# Запуск dev сервера с nodemon
+npm run dev
+
+# Сервер запустится на порту 8080
+# API документация: http://localhost:8080/api-docs
 ```
 
 #### Frontend
@@ -81,9 +126,18 @@ go run cmd/server/main.go
 # Установка зависимостей
 npm install
 
+# Настройка .env
+# VITE_API_BASE_URL=http://localhost:8080
+
 # Запуск dev сервера
 npm run dev
 
 # Production сборка
 npm run build
 ```
+
+## API Документация
+
+После запуска сервера документация доступна по адресу:
+- /api-docs
+
