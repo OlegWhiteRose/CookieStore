@@ -1,12 +1,26 @@
 import { CorsOptions } from 'cors';
 
-const whitelist = [
-  'http://localhost:5173',
-  'http://82.202.141.106'
-];
+const getWhitelist = (): string[] => {
+  const whitelist = ['http://localhost:5173'];
+  
+  if (process.env.DOMAIN) {
+    const protocol = process.env.PROTOCOL || 'https';
+    const domain = process.env.DOMAIN;
+    whitelist.push(`${protocol}://${domain}`);
+    whitelist.push(`${protocol}://www.${domain}`);
+    
+    if (protocol === 'https') {
+      whitelist.push(`http://${domain}`);
+      whitelist.push(`http://www.${domain}`);
+    }
+  }
+  
+  return whitelist;
+};
 
 export const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
+    const whitelist = getWhitelist();
     if (!origin || whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
