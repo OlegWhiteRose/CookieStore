@@ -3,11 +3,11 @@
 
 <img width="100%" src="readme-img.jpg" alt="CookieStore Preview">
 
-## 🔗 Ссылки
+## Ссылки
 
 - [Сайт проекта](http://82.202.141.106)
 
-## 🛠 Используемые технологии
+## Используемые технологии
 
 ### Frontend
 - **React** 
@@ -59,8 +59,9 @@
 
 ```bash
 # Клонирование репозитория
-git clone <repository-url>
+git clone https://github.com/OlegWhiteRose/CookieStore.git
 cd CookieStore
+npm install
 
 # Настройка переменных окружения
 # Создайте файл server/.env с настройками MongoDB и MinIO
@@ -80,6 +81,7 @@ cd CookieStore
 
 # Запуск всех сервисов (MongoDB, MinIO, Server, Nginx)
 cd server
+npm install
 npm run deploy
 
 # Обновление статики (после сборки фронтенда)
