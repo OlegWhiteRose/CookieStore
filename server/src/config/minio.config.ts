@@ -41,7 +41,9 @@ export const getMinioBucket = (): string => {
 
 export const getMinioUrl = (): string => {
   if (process.env.NODE_ENV === 'production') {
-    return `http://82.202.141.106`;
+    const protocol = process.env.PROTOCOL || 'https';
+    const domain = process.env.DOMAIN || 'localhost';
+    return `${protocol}://${domain}`;
   }
   const { MINIO_ENDPOINT, MINIO_PORT, MINIO_BUCKET } = process.env;
   return `http://${MINIO_ENDPOINT}:${MINIO_PORT}/${MINIO_BUCKET}`;

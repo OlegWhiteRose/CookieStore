@@ -56,7 +56,10 @@ export class CookiesController {
 
     const filter: Record<string, unknown> = {};
 
-    if (type) filter.type = type;
+    if (type) {
+      const types = type.split(',').map(t => t.trim());
+      filter.type = types.length > 1 ? { $in: types } : types[0];
+    }
     if (format) filter.format = format;
     if (title) filter.title = { $regex: title, $options: 'i' };
 
