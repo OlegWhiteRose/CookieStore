@@ -1,7 +1,7 @@
 import './AboutHistory.scss';
 
 import SectionContent from '@/components/templates/section-content/SectionContent';
-import CookieStoreImage from '@/assets/img/cookiestore.png';
+import CookieStoreImage from '@/assets/img/cookiestore.webp';
 
 function AboutHistory() {
     return (

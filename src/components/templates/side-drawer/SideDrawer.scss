@@ -31,20 +31,6 @@
     overflow: hidden;
     box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
 
-    &--right {
-        right: 0;
-        transform: translateX(100%);
-    }
-
-    &--left {
-        left: 0;
-        transform: translateX(-100%);
-    }
-
-    &--open {
-        transform: translateX(0);
-    }
-
     @media (max-width: 900px) {
         width: 280px;
     }
