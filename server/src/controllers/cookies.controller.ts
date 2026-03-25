@@ -58,7 +58,7 @@ export class CookiesController {
 
     if (type) {
       const types = type.split(',').map(t => t.trim());
-      filter.type = types.length > 1 ? { $in: types } : types[0];
+      filter.type = types.length > 1 ? { $in: types } as any : types[0];
     }
     if (format) filter.format = format;
     if (title) filter.title = { $regex: title, $options: 'i' };
@@ -98,13 +98,14 @@ export class CookiesController {
 
   static getCookieById = catchAsync(async (req: Request, res: Response) => {
     const { id } = req.params;
+    const cookieId = Array.isArray(id) ? id[0] : id;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(cookieId)) {
       throw new AppError('Invalid cookie ID format', 400);
     }
 
     try {
-      const cookie = await Cookie.findById(id).lean();
+      const cookie = await Cookie.findById(cookieId).lean();
 
       if (!cookie) {
         throw new AppError('Cookie not found', 404);
