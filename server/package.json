@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "seed": "MONGO_HOST=localhost MINIO_ENDPOINT=localhost npx ts-node -r tsconfig-paths/register src/seed/index.ts",
-    "deploy": "sudo docker compose -f docker/docker-compose.yml --env-file .env --profile production up -d --build && sleep 5 && npm run seed",
+    "deploy": "sudo docker compose -f docker/docker-compose.yml --env-file .env --profile production up -d --build && sleep 5 && rm -rf node_modules package-lock.json && npm install && npm run seed",
     "update": "sudo docker restart cookie-store-nginx"
   },
   "keywords": [],
