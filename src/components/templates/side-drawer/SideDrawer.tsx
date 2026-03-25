@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useLayoutEffect, useRef } from 'react';
 import './SideDrawer.scss';
 
 export interface SideDrawerProps {
@@ -9,7 +9,27 @@ export interface SideDrawerProps {
 }
 
 function SideDrawer({ isOpen, onClose, children, position = 'right' }: SideDrawerProps) {
-    useEffect(() => {
+    const drawerRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        if (drawerRef.current) {
+            if (position === 'left') {
+                drawerRef.current.style.left = '0';
+                drawerRef.current.style.right = 'auto';
+            } else {
+                drawerRef.current.style.right = '0';
+                drawerRef.current.style.left = 'auto';
+            }
+            
+            if (isOpen) {
+                drawerRef.current.style.transform = 'translateX(0)';
+            } else {
+                drawerRef.current.style.transform = position === 'right' ? 'translateX(100%)' : 'translateX(-100%)';
+            }
+        }
+    }, [position, isOpen]);
+
+    useLayoutEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -27,7 +47,10 @@ function SideDrawer({ isOpen, onClose, children, position = 'right' }: SideDrawe
                 className={`side-drawer-overlay ${isOpen ? 'side-drawer-overlay--active' : ''}`}
                 onClick={onClose}
             />
-            <div className={`side-drawer side-drawer--${position} ${isOpen ? 'side-drawer--open' : ''}`}>
+            <div 
+                ref={drawerRef}
+                className="side-drawer"
+            >
                 {children}
             </div>
         </>

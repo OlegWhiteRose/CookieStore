@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import './Poppup.scss';
 
 interface PoppupProps {
@@ -15,7 +15,7 @@ function Poppup(props: PoppupProps) {
     const popupRef = useRef<HTMLDivElement>(null);
     const [alignLeft, setAlignLeft] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!active) return;
 
         const handleClickOutside = (event: MouseEvent) => {
@@ -41,7 +41,7 @@ function Poppup(props: PoppupProps) {
         };
     }, [active, setActive, props.tagFor]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!active) return;
         
         const isMobile = window.innerWidth <= 768;
@@ -57,7 +57,7 @@ function Poppup(props: PoppupProps) {
         setAlignLeft(distanceFromLeft < distanceFromRight);
     }, [active, props.tagFor]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!active) return;
 
         const isMobile = window.innerWidth <= 768;

@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-RUN npm ci --only=production && npm install typescript tsc-alias tsconfig-paths
+RUN rm -rf node_modules package-lock.json && npm install
 
 COPY . .
 

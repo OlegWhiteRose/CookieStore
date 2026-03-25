@@ -41,6 +41,8 @@ services:
     environment:
       PORT: ${PORT}
       NODE_ENV: ${NODE_ENV}
+      DOMAIN: ${DOMAIN}
+      PROTOCOL: ${PROTOCOL}
       MONGO_USER: ${MONGO_USER}
       MONGO_PASSWORD: ${MONGO_PASSWORD}
       MONGO_HOST: mongo

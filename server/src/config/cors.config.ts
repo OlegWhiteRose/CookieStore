@@ -1,7 +1,11 @@
 import { CorsOptions } from 'cors';
 
 const getWhitelist = (): string[] => {
-  const whitelist = ['http://localhost:5173'];
+  const whitelist: string[] = [];
+  
+  if (process.env.NODE_ENV === 'development') {
+    whitelist.push('http://localhost:5173');
+  }
   
   if (process.env.DOMAIN) {
     const protocol = process.env.PROTOCOL || 'https';
